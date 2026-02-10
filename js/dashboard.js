@@ -14,7 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     navButtons.forEach(btn => {
-        btn.addEventListener("click", () => showView(btn.dataset.view));
+        btn.addEventListener("click", () => {
+            showView(btn.dataset.view);
+            btn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        });
     });
 
     // ============================================================
