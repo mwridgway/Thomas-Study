@@ -18,7 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     navButtons.forEach(btn => {
-        btn.addEventListener("click", () => showView(btn.dataset.view));
+        btn.addEventListener("click", () => {
+            showView(btn.dataset.view);
+            // Scroll active nav button into view on mobile
+            btn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        });
     });
 
     modeCards.forEach(card => {
@@ -34,6 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
             parent.querySelectorAll(".content-section").forEach(s => s.classList.remove("active"));
             const section = document.getElementById(btn.dataset.section);
             if (section) section.classList.add("active");
+            // Scroll active section-jump into view on mobile
+            btn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
         });
     });
 
@@ -151,6 +157,38 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === "ArrowRight") { cardIndex = (cardIndex + 1) % currentCards.length; renderCard(); }
         if (e.key === "ArrowLeft") { cardIndex = (cardIndex - 1 + currentCards.length) % currentCards.length; renderCard(); }
     });
+
+    // Touch swipe for flashcards
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+    const fcContainer = document.querySelector(".flashcard-container");
+
+    fcContainer.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].clientX;
+        touchStartY = e.changedTouches[0].clientY;
+        touchStartTime = Date.now();
+    }, { passive: true });
+
+    fcContainer.addEventListener("touchend", (e) => {
+        if (currentCards.length === 0) return;
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        const elapsed = Date.now() - touchStartTime;
+
+        // Only register as swipe if horizontal distance > 50px, mostly horizontal, and quick
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5 && elapsed < 400) {
+            if (dx < 0) {
+                // Swipe left → next card
+                cardIndex = (cardIndex + 1) % currentCards.length;
+                renderCard();
+            } else {
+                // Swipe right → previous card
+                cardIndex = (cardIndex - 1 + currentCards.length) % currentCards.length;
+                renderCard();
+            }
+        }
+    }, { passive: true });
 
     renderCard();
 
