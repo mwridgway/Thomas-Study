@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas's Geography Study Hub | Grade 12 NSC</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="back-link">&larr; Dashboard</a>
+            <h1>Geography Study Hub</h1>
+            <p class="subtitle">Grade 12 NSC &mdash; Climate &amp; Weather</p>
+        </div>
+        <nav id="main-nav">
+            <button class="nav-btn active" data-view="home">Home</button>
+            <button class="nav-btn" data-view="unit1">Mid-Latitude Cyclones</button>
+            <button class="nav-btn" data-view="unit2">Tropical Cyclones</button>
+            <button class="nav-btn" data-view="flashcards">Flashcards</button>
+            <button class="nav-btn" data-view="quiz">Quiz</button>
+            <button class="nav-btn" data-view="feynman">Feynman Mode</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HOME VIEW -->
+        <section id="view-home" class="view active">
+            <div class="hero">
+                <h2>Welcome, Thomas</h2>
+                <p>Your study hub for <strong>Climate and Weather</strong> &mdash; covering Mid-Latitude Cyclones and Tropical Cyclones for NSC Paper 1.</p>
+            </div>
+            <div class="study-modes">
+                <div class="mode-card" data-target="unit1">
+                    <div class="mode-icon">&#127786;</div>
+                    <h3>Mid-Latitude Cyclones</h3>
+                    <p>Formation, stages of development, weather conditions, wind direction, and impact on South Africa.</p>
+                </div>
+                <div class="mode-card" data-target="unit2">
+                    <div class="mode-icon">&#127744;</div>
+                    <h3>Tropical Cyclones</h3>
+                    <p>Characteristics, formation factors, development stages, weather patterns, impacts, and management strategies.</p>
+                </div>
+                <div class="mode-card" data-target="flashcards">
+                    <div class="mode-icon">&#128218;</div>
+                    <h3>Active Recall Flashcards</h3>
+                    <p>Test yourself with flashcards. Flip to reveal answers. Track which ones you know.</p>
+                </div>
+                <div class="mode-card" data-target="quiz">
+                    <div class="mode-icon">&#9997;</div>
+                    <h3>NSC-Style Quiz</h3>
+                    <p>Practice questions in NSC exam format &mdash; multiple choice, short answer, and analytical.</p>
+                </div>
+                <div class="mode-card" data-target="feynman">
+                    <div class="mode-icon">&#129504;</div>
+                    <h3>Feynman Mode</h3>
+                    <p>Explain concepts in your own words. Identify gaps in your understanding.</p>
+                </div>
+            </div>
+            <div class="study-tip">
+                <h3>Study Strategy Tip</h3>
+                <p><strong>Don't just re-read.</strong> Use the flashcards and quiz to practice <em>active recall</em> &mdash; retrieving information from memory strengthens it far more than passive review. Try the <strong>2-3-5-7 method</strong>: review this material on days 2, 3, 5, and 7 after first studying it.</p>
+            </div>
+        </section>
+
+        <!-- UNIT 1: MID-LATITUDE CYCLONES -->
+        <section id="view-unit1" class="view">
+            <div class="unit-header">
+                <h2>Unit 1: Mid-Latitude Cyclones</h2>
+                <div class="progress-tracker">
+                    <button class="section-jump active" data-section="mlc-overview">Overview</button>
+                    <button class="section-jump" data-section="mlc-formation">Formation</button>
+                    <button class="section-jump" data-section="mlc-conditions">Conditions</button>
+                    <button class="section-jump" data-section="mlc-air">Air Movement</button>
+                    <button class="section-jump" data-section="mlc-stages">Stages</button>
+                    <button class="section-jump" data-section="mlc-wind">Wind Direction</button>
+                    <button class="section-jump" data-section="mlc-weather">Weather</button>
+                    <button class="section-jump" data-section="mlc-occlusion">Occlusion</button>
+                    <button class="section-jump" data-section="mlc-impact">Impact</button>
+                </div>
+            </div>
+
+            <div id="mlc-overview" class="content-section active">
+                <h3>Overview &amp; Location</h3>
+                <div class="key-concept">
+                    <h4>What are Mid-Latitude Cyclones?</h4>
+                    <ul>
+                        <li>Large-scale low-pressure weather systems that form in the <strong>mid-latitudes (30&deg;&ndash;60&deg; N and S)</strong> of the equator.</li>
+                        <li>They form at the <strong>polar front</strong> where warm westerly winds and cold polar easterly winds converge at the sub-polar low pressure.</li>
+                        <li>They occur in <strong>families of 3 to 5</strong>, which follow one after each other, two to eight days apart.</li>
+                        <li>The cold front of an older depression is joined to the warm front of a younger depression.</li>
+                    </ul>
+                </div>
+                <div class="key-concept">
+                    <h4>Cyclogenesis</h4>
+                    <p>The development or strengthening of cyclonic circulation in the atmosphere.</p>
+                </div>
+                <div class="key-concept">
+                    <h4>Path of Mid-Latitude Cyclones</h4>
+                    <ul>
+                        <li>Travel from <strong>east to west</strong> (actually <strong>west to east</strong> &mdash; carried in the belt of the westerly winds).</li>
+                        <li>Initially move towards the equator, then curve back towards the poles.</li>
+                        <li>This is due to the faster-moving, more forceful cold front and their deflection by the <strong>subtropical high pressures</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="mlc-formation" class="content-section">
+                <h3>Areas Where Mid-Latitude Cyclones Form</h3>
+                <div class="key-concept">
+                    <ul>
+                        <li>Occur in the mid-latitudes (<strong>30&deg; to 60&deg;</strong> north and south of the equator).</li>
+                        <li>Form at the <strong>polar front</strong> where warm westerly winds and cold polar easterly winds converge at the sub-polar low pressure.</li>
+                    </ul>
+                </div>
+                <div class="diagram-description">
+                    <h4>Atmospheric Setup (Southern Hemisphere)</h4>
+                    <table>
+                        <tr><th>Latitude</th><th>Feature</th></tr>
+                        <tr><td>0&deg;</td><td>Equator</td></tr>
+                        <tr><td>~30&deg; S</td><td>Sub-tropical High Pressure (HP) &mdash; Westerlies blow from here</td></tr>
+                        <tr><td>~50&deg; S</td><td>Polar front / Sub-polar Low Pressure &mdash; Mid-latitude cyclones form here</td></tr>
+                        <tr><td>~90&deg; S</td><td>Polar High Pressure &mdash; Polar easterlies blow from here</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div id="mlc-conditions" class="content-section">
+                <h3>Conditions Necessary for Formation</h3>
+                <div class="key-concept">
+                    <p>The conditions favourable for the formation of a mid-latitude cyclone are:</p>
+                    <ol>
+                        <li><strong>Air from the two large high-pressure belts</strong> moves towards each other at the polar front.</li>
+                        <li><strong>Warm subtropical HP</strong> contains a warm, moist air mass. <strong>Polar HP</strong> contains cold, dry air mass.</li>
+                        <li><strong>Air flow converges from opposite directions</strong> on the two sides of the polar front.</li>
+                        <li><strong>Disturbances at the polar front</strong> result in an unstable situation, creating a <strong>low pressure</strong> (into which air will flow and around which air will circulate).</li>
+                    </ol>
+                </div>
+                <div class="diagram-description">
+                    <h4>Formation Zone</h4>
+                    <p>The area of possible cyclone formation lies between the warm subtropical HP (with warm moist westerly winds) and the cold polar HP (with cold easterly winds), along the polar front where a low-pressure trough develops.</p>
+                </div>
+            </div>
+
+            <div id="mlc-air" class="content-section">
+                <h3>Movement of Air Within a Mid-Latitude Cyclone</h3>
+                <div class="key-concept">
+                    <ul>
+                        <li>Air rotates <strong>clockwise in the Southern Hemisphere</strong> and <strong>anti-clockwise in the Northern Hemisphere</strong> around the centre of a low pressure.</li>
+                        <li>Warm air rises at the cold front and at the warm front.</li>
+                    </ul>
+                </div>
+                <div class="comparison-box">
+                    <div class="compare-item">
+                        <h4>High Pressure (H)</h4>
+                        <p>Descending air</p>
+                    </div>
+                    <div class="compare-item">
+                        <h4>Low Pressure (L)</h4>
+                        <p>Ascending air</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mlc-stages" class="content-section">
+                <h3>Stages in the Development of Mid-Latitude Cyclones</h3>
+
+                <div class="stage-card">
+                    <h4>(A) Initial Stage</h4>
+                    <div class="stage-details">
+                        <ul>
+                            <li>Warm, moist subtropical air meets cold, drier polar air along a <strong>stationary polar front</strong>.</li>
+                            <li><strong>No movement across</strong> the polar front.</li>
+                            <li>Air masses don't mix, but move <strong>parallel to each other</strong>.</li>
+                            <li>Both air masses retain their own density and characteristics.</li>
+                        </ul>
+                        <div class="pressure-info">Isobars: ~1 006&ndash;1 008 hPa, parallel lines</div>
+                    </div>
+                </div>
+
+                <div class="stage-card">
+                    <h4>(B) Development or Wave Stage</h4>
+                    <div class="stage-details">
+                        <p>A front has a <strong>wave-like appearance</strong>.</p>
+                        <ul>
+                            <li>A disturbance occurs at the polar front due to one of the following factors:
+                                <ul>
+                                    <li>Acceleration in the movement of one of the two air masses</li>
+                                    <li>Disturbances in the westerly wind belt</li>
+                                    <li>Uneven surfaces or the shape of the coastline</li>
+                                    <li>Differences between land and sea temperatures</li>
+                                </ul>
+                            </li>
+                            <li>This results in a <strong>local decrease in air pressure</strong>.</li>
+                            <li>A tongue of warm, less dense air is uplifted by cold, dense air, and consequently a <strong>LP starts to form</strong>.</li>
+                        </ul>
+                        <div class="pressure-info">Isobars: ~1 004&ndash;1 008 hPa, beginning to bend</div>
+                    </div>
+                </div>
+
+                <div class="stage-card">
+                    <h4>(C) Mature or Warm Sector Stage</h4>
+                    <div class="stage-details">
+                        <ul>
+                            <li>Cold air starts to move in a <strong>northerly direction</strong>, west of the LP centre &mdash; a <strong>cold front develops</strong>.</li>
+                            <li>Warm air is pushed in a <strong>southerly direction</strong>, east of the LP &mdash; <strong>warm front develops</strong>.</li>
+                            <li>Wind blows <strong>clockwise around and into</strong> the LP (Southern Hemisphere).</li>
+                            <li>Warm air rises above cold, heavier air.</li>
+                            <li>Air masses don't mix &mdash; separated by fronts.</li>
+                            <li>A <strong>definite warm sector</strong> depression develops.</li>
+                            <li>Isobars bend across the fronts.</li>
+                            <li>Rains along cold front &mdash; <strong>strong uplift of warm air</strong>.</li>
+                        </ul>
+                        <div class="pressure-info">Isobars: ~1 006&ndash;1 008 hPa, with distinct kinks at fronts</div>
+                    </div>
+                </div>
+
+                <div class="stage-card">
+                    <h4>(D) Occluded Stage</h4>
+                    <div class="stage-details">
+                        <ul>
+                            <li>Warm sector <strong>narrows</strong> as development continues.</li>
+                            <li>Cold front moves <strong>faster than warm front</strong>, because warm front is <strong>preceded</strong> (slowed down by cold air ahead of it).</li>
+                            <li>Cold front starts to <strong>overtake the warm front</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="stage-card">
+                    <h4>(E) Dissipation Stage</h4>
+                    <div class="stage-details">
+                        <ul>
+                            <li>Cold air <strong>completely isolates</strong> warm air from the ground.</li>
+                            <li>All warm air has been <strong>lifted high above ground</strong>.</li>
+                            <li>Isobars become <strong>more even</strong> as the LP degenerates.</li>
+                            <li>Upper level winds <strong>break apart the cloud cover</strong>.</li>
+                            <li>Rainfall decreases and <strong>eventually stops</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mlc-wind" class="content-section">
+                <h3>Wind Direction in Mid-Latitude Cyclones</h3>
+                <div class="key-concept">
+                    <p>As the system passes over, the wind changes direction as a result of the air circulating <strong>clockwise in the Southern Hemisphere</strong> and <strong>anti-clockwise in the Northern Hemisphere</strong>.</p>
+                </div>
+                <div class="comparison-box">
+                    <div class="compare-item">
+                        <h4>Southern Hemisphere</h4>
+                        <p>The winds <strong>'back'</strong> from northeasterly to northwesterly to south-westerly.</p>
+                        <p>Wind direction changes according to an <strong>anticlockwise pattern</strong> as the warm front (1), warm sector (2), and cold front (3) passes.</p>
+                        <ol>
+                            <li>NE wind (before warm front)</li>
+                            <li>NW wind (warm sector)</li>
+                            <li>SW wind (after cold front)</li>
+                        </ol>
+                    </div>
+                    <div class="compare-item">
+                        <h4>Northern Hemisphere</h4>
+                        <p>The winds <strong>'veer'</strong> from southeasterly to southwesterly to north-easterly.</p>
+                        <p>Wind direction changes according to a <strong>clockwise pattern</strong> as the warm front (1), warm sector (2), and cold front (3) passes.</p>
+                        <ol>
+                            <li>SE wind (before warm front)</li>
+                            <li>SW wind (warm sector)</li>
+                            <li>NE wind (after cold front)</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mlc-weather" class="content-section">
+                <h3>Weather Conditions Associated with a Mid-Latitude Cyclone</h3>
+                <p class="note">System moves from <strong>west to east</strong>.</p>
+
+                <div class="weather-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>Cold Front</th>
+                                <th>Warm Sector</th>
+                                <th>Warm Front</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Wind direction</strong></td>
+                                <td>Changes from west through to southwest (wind backs)</td>
+                                <td>Northwesterly wind</td>
+                                <td>Changes from northwest to west</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Wind strength</strong></td>
+                                <td>Strong winds</td>
+                                <td>&mdash;</td>
+                                <td>&mdash;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Temperature</strong></td>
+                                <td>Decrease in temperature</td>
+                                <td>Warm, less dense air</td>
+                                <td>Temperature increases</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Humidity</strong></td>
+                                <td>Relative humidity is high during precipitation</td>
+                                <td>&mdash;</td>
+                                <td>Relative humidity is high during precipitation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Clouds</strong></td>
+                                <td>Cumulonimbus clouds</td>
+                                <td>Stratocumulus, altostratus clouds</td>
+                                <td>Nimbostratus clouds</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Precipitation</strong></td>
+                                <td>Heavy rainfall</td>
+                                <td>&mdash;</td>
+                                <td>Light rain (drizzle)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Visibility</strong></td>
+                                <td>Poor visibility</td>
+                                <td>&mdash;</td>
+                                <td>Visibility increases</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pressure</strong></td>
+                                <td>Pressure decreases as cold front approaches, then increases as cold sector arrives. Followed by rapid rise with scattered showers.</td>
+                                <td>Pressure continues to decrease</td>
+                                <td>Decrease in air pressure</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="mlc-occlusion" class="content-section">
+                <h3>Occluded Fronts</h3>
+                <div class="comparison-box">
+                    <div class="compare-item">
+                        <h4>Cold Front Occlusion</h4>
+                        <p>Air behind the cold front is <strong>colder and therefore denser</strong> than the air ahead of the warm front.</p>
+                        <p>The cold front remains in contact with the ground, and <strong>lifts the warm front</strong>.</p>
+                    </div>
+                    <div class="compare-item">
+                        <h4>Warm Front Occlusion</h4>
+                        <p>Air behind the cold front is <strong>warmer and therefore lighter</strong> than the air ahead of the warm front.</p>
+                        <p>The warm front remains in contact with the ground, and <strong>the cold front rises</strong>.</p>
+                    </div>
+                </div>
+                <div class="key-concept">
+                    <p>In both cases, the warm air in the warm sector is forced to rise. As it cools, condensation occurs and rain falls from <strong>nimbostratus clouds</strong>.</p>
+                </div>
+            </div>
+
+            <div id="mlc-impact" class="content-section">
+                <h3>Impact of Mid-Latitude Cyclones on Human Activities</h3>
+                <div class="key-concept">
+                    <ul>
+                        <li><strong>Winter rainfall in Western Cape</strong> &mdash; cultivation of crops &mdash; profitable for the wine industry.</li>
+                        <li><strong>Rain brought by frontal depressions</strong> replenishes water in dams.</li>
+                        <li><strong>Snow falls on Cape Fold Mountains</strong> &mdash; danger to livestock.</li>
+                        <li><strong>Very cold conditions</strong> experienced when cold front crosses the plateau and moves into high veld &mdash; power cuts.</li>
+                        <li><strong>Berg winds</strong> and hot, dry conditions are experienced ahead of cold front &mdash; fires.</li>
+                        <li><strong>SW winds behind the cold front</strong> &mdash; stormy and/or gale-force winds over ocean &mdash; danger to ships.</li>
+                        <li><strong>Heavy rainfall</strong> from cold front passing the Western Cape &mdash; poor visibility.</li>
+                        <li><strong>Mountain passes</strong> may be closed if there is snow.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- UNIT 2: TROPICAL CYCLONES -->
+        <section id="view-unit2" class="view">
+            <div class="unit-header">
+                <h2>Unit 2: Tropical Cyclones</h2>
+                <div class="progress-tracker">
+                    <button class="section-jump active" data-section="tc-overview">Overview</button>
+                    <button class="section-jump" data-section="tc-characteristics">Characteristics</button>
+                    <button class="section-jump" data-section="tc-path">Path</button>
+                    <button class="section-jump" data-section="tc-factors">Formation Factors</button>
+                    <button class="section-jump" data-section="tc-stages">Stages</button>
+                    <button class="section-jump" data-section="tc-weather">Weather</button>
+                    <button class="section-jump" data-section="tc-satellite">Satellite Images</button>
+                    <button class="section-jump" data-section="tc-impact">Impact</button>
+                    <button class="section-jump" data-section="tc-strategies">Strategies</button>
+                </div>
+            </div>
+
+            <div id="tc-overview" class="content-section active">
+                <h3>What is a Tropical Cyclone?</h3>
+                <div class="key-concept">
+                    <p>A <strong>tropical cyclone</strong> is a cell of very low pressure with a steep pressure gradient, strong winds and heavy rain.</p>
+                </div>
+                <div class="key-concept">
+                    <h4>Names in Different Regions</h4>
+                    <table>
+                        <thead>
+                            <tr><th>Name</th><th>Region</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Hurricanes</strong></td><td>Atlantic Ocean: West Indies, Gulf of Mexico, south and east coast of USA</td></tr>
+                            <tr><td><strong>Willy-willies</strong></td><td>Southern Pacific Ocean: Eastern Australia</td></tr>
+                            <tr><td><strong>Typhoons</strong></td><td>Northern Pacific Ocean: China, Japan and Philippines</td></tr>
+                            <tr><td><strong>Tropical cyclones</strong></td><td>Indian Ocean: East coast of Southern Africa and Madagascar</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="tc-characteristics" class="content-section">
+                <h3>General Characteristics</h3>
+                <div class="key-concept">
+                    <ul>
+                        <li>Intense <strong>low pressure systems</strong>.</li>
+                        <li>Originate in <strong>late summer or autumn</strong> over warm, tropical oceans (at least <strong>26&deg;C</strong>).</li>
+                        <li>Need <strong>Coriolis force</strong> to form (which is zero within 5&deg; of the equator) &mdash; develop within latitude <strong>5&deg; to 20&deg; N and S</strong>.</li>
+                        <li>Move westwards at a rate of <strong>40&ndash;200 km a day</strong>. Near 20&deg; to 30&deg; N and S, they tend to curve back eastwards at <strong>500&ndash;700 km a day</strong>.</li>
+                        <li>As low pressure areas: rotation is <strong>clockwise in the Southern Hemisphere</strong> and <strong>anti-clockwise in the Northern Hemisphere</strong>.</li>
+                        <li>Energy source: large amount of <strong>latent heat</strong> released as rising warm, moist tropical air condenses.</li>
+                        <li>Accompanied by <strong>heavy rain, storm surges</strong> and <strong>high winds</strong> (200&ndash;300 km/h).</li>
+                        <li>Diameter of the storm: <strong>500 km</strong>.</li>
+                        <li>Diameter of the eye: <strong>30&ndash;50 km</strong> / pressure in the eye: <strong>940 hPa</strong>.</li>
+                        <li>Pattern of the isobars: <strong>circular</strong>.</li>
+                        <li>Vertical extent of the cloud wall: <strong>15 km</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="tc-path" class="content-section">
+                <h3>Path of Tropical Cyclones</h3>
+                <div class="key-concept">
+                    <ul>
+                        <li>Develop over tropical oceans <strong>&plusmn;5&deg; north and south</strong> of the equator (no Coriolis force within 5&deg;).</li>
+                        <li>Move from <strong>east to west</strong> (carried by tropical easterly winds) &mdash; affect the <strong>east coast</strong> of continents.</li>
+                        <li>They curve to their <strong>left in the Southern Hemisphere</strong> (away from equator) and to their <strong>right in the Northern Hemisphere</strong>.</li>
+                        <li>As they move further from the equator, they are picked up by <strong>westerly winds</strong> and travel polewards to <strong>25&deg;&ndash;30&deg;</strong> north and south.</li>
+                        <li>They <strong>dissipate</strong> when they reach cooler latitudes or as they cross land.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="tc-factors" class="content-section">
+                <h3>Factors Necessary to Form Tropical Cyclones</h3>
+                <div class="key-concept">
+                    <table>
+                        <thead>
+                            <tr><th>Factor / Condition</th><th>Influence on Formation Process</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Sea temp of at least 26&deg;C</strong></td>
+                                <td>Heat needed for convection</td>
+                            </tr>
+                            <tr>
+                                <td><strong>High humidity</strong></td>
+                                <td>Latent heat is released during condensation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Unstable air</strong></td>
+                                <td>Atmospheric instability makes convection possible</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Little surface friction</strong></td>
+                                <td>Ocean surface allows unhindered air movement</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Light variable winds</strong></td>
+                                <td>Strong directional winds inhibit the development of a vortex because they reduce water surface temp and the production of water vapour</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Air pressure low / closed isobars</strong></td>
+                                <td>An air pressure of less than 950 hPa at the centre of the cyclonic system enhances convergence and rising of air</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Divergence of air at upper levels</strong></td>
+                                <td>It stimulates circulation and formation of vortexes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="tc-stages" class="content-section">
+                <h3>Stages in the Development of Tropical Cyclones</h3>
+
+                <div class="stage-card">
+                    <h4>1. Formative Stage</h4>
+                    <div class="stage-details">
+                        <table class="stage-table">
+                            <tr><td><strong>Air pressure</strong></td><td>LP system develops over sea. Strong convection. Rising air causes LP. Air pressure still above 1 000 hPa, but falls rapidly. Convergence of air and a vortex develops.</td></tr>
+                            <tr><td><strong>Temperature</strong></td><td>High sea/air temperatures and humidity. Condensation and release of latent heat feed system. The LP starts to deepen.</td></tr>
+                            <tr><td><strong>Cloud cover</strong></td><td>Cirrus and cumulus clouds and light rain occur. Tall vertical clouds develop. Eye of storm now starts to take shape.</td></tr>
+                            <tr><td><strong>Wind</strong></td><td>Winds circulate around the LP &mdash; clockwise in SH. Winds in active quadrant reach gale force (8 on Beaufort scale).</td></tr>
+                            <tr><td><strong>Area</strong></td><td>Small area is influenced (20 km from eye).</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="stage-card">
+                    <h4>2. Immature Stage</h4>
+                    <div class="stage-details">
+                        <table class="stage-table">
+                            <tr><td><strong>Air pressure</strong></td><td>Air pressure in the centre (eye) falls below 1 000 hPa and still decreases. Converging warm, moist air continues to rise &rarr; decrease in air pressure in the centre.</td></tr>
+                            <tr><td><strong>Temperature</strong></td><td>The vortex contracts and the storm intensifies as heat continues to feed the system. Wind speeds increase with more evaporation and condensation, releasing latent heat.</td></tr>
+                            <tr><td><strong>Cloud cover</strong></td><td>Spiral bands of clouds form and light rain occurs. Cumulonimbus clouds surround the eye, reaching height of up to 12 km.</td></tr>
+                            <tr><td><strong>Wind</strong></td><td>Divergence of air takes place in the upper air. Hurricane wind speeds within 50 km of eye and gales within 500 km of eye.</td></tr>
+                            <tr><td><strong>Area</strong></td><td>Storm is still small in size, but a larger area is influenced (600 km in diameter).</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="stage-card">
+                    <h4>3. Mature Stage</h4>
+                    <div class="stage-details">
+                        <table class="stage-table">
+                            <tr><td><strong>Air pressure</strong></td><td>Air pressure in eye reaches lowest point, about 900&ndash;940 hPa or lower. Pressure will cease to drop when balance between upper air divergence and surface convergence occurs.</td></tr>
+                            <tr><td><strong>Temperature</strong></td><td>Warm, moist air still converges at the surface. The unstable air rises around centre of the low. Air sinks into the centre of storm and warms adiabatically.</td></tr>
+                            <tr><td><strong>Cloud cover</strong></td><td>Heavy rain from cumulonimbus clouds within 160 km from eye.</td></tr>
+                            <tr><td><strong>Wind</strong></td><td>Hurricane strength winds (about 117 km/h) have extended to 300 km from eye. Upper air divergence increases. More stable conditions exist in the eye.</td></tr>
+                            <tr><td><strong>Area</strong></td><td>Size of storm increases. Worst weather in the active quadrant. The mature stage can last up to 7 days.</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="stage-card">
+                    <h4>4. Degenerating Stage</h4>
+                    <div class="stage-details">
+                        <table class="stage-table">
+                            <tr><td><strong>Air pressure</strong></td><td>Pressure in the eye rises when land is reached as friction weakens Coriolis force and air converges on the low pressure.</td></tr>
+                            <tr><td><strong>Temperature</strong></td><td>Temperatures decrease when the cyclone moves into cooler latitudes and cold air from poles is fed into system.</td></tr>
+                            <tr><td><strong>Cloud cover</strong></td><td>Less moisture is fed in the system and latent heat released, but heavy rains continue to fall.</td></tr>
+                            <tr><td><strong>Wind</strong></td><td>Winds decrease in speed. Upper air divergence stops.</td></tr>
+                            <tr><td><strong>Area</strong></td><td>Area affected shrinks as tropical cyclone dissipates.</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tc-weather" class="content-section">
+                <h3>Weather Associated with Tropical Cyclones</h3>
+
+                <div class="weather-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>As Cyclone Approaches (1st Vortex)</th>
+                                <th>As Eye Passes Over-head</th>
+                                <th>As Cyclone Moves Away (2nd Vortex)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Temperature &amp; Humidity</strong></td>
+                                <td>Temp and humidity are high</td>
+                                <td>Temp increases slightly and wind suddenly drops</td>
+                                <td>&mdash;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pressure</strong></td>
+                                <td>Pressure starts to fall; conditions relatively calm</td>
+                                <td>Pressure reaches lowest point</td>
+                                <td>Pressure starts to rise</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Clouds</strong></td>
+                                <td>Cirrus clouds appear on the horizon &mdash; become cumulus and cumulonimbus as storm approaches</td>
+                                <td>Scattered clouds; sunny, no rain</td>
+                                <td>&mdash;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Wind</strong></td>
+                                <td>Wind increases and strengthens &mdash; hurricane force</td>
+                                <td>&mdash;</td>
+                                <td>Wind reaches hurricane strength; reversal of wind direction takes place as 2nd vortex passes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Precipitation</strong></td>
+                                <td>Torrential rain, hail, thunder, lightning</td>
+                                <td>These conditions prevail for up to 2 hours</td>
+                                <td>Similar conditions to first vortex but rear winds more destructive</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Other</strong></td>
+                                <td>Temp drops as pressure falls</td>
+                                <td>&mdash;</td>
+                                <td>&mdash;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="key-concept">
+                    <h4>Wind Reversal</h4>
+                    <p>The wind blows from the <strong>opposite direction</strong> as the second vortex passes.</p>
+                    <div class="comparison-box">
+                        <div class="compare-item">
+                            <h4>Southern Hemisphere</h4>
+                            <p>First vortex &mdash; wind is <strong>S</strong></p>
+                            <p>Second vortex &mdash; wind is <strong>N</strong></p>
+                        </div>
+                        <div class="compare-item">
+                            <h4>Northern Hemisphere</h4>
+                            <p>First vortex &mdash; wind is <strong>N</strong></p>
+                            <p>Second vortex &mdash; wind is <strong>S</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tc-satellite" class="content-section">
+                <h3>Reading and Interpreting Satellite Images</h3>
+                <div class="key-concept">
+                    <h4>How to Identify a Tropical Cyclone on a Synoptic Map</h4>
+                    <ul>
+                        <li>A low-pressure cell with <strong>circular isobars</strong> between 5&deg; and 30&deg; N/S of the equator.</li>
+                        <li>A <strong>tropical cyclone symbol</strong> in the eye.</li>
+                        <li>The <strong>name</strong> of the tropical cyclone written next to the system.</li>
+                        <li>The <strong>date</strong> on the map in late summer or early autumn.</li>
+                    </ul>
+                </div>
+                <div class="key-concept">
+                    <h4>Satellite Image Features</h4>
+                    <table>
+                        <thead><tr><th>Behind the Cold Front (SW)</th><th>Ahead of the Cold Front (NW)</th></tr></thead>
+                        <tbody>
+                            <tr>
+                                <td>SW wind</td>
+                                <td>NW wind</td>
+                            </tr>
+                            <tr>
+                                <td>Low temp</td>
+                                <td>High temp</td>
+                            </tr>
+                            <tr>
+                                <td>Dense clouds</td>
+                                <td>Few/no clouds</td>
+                            </tr>
+                            <tr>
+                                <td>Precipitation</td>
+                                <td>No precipitation</td>
+                            </tr>
+                            <tr>
+                                <td>LP</td>
+                                <td>HP</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="tc-impact" class="content-section">
+                <h3>Impact of Tropical Cyclones on Human Activities and the Environment</h3>
+
+                <div class="key-concept">
+                    <h4>Impacts Flow Chart</h4>
+                    <p>A tropical cyclone causes: <strong>Heavy rain</strong> &rarr; Flooding &rarr; Contamination of water supply &rarr; Human injuries, disease, deaths. <strong>High wind velocity</strong> &rarr; Storm surge &rarr; Damage to structures, vegetation, crops, livestock &rarr; Damage to shipping. <strong>Low central pressure</strong> &rarr; Storm surge &rarr; Flooding of low-lying coastal lands &rarr; Coastal erosion &rarr; Saline intrusion.</p>
+                </div>
+
+                <div class="comparison-box">
+                    <div class="compare-item">
+                        <h4>Developed Areas</h4>
+                        <ul>
+                            <li>Suffer more from <strong>financial losses</strong> due to reduced trade and huge insurance claims.</li>
+                            <li>Financial, technology and communication resources are more available in MEDCs to assist with warnings, evacuations and relief.</li>
+                        </ul>
+                    </div>
+                    <div class="compare-item">
+                        <h4>Developing Areas</h4>
+                        <ul>
+                            <li>Suffer more from <strong>basic problems</strong> such as loss of homes and insufficient food and water.</li>
+                            <li>Greater loss of life in LEDCs due to lack of financial, technological and communication resources.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="key-concept">
+                    <h4>General Impacts</h4>
+                    <ul>
+                        <li>Flooding of rivers due to heavy rain &mdash; damage to roads, bridges and homes.</li>
+                        <li>High sea level and high waves &mdash; flooding in low-lying, often densely populated coastal areas.</li>
+                        <li>Strong winds and floods damage crops, livestock, houses, infrastructure.</li>
+                        <li>Landslides destroy crops, settlements and infrastructure.</li>
+                        <li>Communication lines destroyed.</li>
+                        <li>Tourism at island resorts is affected.</li>
+                        <li>Fertile soil is flooded and washed into the sea.</li>
+                        <li>Trees and vegetation are destroyed &mdash; loss of habitat for birds and animals.</li>
+                        <li>Drowning, death, disease especially in developing regions and starvation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="tc-strategies" class="content-section">
+                <h3>Strategies to Prepare and Manage the Effects of Tropical Cyclones</h3>
+                <div class="key-concept">
+                    <h4>Immediate Precautions</h4>
+                    <ul>
+                        <li>Avoid crossing strongly-flowing or flooded rivers.</li>
+                        <li>Dwellings very close to rivers or floodplains should be evacuated in good time.</li>
+                        <li>Farmers should move pumps away from rivers.</li>
+                        <li>Small to medium-sized boats and fishing crafts should return to port.</li>
+                        <li>Should be moored well above the normal high-water mark.</li>
+                    </ul>
+                </div>
+                <div class="key-concept">
+                    <h4>Monitoring and Warning</h4>
+                    <ul>
+                        <li>Tropical storms and depressions are monitored via weather bureaus, reconnaissance aircraft and satellite photographs.</li>
+                        <li>Inhabitants are warned to vacate low ground, board up windows and move to concrete storm shelters.</li>
+                        <li>Relief schemes, evacuation procedures and disaster management schemes must be in operation.</li>
+                    </ul>
+                </div>
+                <div class="key-concept">
+                    <h4>Long-term Strategies</h4>
+                    <ul>
+                        <li>Sand bags can be placed in coastal areas to reduce flooding by the sea.</li>
+                        <li>Countries can reduce the damaging effects of future tropical cyclones by erecting <strong>concrete sea walls</strong> and flood barriers along rivers.</li>
+                        <li>Concentrate on <strong>better land-use planning</strong> to ensure the maintenance and conservation of wetlands and coastal vegetation, which often buffer against storm surges.</li>
+                        <li>In the long term, countries that frequently experience this hazard need to focus on areas along rivers for flood protection.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FLASHCARDS VIEW -->
+        <section id="view-flashcards" class="view">
+            <h2>Active Recall Flashcards</h2>
+            <div class="flashcard-controls">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="mlc">Mid-Latitude Cyclones</button>
+                    <button class="filter-btn" data-filter="tc">Tropical Cyclones</button>
+                    <button class="filter-btn" data-filter="unseen">Unseen Only</button>
+                </div>
+                <div class="flashcard-progress">
+                    <span id="fc-progress">0 / 0</span>
+                    <button id="fc-shuffle" class="small-btn">Shuffle</button>
+                    <button id="fc-reset" class="small-btn">Reset</button>
+                </div>
+            </div>
+            <div class="flashcard-container">
+                <div class="flashcard" id="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <p id="fc-question">Click "Start" to begin</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <p id="fc-answer"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flashcard-nav">
+                <button id="fc-prev" class="nav-arrow">&larr; Previous</button>
+                <button id="fc-flip" class="flip-btn">Flip Card</button>
+                <button id="fc-next" class="nav-arrow">Next &rarr;</button>
+            </div>
+            <div class="confidence-buttons">
+                <p>How well did you know this?</p>
+                <button class="confidence-btn" data-confidence="hard">Didn't know</button>
+                <button class="confidence-btn" data-confidence="medium">Partially knew</button>
+                <button class="confidence-btn" data-confidence="easy">Knew it!</button>
+            </div>
+        </section>
+
+        <!-- QUIZ VIEW -->
+        <section id="view-quiz" class="view">
+            <h2>NSC-Style Practice Quiz</h2>
+            <div class="quiz-controls">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-quizfilter="all">All Topics</button>
+                    <button class="filter-btn" data-quizfilter="mlc">Mid-Latitude Cyclones</button>
+                    <button class="filter-btn" data-quizfilter="tc">Tropical Cyclones</button>
+                </div>
+                <button id="start-quiz" class="primary-btn">Start Quiz (15 Questions)</button>
+            </div>
+            <div id="quiz-area" class="quiz-area hidden">
+                <div class="quiz-progress-bar">
+                    <div id="quiz-progress-fill" class="quiz-progress-fill"></div>
+                </div>
+                <p class="quiz-counter"><span id="q-num">1</span> of <span id="q-total">15</span></p>
+                <div id="quiz-question" class="quiz-question"></div>
+                <div id="quiz-options" class="quiz-options"></div>
+                <div id="quiz-feedback" class="quiz-feedback hidden"></div>
+                <button id="quiz-next" class="primary-btn hidden">Next Question</button>
+            </div>
+            <div id="quiz-results" class="quiz-results hidden">
+                <h3>Quiz Complete!</h3>
+                <div class="score-display">
+                    <span id="quiz-score" class="score">0</span> / <span id="quiz-out-of">15</span>
+                </div>
+                <p id="quiz-message"></p>
+                <div id="quiz-review"></div>
+                <button id="quiz-retry" class="primary-btn">Try Again</button>
+            </div>
+        </section>
+
+        <!-- FEYNMAN MODE -->
+        <section id="view-feynman" class="view">
+            <h2>Feynman Technique: Teach to Learn</h2>
+            <div class="feynman-intro">
+                <p><strong>How it works:</strong> Pick a topic below. Explain it in your own words as if teaching someone who knows nothing about geography. Then reveal the key points to check what you missed.</p>
+                <p class="study-tip-inline">If you can't explain it simply, you don't understand it well enough.</p>
+            </div>
+            <div class="feynman-topics">
+                <h3>Choose a Topic to Explain:</h3>
+                <div class="topic-grid" id="feynman-topics"></div>
+            </div>
+            <div id="feynman-workspace" class="feynman-workspace hidden">
+                <h3 id="feynman-title"></h3>
+                <div class="feynman-step">
+                    <label for="feynman-input"><strong>Step 1:</strong> Explain this concept in your own words (no jargon, no peeking!):</label>
+                    <textarea id="feynman-input" rows="8" placeholder="Write your explanation here as if you're teaching a friend who's never studied geography..."></textarea>
+                </div>
+                <button id="feynman-check" class="primary-btn">Check Against Key Points</button>
+                <div id="feynman-keypoints" class="feynman-keypoints hidden">
+                    <h4>Key Points You Should Have Covered:</h4>
+                    <div id="feynman-checklist"></div>
+                    <div class="feynman-reflection">
+                        <h4>Step 3: Reflect</h4>
+                        <p>Look at the points you missed. These are your <strong>knowledge gaps</strong>. Go back to the notes section and review those specific points, then try explaining again.</p>
+                        <button id="feynman-retry" class="secondary-btn">Try Again</button>
+                        <button id="feynman-back" class="secondary-btn">Choose Another Topic</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Thomas's Geography Study Hub &mdash; Grade 12 NSC &mdash; Climate &amp; Weather</p>
+        <p class="footer-tip">Study tip: Use spaced repetition &mdash; review on days 2, 3, 5, and 7 after first studying.</p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
