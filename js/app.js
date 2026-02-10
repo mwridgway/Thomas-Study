@@ -55,7 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch { return fallback; }
     }
 
-    cardConfidence = loadFromStorage("fc-confidence", {});
+    // Use page-specific storage key so subjects don't share confidence data
+    const storageKey = "fc-confidence-" + (location.pathname.includes("life-sciences") ? "ls" : "geo");
+    cardConfidence = loadFromStorage(storageKey, {});
 
     function renderCard() {
         if (currentCards.length === 0) {
@@ -118,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("fc-reset").addEventListener("click", () => {
         cardConfidence = {};
-        localStorage.removeItem("fc-confidence");
+        localStorage.removeItem(storageKey);
         filterCards("all");
     });
 
@@ -127,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (currentCards.length === 0) return;
             const card = currentCards[cardIndex];
             cardConfidence[card.id] = btn.dataset.confidence;
-            localStorage.setItem("fc-confidence", JSON.stringify(cardConfidence));
+            localStorage.setItem(storageKey, JSON.stringify(cardConfidence));
 
             // Brief visual feedback
             btn.classList.add("pressed");
@@ -301,7 +303,8 @@ document.addEventListener("DOMContentLoaded", () => {
     feynmanTopics.forEach(topic => {
         const card = document.createElement("div");
         card.className = "feynman-topic-card";
-        card.innerHTML = `<h4>${topic.title}</h4><span class="unit-tag ${topic.unit}">${topic.unit === "mlc" ? "Mid-Lat Cyclones" : "Tropical Cyclones"}</span>`;
+        const unitLabels = { mlc: "Mid-Lat Cyclones", tc: "Tropical Cyclones", dna: "DNA & Replication", rna: "Profiles & RNA" };
+        card.innerHTML = `<h4>${topic.title}</h4><span class="unit-tag ${topic.unit}">${unitLabels[topic.unit] || topic.unit}</span>`;
         card.addEventListener("click", () => startFeynman(topic));
         feynmanTopicsEl.appendChild(card);
     });
