@@ -62,7 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Use page-specific storage key so subjects don't share confidence data
-    const storageKey = "fc-confidence-" + (location.pathname.includes("life-sciences") ? "ls" : "geo");
+    const p = location.pathname;
+    const storageKey = "fc-confidence-" + (p.includes("life-sciences") ? "ls" : p.includes("it") ? "it" : "geo");
     cardConfidence = loadFromStorage(storageKey, {});
 
     function renderCard() {
@@ -341,7 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
     feynmanTopics.forEach(topic => {
         const card = document.createElement("div");
         card.className = "feynman-topic-card";
-        const unitLabels = { mlc: "Mid-Lat Cyclones", tc: "Tropical Cyclones", dna: "DNA & Replication", rna: "Profiles & RNA" };
+        const unitLabels = { mlc: "Mid-Lat Cyclones", tc: "Tropical Cyclones", dna: "DNA & Replication", rna: "Profiles & RNA", comp: "Computers", hw: "Hardware" };
         card.innerHTML = `<h4>${topic.title}</h4><span class="unit-tag ${topic.unit}">${unitLabels[topic.unit] || topic.unit}</span>`;
         card.addEventListener("click", () => startFeynman(topic));
         feynmanTopicsEl.appendChild(card);
