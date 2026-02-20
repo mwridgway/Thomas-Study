@@ -11,12 +11,13 @@
         <div class="header-content">
             <a href="index.html" class="back-link">&larr; Dashboard</a>
             <h1>Life Sciences Study Hub</h1>
-            <p class="subtitle">Grade 12 NSC &mdash; DNA: The Code of Life</p>
+            <p class="subtitle">Grade 12 NSC &mdash; DNA, RNA &amp; Meiosis</p>
         </div>
         <nav id="main-nav">
             <button class="nav-btn active" data-view="home">Home</button>
             <button class="nav-btn" data-view="unit1">DNA Structure &amp; Replication</button>
             <button class="nav-btn" data-view="unit2">DNA Profiles &amp; RNA</button>
+            <button class="nav-btn" data-view="unit3">Meiosis</button>
             <button class="nav-btn" data-view="flashcards">Flashcards</button>
             <button class="nav-btn" data-view="quiz">Quiz</button>
             <button class="nav-btn" data-view="feynman">Feynman Mode</button>
@@ -27,8 +28,8 @@
         <!-- HOME VIEW -->
         <section id="view-home" class="view active">
             <div class="hero">
-                <h2>DNA: The Code of Life</h2>
-                <p>Revision hub for <strong>DNA Structure, Replication, Profiling, and RNA</strong> &mdash; worth <strong>18% (27 marks)</strong> of your Life Sciences Paper 1.</p>
+                <h2>DNA, RNA &amp; Meiosis</h2>
+                <p>Revision hub for <strong>DNA, RNA, and Meiosis</strong> &mdash; DNA is worth <strong>18% (27 marks)</strong> and Meiosis <strong>14% (21 marks)</strong> of your Life Sciences Paper 1. Together = <strong>32% of Paper 1</strong>.</p>
             </div>
             <div class="study-modes">
                 <div class="mode-card" data-target="unit1">
@@ -40,6 +41,11 @@
                     <div class="mode-icon">&#128300;</div>
                     <h3>DNA Profiles &amp; RNA</h3>
                     <p>DNA profiling, paternity testing, forensics, RNA structure, mRNA, tRNA, and DNA vs RNA comparison.</p>
+                </div>
+                <div class="mode-card" data-target="unit3">
+                    <div class="mode-icon">🧫</div>
+                    <h3>Meiosis</h3>
+                    <p>Cell division for gametes. Phases, crossing over, independent assortment, non-disjunction, and mitosis vs meiosis.</p>
                 </div>
                 <div class="mode-card" data-target="flashcards">
                     <div class="mode-icon">&#128218;</div>
@@ -58,8 +64,8 @@
                 </div>
             </div>
             <div class="study-tip">
-                <h3>Exam Weighting</h3>
-                <p>DNA: Code of Life is worth <strong>18% (27 marks)</strong> of your Paper 1. Combined with Meiosis (14%) and Genetics (32%), Term 1 content covers <strong>64% of Paper 1</strong>. Master this foundation early!</p>
+                <h3>🚨 Test on 25 Feb: DNA + Meiosis</h3>
+                <p>Your test covers <strong>DNA (18%)</strong> and <strong>Meiosis (14%)</strong> &mdash; that's <strong>32% of Paper 1</strong>. Combined with Genetics (32%), Term 1 content covers <strong>64% of Paper 1</strong>. Master this foundation early!</p>
             </div>
         </section>
 
@@ -355,6 +361,202 @@
             </div>
         </section>
 
+        <!-- UNIT 3: MEIOSIS -->
+        <section id="view-unit3" class="view">
+            <div class="unit-header">
+                <h2>Meiosis</h2>
+                <div class="progress-tracker">
+                    <button class="section-jump active" data-section="mei-intro">Introduction</button>
+                    <button class="section-jump" data-section="mei-terms">Key Terms</button>
+                    <button class="section-jump" data-section="mei-1">Meiosis I</button>
+                    <button class="section-jump" data-section="mei-2">Meiosis II</button>
+                    <button class="section-jump" data-section="mei-variation">Genetic Variation</button>
+                    <button class="section-jump" data-section="mei-abnormal">Abnormal Meiosis</button>
+                    <button class="section-jump" data-section="mei-compare">Mitosis vs Meiosis</button>
+                </div>
+            </div>
+
+            <div id="mei-intro" class="content-section active">
+                <h3>What is Meiosis?</h3>
+                <div class="key-concept">
+                    <ul>
+                        <li>A type of <strong>cell division</strong> that produces <strong>gametes</strong> (sex cells).</li>
+                        <li>Occurs only in the <strong>gonads</strong> (ovaries and testes).</li>
+                        <li>One <strong>diploid (2n)</strong> cell &rarr; four <strong>haploid (n)</strong> daughter cells.</li>
+                        <li>Involves <strong>two successive divisions</strong>: Meiosis I and Meiosis II.</li>
+                        <li>Daughter cells are <strong>genetically different</strong> from each other and from the parent cell.</li>
+                    </ul>
+                    <h4>Why is Meiosis Important?</h4>
+                    <ul>
+                        <li>Produces <strong>haploid gametes</strong> &mdash; ensures chromosome number is maintained after fertilisation (n + n = 2n).</li>
+                        <li>Creates <strong>genetic variation</strong> &mdash; essential for natural selection and evolution.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="mei-terms" class="content-section">
+                <h3>Key Terminology</h3>
+                <div class="key-concept">
+                    <table>
+                        <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Diploid (2n)</strong></td><td>Cell with full/double set of chromosomes (e.g., 46 in humans)</td></tr>
+                            <tr><td><strong>Haploid (n)</strong></td><td>Cell with half the chromosomes (e.g., 23 in humans)</td></tr>
+                            <tr><td><strong>Homologous chromosomes</strong></td><td>A pair of chromosomes (one from each parent) with same length, centromere position, and genes at the same loci</td></tr>
+                            <tr><td><strong>Bivalent / Tetrad</strong></td><td>Two homologous chromosomes paired together during prophase I (4 chromatids total)</td></tr>
+                            <tr><td><strong>Synapsis</strong></td><td>The pairing of homologous chromosomes during prophase I</td></tr>
+                            <tr><td><strong>Chiasma (pl. chiasmata)</strong></td><td>Point where non-sister chromatids cross over and exchange DNA</td></tr>
+                            <tr><td><strong>Crossing over</strong></td><td>Exchange of genetic material between non-sister chromatids of homologous chromosomes</td></tr>
+                            <tr><td><strong>Independent assortment</strong></td><td>Random orientation of bivalents at metaphase I &mdash; each gamete gets a unique combination</td></tr>
+                            <tr><td><strong>Non-disjunction</strong></td><td>Failure of chromosomes to separate properly during meiosis</td></tr>
+                            <tr><td><strong>Karyotype</strong></td><td>Photograph of chromosomes arranged in homologous pairs, largest to smallest</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="mei-1" class="content-section">
+                <h3>Meiosis I &mdash; The Reduction Division</h3>
+                <div class="stage-card">
+                    <h4>Prophase I</h4>
+                    <div class="stage-details">
+                        <ul>
+                            <li>Chromosomes <strong>shorten and thicken</strong> (condense).</li>
+                            <li>Homologous chromosomes <strong>pair up</strong> (synapsis) to form <strong>bivalents</strong>.</li>
+                            <li><strong>Crossing over</strong> occurs &mdash; non-sister chromatids exchange DNA at <strong>chiasmata</strong>.</li>
+                            <li>Nuclear membrane and nucleolus <strong>disappear</strong>.</li>
+                            <li>Centrioles move to opposite poles; <strong>spindle fibres</strong> form.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="stage-card">
+                    <h4>Metaphase I</h4>
+                    <div class="stage-details">
+                        <ul>
+                            <li><strong>Bivalents</strong> line up at the cell equator (metaphase plate).</li>
+                            <li>Orientation of each pair is <strong>random</strong> (independent assortment).</li>
+                            <li>Spindle fibres attach to centromeres.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="stage-card">
+                    <h4>Anaphase I</h4>
+                    <div class="stage-details">
+                        <ul>
+                            <li><strong>Homologous chromosomes separate</strong> and move to opposite poles.</li>
+                            <li>Centromeres do <strong>NOT split</strong> &mdash; each chromosome still has 2 sister chromatids.</li>
+                            <li>This is the <strong>reduction division</strong> &mdash; chromosome number halved.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="stage-card">
+                    <h4>Telophase I &amp; Cytokinesis</h4>
+                    <div class="stage-details">
+                        <ul>
+                            <li>Chromosomes reach the poles.</li>
+                            <li>Nuclear membranes <strong>may reform</strong>.</li>
+                            <li>Cell divides &rarr; <strong>two haploid daughter cells</strong>.</li>
+                            <li>A short <strong>interkinesis</strong> (rest) may follow &mdash; <strong>NO DNA replication</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mei-2" class="content-section">
+                <h3>Meiosis II &mdash; Similar to Mitosis</h3>
+                <div class="stage-card">
+                    <h4>Prophase II</h4>
+                    <div class="stage-details">
+                        <p>Chromosomes condense. Nuclear membrane disappears. Spindle fibres form.</p>
+                    </div>
+                </div>
+                <div class="stage-card">
+                    <h4>Metaphase II</h4>
+                    <div class="stage-details">
+                        <p><strong>Individual chromosomes</strong> (not bivalents) line up at the equator.</p>
+                    </div>
+                </div>
+                <div class="stage-card">
+                    <h4>Anaphase II</h4>
+                    <div class="stage-details">
+                        <ul>
+                            <li>Centromeres <strong>split</strong>.</li>
+                            <li><strong>Sister chromatids separate</strong> and move to opposite poles.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="stage-card">
+                    <h4>Telophase II &amp; Cytokinesis</h4>
+                    <div class="stage-details">
+                        <ul>
+                            <li>Nuclear membranes reform.</li>
+                            <li>Cytokinesis occurs.</li>
+                            <li>Result: <strong>4 genetically unique haploid daughter cells</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mei-variation" class="content-section">
+                <h3>How Meiosis Creates Genetic Variation</h3>
+                <div class="key-concept">
+                    <div class="comparison-box">
+                        <div class="compare-item">
+                            <h4>1. Crossing Over</h4>
+                            <p>During <strong>Prophase I</strong>, non-sister chromatids of homologous chromosomes exchange DNA at chiasmata. Creates <strong>new allele combinations</strong> on chromosomes.</p>
+                        </div>
+                        <div class="compare-item">
+                            <h4>2. Independent Assortment</h4>
+                            <p>During <strong>Metaphase I</strong>, bivalents line up randomly. Each gamete gets a unique mix of maternal and paternal chromosomes. With 23 pairs: <strong>2²³ = 8,388,608 combinations</strong>!</p>
+                        </div>
+                        <div class="compare-item">
+                            <h4>3. Random Fertilisation</h4>
+                            <p>Any sperm can fuse with any egg. This further <strong>multiplies genetic variation</strong>.</p>
+                        </div>
+                    </div>
+                    <div class="pressure-info">All three mechanisms together produce virtually <strong>unlimited genetic diversity</strong> &mdash; the raw material for natural selection and evolution.</div>
+                </div>
+            </div>
+
+            <div id="mei-abnormal" class="content-section">
+                <h3>Abnormal Meiosis &mdash; Non-disjunction</h3>
+                <div class="key-concept">
+                    <h4>What is Non-disjunction?</h4>
+                    <ul>
+                        <li>The <strong>failure of chromosomes to separate properly</strong> during meiosis.</li>
+                        <li>Can occur in <strong>meiosis I</strong> (homologous chromosomes don't separate) or <strong>meiosis II</strong> (sister chromatids don't separate).</li>
+                        <li>Results in gametes with abnormal chromosome numbers: <strong>n+1</strong> or <strong>n-1</strong>.</li>
+                    </ul>
+                    <h4>Consequences</h4>
+                    <ul>
+                        <li>After fertilisation: <strong>trisomy</strong> (2n+1 = 47 chromosomes) or <strong>monosomy</strong> (2n-1 = 45 chromosomes).</li>
+                        <li><strong>Down syndrome (Trisomy 21)</strong>: three copies of chromosome 21 &rarr; 47 chromosomes total.</li>
+                    </ul>
+                    <h4>Karyotype</h4>
+                    <p>A <strong>karyotype</strong> is a photograph of chromosomes arranged in homologous pairs (largest to smallest). Used to detect abnormalities such as Down syndrome or Turner syndrome (missing X chromosome).</p>
+                </div>
+            </div>
+
+            <div id="mei-compare" class="content-section">
+                <h3>Mitosis vs Meiosis</h3>
+                <div class="key-concept">
+                    <table>
+                        <thead><tr><th>Feature</th><th>Mitosis</th><th>Meiosis</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Divisions</strong></td><td>1</td><td>2</td></tr>
+                            <tr><td><strong>Daughter cells</strong></td><td>2 identical diploid (2n)</td><td>4 different haploid (n)</td></tr>
+                            <tr><td><strong>Where</strong></td><td>Body cells</td><td>Gonads (ovaries/testes)</td></tr>
+                            <tr><td><strong>Purpose</strong></td><td>Growth and repair</td><td>Gamete production</td></tr>
+                            <tr><td><strong>Crossing over</strong></td><td>No</td><td>Yes (prophase I)</td></tr>
+                            <tr><td><strong>At equator</strong></td><td>Individual chromosomes</td><td>Bivalents (meiosis I)</td></tr>
+                            <tr><td><strong>Centromeres split</strong></td><td>Yes (anaphase)</td><td>No (anaphase I) / Yes (anaphase II)</td></tr>
+                            <tr><td><strong>Genetic result</strong></td><td>Identical to parent</td><td>Genetically unique</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
         <!-- FLASHCARDS VIEW -->
         <section id="view-flashcards" class="view">
             <h2>Active Recall Flashcards</h2>
@@ -363,6 +565,7 @@
                     <button class="filter-btn active" data-filter="all">All</button>
                     <button class="filter-btn" data-filter="dna">DNA Structure &amp; Replication</button>
                     <button class="filter-btn" data-filter="rna">DNA Profiles &amp; RNA</button>
+                    <button class="filter-btn" data-filter="meiosis">Meiosis</button>
                     <button class="filter-btn" data-filter="unseen">Unseen Only</button>
                 </div>
                 <div class="flashcard-progress">
@@ -405,6 +608,7 @@
                     <button class="filter-btn active" data-quizfilter="all">All Topics</button>
                     <button class="filter-btn" data-quizfilter="dna">DNA Structure &amp; Replication</button>
                     <button class="filter-btn" data-quizfilter="rna">DNA Profiles &amp; RNA</button>
+                    <button class="filter-btn" data-quizfilter="meiosis">Meiosis</button>
                 </div>
                 <button id="start-quiz" class="primary-btn">Start Quiz (15 Questions)</button>
             </div>
@@ -462,7 +666,7 @@
     </main>
 
     <footer>
-        <p>Thomas's Life Sciences Study Hub &mdash; Grade 12 NSC &mdash; DNA: The Code of Life</p>
+        <p>Thomas's Life Sciences Study Hub &mdash; Grade 12 NSC &mdash; DNA, RNA &amp; Meiosis</p>
         <p class="footer-tip">Study tip: Use spaced repetition &mdash; review on days 2, 3, 5, and 7 after first studying.</p>
     </footer>
 

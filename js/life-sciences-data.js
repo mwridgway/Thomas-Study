@@ -194,6 +194,108 @@ const flashcards = [
         id: 38, unit: "dna",
         q: "What contribution did Rosalind Franklin make to the discovery of DNA structure?",
         a: "Rosalind Franklin produced X-ray crystallography photographs of DNA in 1952. These photographs were crucial evidence that Watson and Crick used to build their double helix model of DNA in 1953."
+    },
+
+    // --- Meiosis ---
+    {
+        id: 39, unit: "meiosis",
+        q: "What is meiosis?",
+        a: "Meiosis is a type of cell division that produces four genetically different haploid (n) daughter cells from one diploid (2n) parent cell. It involves two successive divisions: meiosis I and meiosis II."
+    },
+    {
+        id: 40, unit: "meiosis",
+        q: "Where does meiosis occur and what cells does it produce?",
+        a: "Meiosis occurs in the gonads (ovaries and testes). It produces gametes (sex cells): sperm cells in males and egg cells (ova) in females."
+    },
+    {
+        id: 41, unit: "meiosis",
+        q: "Define the terms haploid and diploid.",
+        a: "Haploid (n): A cell with half the number of chromosomes (one set) — e.g., gametes have 23 chromosomes in humans.\nDiploid (2n): A cell with the full number of chromosomes (two sets) — e.g., body cells have 46 chromosomes (23 pairs) in humans."
+    },
+    {
+        id: 42, unit: "meiosis",
+        q: "What are homologous chromosomes?",
+        a: "Homologous chromosomes are a pair of chromosomes (one from each parent) that have the same length, same centromere position, and carry genes for the same characteristics at the same loci (positions). They are NOT identical — they may carry different alleles."
+    },
+    {
+        id: 43, unit: "meiosis",
+        q: "What is a bivalent (tetrad)?",
+        a: "A bivalent is a pair of homologous chromosomes that lie closely together during prophase I of meiosis. Since each chromosome consists of 2 sister chromatids, a bivalent consists of 4 chromatids (hence also called a tetrad)."
+    },
+    {
+        id: 44, unit: "meiosis",
+        q: "What is crossing over and when does it occur?",
+        a: "Crossing over occurs during prophase I when homologous chromosomes are paired as bivalents. Non-sister chromatids of homologous chromosomes exchange segments of DNA at points called chiasmata. This results in new combinations of alleles, increasing genetic variation."
+    },
+    {
+        id: 45, unit: "meiosis",
+        q: "Describe what happens during Prophase I of meiosis.",
+        a: "1. Chromosomes shorten and thicken (condense).\n2. Homologous chromosomes pair up to form bivalents (synapsis).\n3. Crossing over occurs between non-sister chromatids at chiasmata.\n4. Nuclear membrane and nucleolus disappear.\n5. Centrioles move to opposite poles and spindle fibres form."
+    },
+    {
+        id: 46, unit: "meiosis",
+        q: "Describe what happens during Metaphase I.",
+        a: "Bivalents (homologous pairs) line up at the cell equator/metaphase plate. The orientation of each pair is random (random arrangement/independent assortment). Spindle fibres attach to the centromeres."
+    },
+    {
+        id: 47, unit: "meiosis",
+        q: "Describe what happens during Anaphase I.",
+        a: "Homologous chromosomes separate and move to opposite poles of the cell. The centromeres do NOT split — each chromosome still consists of two sister chromatids joined at the centromere. This is the reduction division — chromosome number is halved."
+    },
+    {
+        id: 48, unit: "meiosis",
+        q: "Describe what happens during Telophase I and cytokinesis.",
+        a: "Chromosomes reach the poles. Nuclear membranes may reform. The cell divides by cytokinesis to form two haploid daughter cells. Each cell has half the chromosome number of the original cell. A short interkinesis (rest period) may follow — NO DNA replication occurs."
+    },
+    {
+        id: 49, unit: "meiosis",
+        q: "Describe Meiosis II briefly (Prophase II → Telophase II).",
+        a: "Prophase II: Chromosomes condense, nuclear membrane disappears, spindle forms.\nMetaphase II: Chromosomes line up individually at the equator.\nAnaphase II: Centromeres split — sister chromatids separate and move to opposite poles.\nTelophase II: Nuclear membranes reform, cytokinesis occurs.\nResult: 4 haploid daughter cells."
+    },
+    {
+        id: 50, unit: "meiosis",
+        q: "Why is meiosis important? List 4 reasons.",
+        a: "1. Produces haploid gametes — ensures chromosome number is maintained after fertilisation.\n2. Crossing over creates new allele combinations (genetic variation).\n3. Random/independent assortment of homologous chromosomes creates unique gametes.\n4. Genetic variation is essential for natural selection and evolution."
+    },
+    {
+        id: 51, unit: "meiosis",
+        q: "How does meiosis contribute to genetic variation? Name 3 mechanisms.",
+        a: "1. Crossing over (prophase I): exchange of DNA between non-sister chromatids creates new allele combinations.\n2. Independent/random assortment (metaphase I): random orientation of bivalents means each gamete gets a unique combination of maternal and paternal chromosomes.\n3. Random fertilisation: any sperm can fertilise any egg, further increasing variation."
+    },
+    {
+        id: 52, unit: "meiosis",
+        q: "Compare meiosis I and meiosis II.",
+        a: "Meiosis I (reduction division): homologous chromosomes separate; crossing over occurs; bivalents line up at equator; centromeres do NOT split; results in 2 haploid cells.\nMeiosis II (similar to mitosis): sister chromatids separate; chromosomes line up individually; centromeres DO split; results in 4 haploid cells."
+    },
+    {
+        id: 53, unit: "meiosis",
+        q: "What is non-disjunction?",
+        a: "Non-disjunction is the failure of homologous chromosomes (in meiosis I) or sister chromatids (in meiosis II) to separate properly during cell division. This results in gametes with abnormal chromosome numbers — either one extra (n+1) or one missing (n-1)."
+    },
+    {
+        id: 54, unit: "meiosis",
+        q: "What is Down syndrome and how does it occur?",
+        a: "Down syndrome (trisomy 21) occurs when there are three copies of chromosome 21 instead of two. It is caused by non-disjunction during meiosis, producing a gamete with an extra chromosome 21. After fertilisation, the zygote has 47 chromosomes instead of 46."
+    },
+    {
+        id: 55, unit: "meiosis",
+        q: "What is a karyotype?",
+        a: "A karyotype is a photograph or diagram of all the chromosomes in a cell, arranged in homologous pairs from largest to smallest. It is used to identify chromosome abnormalities such as Down syndrome (extra chromosome 21) or Turner syndrome (missing X)."
+    },
+    {
+        id: 56, unit: "meiosis",
+        q: "Compare mitosis and meiosis (at least 5 differences).",
+        a: "1. Mitosis: 1 division; Meiosis: 2 divisions.\n2. Mitosis: 2 identical diploid cells; Meiosis: 4 genetically different haploid cells.\n3. Mitosis: no crossing over; Meiosis: crossing over in prophase I.\n4. Mitosis: individual chromosomes at equator; Meiosis I: bivalents at equator.\n5. Mitosis: occurs in body cells for growth/repair; Meiosis: occurs in gonads for gamete production.\n6. Mitosis: daughter cells are genetically identical; Meiosis: daughter cells are genetically unique."
+    },
+    {
+        id: 57, unit: "meiosis",
+        q: "What is synapsis?",
+        a: "Synapsis is the pairing of homologous chromosomes during prophase I of meiosis to form bivalents. The chromosomes align closely together along their entire length."
+    },
+    {
+        id: 58, unit: "meiosis",
+        q: "What are chiasmata (singular: chiasma)?",
+        a: "Chiasmata are the points where non-sister chromatids of homologous chromosomes cross over and exchange genetic material during prophase I. They are visible evidence that crossing over has occurred."
     }
 ];
 
@@ -469,6 +571,148 @@ const quizQuestions = [
         options: ["1:2", "2:1", "1:1", "Variable"],
         correct: 2,
         explanation: "Because Adenine always pairs with Thymine (and Guanine always pairs with Cytosine), the ratio of A:T is always 1:1 and the ratio of G:C is always 1:1 in DNA. This was discovered by Chargaff."
+    },
+
+    // --- Meiosis ---
+    {
+        id: 31, unit: "meiosis", type: "mc",
+        question: "Meiosis produces:",
+        options: ["2 identical diploid cells", "2 identical haploid cells", "4 genetically different haploid cells", "4 identical diploid cells"],
+        correct: 2,
+        explanation: "Meiosis produces four genetically different haploid (n) daughter cells from one diploid (2n) parent cell through two successive divisions."
+    },
+    {
+        id: 32, unit: "meiosis", type: "mc",
+        question: "Where does meiosis occur in the human body?",
+        options: ["In all body cells", "In the brain", "In the gonads (ovaries and testes)", "In the bone marrow"],
+        correct: 2,
+        explanation: "Meiosis occurs only in the gonads — ovaries in females and testes in males — to produce gametes (egg cells and sperm cells)."
+    },
+    {
+        id: 33, unit: "meiosis", type: "mc",
+        question: "A human body cell has 46 chromosomes. After meiosis, each gamete will have:",
+        options: ["46 chromosomes", "92 chromosomes", "23 chromosomes", "12 chromosomes"],
+        correct: 2,
+        explanation: "Meiosis halves the chromosome number. Human body cells are diploid (2n = 46), so gametes are haploid (n = 23)."
+    },
+    {
+        id: 34, unit: "meiosis", type: "mc",
+        question: "Homologous chromosomes are best described as:",
+        options: [
+            "Two identical chromosomes from the same parent",
+            "A pair of chromosomes (one from each parent) with the same genes at the same loci",
+            "Two sister chromatids joined at a centromere",
+            "Chromosomes that have undergone mutation"
+        ],
+        correct: 1,
+        explanation: "Homologous chromosomes are a pair (one maternal, one paternal) with the same length, centromere position, and genes at the same loci. They may carry different alleles."
+    },
+    {
+        id: 35, unit: "meiosis", type: "mc",
+        question: "Crossing over occurs during which phase of meiosis?",
+        options: ["Metaphase I", "Prophase I", "Anaphase I", "Prophase II"],
+        correct: 1,
+        explanation: "Crossing over occurs during prophase I when homologous chromosomes are paired as bivalents. Non-sister chromatids exchange segments of DNA at chiasmata."
+    },
+    {
+        id: 36, unit: "meiosis", type: "mc",
+        question: "What is a bivalent?",
+        options: [
+            "A single chromosome with two chromatids",
+            "A pair of homologous chromosomes lying together during prophase I",
+            "A cell with two nuclei",
+            "Two non-homologous chromosomes"
+        ],
+        correct: 1,
+        explanation: "A bivalent is a pair of homologous chromosomes that pair up (synapsis) during prophase I. Since each chromosome has 2 chromatids, a bivalent has 4 chromatids (tetrad)."
+    },
+    {
+        id: 37, unit: "meiosis", type: "mc",
+        question: "During Anaphase I, what separates?",
+        options: ["Sister chromatids", "Homologous chromosomes", "Individual genes", "Centromeres"],
+        correct: 1,
+        explanation: "During Anaphase I, homologous chromosomes separate and move to opposite poles. The centromeres do NOT split — sister chromatids remain joined. This is the reduction division."
+    },
+    {
+        id: 38, unit: "meiosis", type: "mc",
+        question: "During Anaphase II, what separates?",
+        options: ["Homologous chromosomes", "Bivalents", "Sister chromatids", "Nuclear membranes"],
+        correct: 2,
+        explanation: "During Anaphase II, centromeres split and sister chromatids separate, moving to opposite poles. This is similar to what happens in mitosis."
+    },
+    {
+        id: 39, unit: "meiosis", type: "mc",
+        question: "Independent assortment occurs during:",
+        options: ["Prophase I", "Metaphase I", "Anaphase II", "Telophase I"],
+        correct: 1,
+        explanation: "Independent (random) assortment occurs during Metaphase I when bivalents line up randomly at the equator. The orientation of each homologous pair is random, creating unique combinations."
+    },
+    {
+        id: 40, unit: "meiosis", type: "mc",
+        question: "Non-disjunction results in:",
+        options: [
+            "Normal gametes",
+            "Gametes with abnormal chromosome numbers",
+            "Identical daughter cells",
+            "Crossing over"
+        ],
+        correct: 1,
+        explanation: "Non-disjunction is the failure of chromosomes to separate properly, resulting in gametes with too many (n+1) or too few (n-1) chromosomes."
+    },
+    {
+        id: 41, unit: "meiosis", type: "mc",
+        question: "Down syndrome is caused by:",
+        options: [
+            "A missing chromosome 21",
+            "Three copies of chromosome 21 (trisomy 21)",
+            "A mutation in chromosome 21",
+            "Two copies of the X chromosome"
+        ],
+        correct: 1,
+        explanation: "Down syndrome (trisomy 21) results from non-disjunction during meiosis, producing a gamete with an extra chromosome 21. After fertilisation, the individual has 47 chromosomes."
+    },
+    {
+        id: 42, unit: "meiosis", type: "mc",
+        question: "Which is NOT a way meiosis creates genetic variation?",
+        options: [
+            "Crossing over in prophase I",
+            "Independent assortment in metaphase I",
+            "DNA replication during interkinesis",
+            "Random fertilisation"
+        ],
+        correct: 2,
+        explanation: "DNA replication does NOT occur during interkinesis (between meiosis I and II). Genetic variation comes from crossing over, independent assortment, and random fertilisation."
+    },
+    {
+        id: 43, unit: "meiosis", type: "mc",
+        question: "Which statement correctly compares mitosis and meiosis?",
+        options: [
+            "Mitosis produces 4 cells; meiosis produces 2 cells",
+            "Mitosis occurs in gonads; meiosis occurs in body cells",
+            "Mitosis produces identical diploid cells; meiosis produces genetically different haploid cells",
+            "Both produce haploid cells"
+        ],
+        correct: 2,
+        explanation: "Mitosis produces 2 genetically identical diploid cells (for growth/repair in body cells). Meiosis produces 4 genetically different haploid cells (gametes in gonads)."
+    },
+    {
+        id: 44, unit: "meiosis", type: "mc",
+        question: "A karyotype is used to:",
+        options: [
+            "Measure the size of cells",
+            "Identify chromosome abnormalities by arranging chromosomes in homologous pairs",
+            "Count the number of genes",
+            "Determine blood type"
+        ],
+        correct: 1,
+        explanation: "A karyotype displays all chromosomes arranged in homologous pairs from largest to smallest. It is used to identify abnormalities like trisomy 21 (Down syndrome) or missing sex chromosomes."
+    },
+    {
+        id: 45, unit: "meiosis", type: "mc",
+        question: "The reduction division in meiosis refers to:",
+        options: ["Meiosis II", "Meiosis I", "Both divisions equally", "Neither division"],
+        correct: 1,
+        explanation: "Meiosis I is called the reduction division because this is when the chromosome number is halved — homologous chromosomes separate, reducing the cell from diploid (2n) to haploid (n)."
     }
 ];
 
@@ -581,6 +825,87 @@ const feynmanTopics = [
             "tRNA in cytoplasm picks up specific amino acids using its anticodon",
             "At the ribosome, tRNA anticodons match mRNA codons to assemble amino acids in correct order",
             "Amino acids are joined to form a specific protein that determines organism's characteristics"
+        ]
+    },
+
+    // --- Meiosis ---
+    {
+        id: "f9",
+        title: "What is Meiosis and Why Does It Matter?",
+        unit: "meiosis",
+        keyPoints: [
+            "Meiosis is cell division that produces gametes (sex cells) in the gonads",
+            "One diploid (2n) cell produces four haploid (n) daughter cells",
+            "Two successive divisions: meiosis I (reduction) and meiosis II",
+            "Produces haploid gametes so chromosome number is restored at fertilisation (n + n = 2n)",
+            "Creates genetic variation through crossing over, independent assortment, and random fertilisation",
+            "Genetic variation is essential for natural selection and evolution"
+        ]
+    },
+    {
+        id: "f10",
+        title: "Meiosis I — The Reduction Division",
+        unit: "meiosis",
+        keyPoints: [
+            "Prophase I: chromosomes condense, homologous chromosomes pair up (synapsis) forming bivalents",
+            "Crossing over occurs at chiasmata — non-sister chromatids exchange DNA segments",
+            "Metaphase I: bivalents line up randomly at equator (independent assortment)",
+            "Anaphase I: homologous chromosomes separate to opposite poles — centromeres do NOT split",
+            "Telophase I + cytokinesis: two haploid daughter cells formed",
+            "This is the REDUCTION division — chromosome number halved from 2n to n",
+            "No DNA replication occurs between meiosis I and meiosis II (interkinesis)"
+        ]
+    },
+    {
+        id: "f11",
+        title: "Meiosis II — Similar to Mitosis",
+        unit: "meiosis",
+        keyPoints: [
+            "Prophase II: chromosomes condense, nuclear membrane disappears, spindle forms",
+            "Metaphase II: individual chromosomes line up at equator (not bivalents)",
+            "Anaphase II: centromeres SPLIT — sister chromatids separate to opposite poles",
+            "Telophase II: nuclear membranes reform, cytokinesis produces 4 haploid cells",
+            "Similar to mitosis but cells are already haploid",
+            "Final result: 4 genetically unique haploid daughter cells"
+        ]
+    },
+    {
+        id: "f12",
+        title: "How Meiosis Creates Genetic Variation",
+        unit: "meiosis",
+        keyPoints: [
+            "Crossing over (prophase I): non-sister chromatids swap DNA at chiasmata — new allele combinations",
+            "Independent assortment (metaphase I): random orientation of bivalents — unique chromosome combinations in each gamete",
+            "With 23 pairs: 2²³ = over 8 million possible combinations from independent assortment alone",
+            "Random fertilisation: any sperm can fuse with any egg — further multiplies variation",
+            "All three mechanisms combined produce virtually unlimited genetic diversity",
+            "This variation is raw material for natural selection"
+        ]
+    },
+    {
+        id: "f13",
+        title: "Abnormal Meiosis — Non-disjunction",
+        unit: "meiosis",
+        keyPoints: [
+            "Non-disjunction: failure of chromosomes to separate properly during meiosis",
+            "Can occur in meiosis I (homologous chromosomes don't separate) or meiosis II (sister chromatids don't separate)",
+            "Results in gametes with extra (n+1) or missing (n-1) chromosomes",
+            "After fertilisation: trisomy (2n+1) or monosomy (2n-1)",
+            "Down syndrome (trisomy 21): three copies of chromosome 21, total 47 chromosomes",
+            "Karyotype: photograph of chromosomes arranged in pairs — used to detect abnormalities"
+        ]
+    },
+    {
+        id: "f14",
+        title: "Mitosis vs Meiosis — Key Differences",
+        unit: "meiosis",
+        keyPoints: [
+            "Mitosis: 1 division → 2 identical diploid cells; Meiosis: 2 divisions → 4 different haploid cells",
+            "Mitosis: in body cells (growth/repair); Meiosis: in gonads (gamete production)",
+            "Mitosis: no crossing over; Meiosis: crossing over in prophase I",
+            "Mitosis: individual chromosomes at equator; Meiosis I: bivalents (homologous pairs) at equator",
+            "Mitosis: centromeres split in anaphase; Meiosis I: centromeres do NOT split (only split in anaphase II)",
+            "Mitosis: daughter cells genetically identical to parent; Meiosis: daughter cells genetically unique"
         ]
     }
 ];
