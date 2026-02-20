@@ -1803,6 +1803,38 @@ body::after {
 }
 
 /* ============================================================
+   DIAGRAMS
+   ============================================================ */
+.diagram-container {
+    margin: 1.25rem 0;
+    padding: 1rem;
+    background: var(--bg-section);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.diagram-title {
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    text-align: left;
+}
+
+.diagram-svg {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .diagram-svg { max-width: 100%; }
+    .diagram-container { padding: 0.75rem 0.5rem; }
+}
+
+/* ============================================================
    THEME PICKER
    ============================================================ */
 .header-row {
