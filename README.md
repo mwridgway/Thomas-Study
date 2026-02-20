@@ -1,8 +1,10 @@
-# Thomas's Study Hub 📚
+# ⚡ The Intersect — Thomas's Study Hub
 
-Grade 12 NSC revision web app — built for Thomas @ Paul Roos Gimnasium.
+Grade 12 NSC revision web app — built for Agent Bartowski @ Paul Roos Gimnasium.
 
-> Maintained by Sarah Walker 🕶️
+> *"Guys, I know kung fu."* — Except it's Biology.
+>
+> Maintained by Sarah Walker 🕶️ | Chuck-themed because we're Nerd Herd.
 
 ## Subjects
 

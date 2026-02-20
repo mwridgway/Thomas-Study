@@ -93,7 +93,7 @@ const examDates = [
     });
 
     if (upcoming.length === 0) {
-        container.innerHTML = '<div class="exam-done"><h3>🎓 Exams Complete!</h3><p>You made it!</p></div>';
+        container.innerHTML = '<div class="exam-done"><h3>🎓 Mission Accomplished!</h3><p>The Intersect is complete. You made it, Chuck.</p></div>';
         return;
     }
 
@@ -103,10 +103,10 @@ const examDates = [
 
     let html = `
         <div class="exam-header">
-            <h3>📅 Final Exam Countdown</h3>
+            <h3>🕐 Operation: Final Countdown</h3>
             <div class="exam-overall">
                 <span class="exam-overall-days">${daysToFirst}</span>
-                <span class="exam-overall-label">days until first exam</span>
+                <span class="exam-overall-label">days until Operation: NSC</span>
             </div>
             <p class="exam-note">⚠️ Dates are estimated — will update when official 2026 timetable is released</p>
         </div>

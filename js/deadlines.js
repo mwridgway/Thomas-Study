@@ -105,11 +105,11 @@ const deadlines = [
     }
 
     const typeLabels = {
-        test: "TEST",
-        practical: "PRACTICAL",
-        assignment: "ASSIGNMENT",
-        event: "EVENT",
-        exam: "EXAM"
+        test: "MISSION",
+        practical: "FIELD OP",
+        assignment: "INTEL DUE",
+        event: "BRIEFING",
+        exam: "FINAL OP"
     };
 
     const typeLabel = typeLabels[next.type] || "DUE";
@@ -125,7 +125,7 @@ const deadlines = [
             <div class="banner-title">${next.title}</div>
             <div class="banner-detail">${next.detail} &mdash; ${next.subject}</div>
         </div>
-        ${next.link ? `<a href="${next.link}" class="banner-action">Study &rarr;</a>` : ""}
+        ${next.link ? `<a href="${next.link}" class="banner-action">Flash on it &rarr;</a>` : ""}
     `;
     banner.classList.remove("hidden");
 
@@ -147,7 +147,7 @@ const deadlines = [
         }).join("");
 
         banner.innerHTML += `<div class="banner-upcoming">
-            <div class="banner-upcoming-label">Also coming up:</div>
+            <div class="banner-upcoming-label">Incoming missions:</div>
             ${upcomingHtml}
         </div>`;
     }
