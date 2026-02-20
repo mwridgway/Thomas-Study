@@ -1560,6 +1560,10 @@ footer {
    ============================================================ */
 .exam-countdown {
     margin-bottom: 2rem;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    border: 1px solid var(--border);
 }
 
 .exam-header {
@@ -1568,57 +1572,63 @@ footer {
 }
 
 .exam-header h3 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin-bottom: 0.75rem;
-    color: var(--text);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
 }
 
 .exam-overall {
     display: inline-flex;
     align-items: baseline;
     gap: 0.5rem;
-    padding: 0.5rem 1.5rem;
-    background: var(--bg-card);
+    padding: 0.6rem 1.5rem;
+    background: var(--bg-section);
     border-radius: var(--radius);
     border: 1px solid var(--border);
     margin-bottom: 0.5rem;
 }
 
 .exam-overall-days {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 800;
     color: var(--accent);
     line-height: 1;
+    font-family: var(--mono);
 }
 
 .exam-overall-label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
 }
 
 .exam-note {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--text-muted);
-    margin-top: 0.4rem;
+    margin-top: 0.5rem;
+    opacity: 0.7;
 }
 
 .exam-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.75rem;
 }
 
 .exam-card {
-    background: var(--bg-card);
+    background: var(--bg-section);
     border-radius: var(--radius);
-    padding: 1rem;
-    border-left: 4px solid var(--green);
-    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 0.9rem;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--green);
+    transition: transform 0.2s, border-color 0.2s;
 }
 
 .exam-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
+    transform: translateY(-1px);
+    border-color: var(--accent);
 }
 
 .exam-critical { border-left-color: var(--red); }
@@ -1629,12 +1639,12 @@ footer {
 .exam-card-header {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
 }
 
 .exam-icon {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     flex-shrink: 0;
 }
 
@@ -1646,21 +1656,22 @@ footer {
 }
 
 .exam-subject-name {
-    font-weight: 700;
-    font-size: 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
     color: var(--text);
 }
 
 .exam-days-left {
     display: flex;
     align-items: baseline;
-    gap: 0.25rem;
+    gap: 0.2rem;
 }
 
 .exam-days-number {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: 800;
     line-height: 1;
+    font-family: var(--mono);
 }
 
 .exam-critical .exam-days-number { color: var(--red); }
@@ -1669,59 +1680,67 @@ footer {
 .exam-relaxed .exam-days-number { color: var(--green); }
 
 .exam-days-text {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     color: var(--text-muted);
     font-weight: 600;
+    text-transform: uppercase;
 }
 
 .exam-progress-bar {
-    height: 4px;
-    background: var(--bg-section);
+    height: 3px;
+    background: rgba(255,255,255,0.05);
     border-radius: 2px;
     overflow: hidden;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.6rem;
 }
 
 .exam-progress-fill {
     height: 100%;
     border-radius: 2px;
     transition: width 0.8s ease;
+    opacity: 0.8;
 }
 
 .exam-papers {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.2rem;
 }
 
 .exam-paper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    padding: 0.15rem 0;
 }
 
 .exam-paper-name {
     color: var(--text-muted);
+    font-size: 0.75rem;
 }
 
 .exam-paper-info {
     color: var(--text-muted);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    font-family: var(--mono);
+    opacity: 0.7;
 }
 
 .exam-done {
     text-align: center;
     padding: 2rem;
-    background: var(--bg-card);
-    border-radius: var(--radius);
 }
 
 .exam-done h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
 
 @media (max-width: 600px) {
+    .exam-grid { grid-template-columns: 1fr 1fr; }
+    .exam-overall-days { font-size: 1.8rem; }
+    .exam-countdown { padding: 1rem; }
+}
+@media (max-width: 420px) {
     .exam-grid { grid-template-columns: 1fr; }
-    .exam-overall-days { font-size: 2rem; }
 }
 
 /* ============================================================
