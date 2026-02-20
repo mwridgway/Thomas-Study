@@ -63,7 +63,7 @@ const deadlines = [
 // ============================================================
 // DEADLINE BANNER RENDERER
 // ============================================================
-(function renderDeadlineBanner() {
+function renderDeadlineBanner() {
     const banner = document.getElementById("deadline-banner");
     if (!banner) return;
 
@@ -104,12 +104,13 @@ const deadlines = [
         timeText = `in ${diffDays} days`;
     }
 
-    const typeLabels = {
-        test: "MISSION",
-        practical: "FIELD OP",
-        assignment: "INTEL DUE",
-        event: "BRIEFING",
-        exam: "FINAL OP"
+    const labels = (typeof getCurrentThemeLabels === "function") ? getCurrentThemeLabels() : {};
+    const typeLabels = labels.typeLabels || {
+        test: "TEST",
+        practical: "PRACTICAL",
+        assignment: "ASSIGNMENT",
+        event: "EVENT",
+        exam: "EXAM"
     };
 
     const typeLabel = typeLabels[next.type] || "DUE";
@@ -125,7 +126,7 @@ const deadlines = [
             <div class="banner-title">${next.title}</div>
             <div class="banner-detail">${next.detail} &mdash; ${next.subject}</div>
         </div>
-        ${next.link ? `<a href="${next.link}" class="banner-action">Flash on it &rarr;</a>` : ""}
+        ${next.link ? `<a href="${next.link}" class="banner-action">${labels.bannerBtn || "Study →"}</a>` : ""}
     `;
     banner.classList.remove("hidden");
 
@@ -147,8 +148,9 @@ const deadlines = [
         }).join("");
 
         banner.innerHTML += `<div class="banner-upcoming">
-            <div class="banner-upcoming-label">Incoming missions:</div>
+            <div class="banner-upcoming-label">${labels.bannerUpcoming || "Also coming up:"}</div>
             ${upcomingHtml}
         </div>`;
     }
-})();
+}
+renderDeadlineBanner();

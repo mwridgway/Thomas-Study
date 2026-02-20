@@ -62,10 +62,9 @@ header {
     box-shadow: 0 2px 20px rgba(0,200,83,0.15);
 }
 
-.header-content {
+.header-content, .header-row {
     max-width: 1100px;
     margin: 0 auto;
-    padding-bottom: 1rem;
 }
 
 header h1 {
@@ -1736,7 +1735,7 @@ footer {
     opacity: 0.8;
 }
 
-/* Subtle scanline overlay on body for tech feel */
+/* Subtle scanline overlay — theme-dependent */
 body::after {
     content: "";
     position: fixed;
@@ -1750,10 +1749,11 @@ body::after {
         0deg,
         transparent,
         transparent 2px,
-        rgba(0,200,83,0.015) 2px,
-        rgba(0,200,83,0.015) 4px
+        var(--scanline-color) 2px,
+        var(--scanline-color) 4px
     );
 }
+.theme-default::after { background: none; }
 
 /* Nerd Herd green glow on active nav */
 .nav-btn.active {
@@ -1780,4 +1780,53 @@ body::after {
 }
 .deadline-banner .banner-action:hover {
     background: var(--accent-light);
+}
+
+/* ============================================================
+   THEME PICKER
+   ============================================================ */
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.theme-picker {
+    display: flex;
+    gap: 0.4rem;
+    background: rgba(255,255,255,0.05);
+    padding: 0.3rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.theme-btn {
+    background: none;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    padding: 0.35rem 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    line-height: 1;
+}
+
+.theme-btn:hover {
+    background: rgba(255,255,255,0.1);
+    transform: scale(1.1);
+}
+
+.theme-btn.active {
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.08);
+    transform: scale(1.1);
+}
+
+/* Remove duplicate .header-content styles for theme picker layout */
+.header-row + #main-nav {
+    max-width: 1100px;
+    margin: 0 auto;
 }

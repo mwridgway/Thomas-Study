@@ -9,12 +9,21 @@
 <body>
     <header>
         <div class="header-content">
-            <h1>⚡ The Intersect</h1>
-            <p class="subtitle">Nerd Herd Study Division &mdash; Agent Bartowski, Grade 12 NSC</p>
+            <div class="header-row">
+                <div>
+                    <h1 id="theme-title">⚡ The Intersect</h1>
+                    <p class="subtitle" id="theme-subtitle">Nerd Herd Study Division &mdash; Agent Bartowski, Grade 12 NSC</p>
+                </div>
+                <div class="theme-picker">
+                    <button class="theme-btn" data-theme="default" title="Default">🎓</button>
+                    <button class="theme-btn active" data-theme="chuck" title="Chuck">⚡</button>
+                    <button class="theme-btn" data-theme="orangeorange" title="Orange Orange">🍊</button>
+                </div>
+            </div>
         </div>
         <nav id="main-nav">
-            <button class="nav-btn active" data-view="home">🏠 Castle</button>
-            <button class="nav-btn" data-view="schedule">📡 Missions</button>
+            <button class="nav-btn active" data-view="home" id="theme-nav-home">🏠 Castle</button>
+            <button class="nav-btn" data-view="schedule" id="theme-nav-schedule">📡 Missions</button>
         </nav>
     </header>
 
@@ -23,8 +32,8 @@
         <section id="view-home" class="view active">
             <div id="deadline-banner" class="deadline-banner hidden"></div>
             <div class="hero">
-                <h2>Welcome back, Chuck</h2>
-                <p>Time to flash on some knowledge. Pick a mission below &mdash; each one's loaded with intel, flashcards, quizzes, and Feynman debrief mode.</p>
+                <h2 id="theme-welcome">Welcome back, Chuck</h2>
+                <p id="theme-welcome-sub">Time to flash on some knowledge. Pick a mission below &mdash; each one's loaded with intel, flashcards, quizzes, and Feynman debrief mode.</p>
             </div>
             <div class="subject-grid">
                 <a href="geography.html" class="subject-card subject-geo">
@@ -71,17 +80,17 @@
             <div id="exam-countdown" class="exam-countdown"></div>
 
             <div class="study-tip">
-                <h3>🎯 Handler's Briefing</h3>
-                <p><strong>Don't stay in the car, Chuck.</strong> Interleave your missions &mdash; rotate between subjects in the same session. It's harder but far more effective for long-term retention. Use the <strong>2-3-5-7 protocol</strong>: review intel on days 2, 3, 5, and 7 after first exposure.</p>
-                <p class="tip-quote">&ldquo;Trust me, Chuck.&rdquo; &mdash; Sarah Walker 🕶️</p>
+                <h3 id="theme-tip-title">🎯 Handler's Briefing</h3>
+                <p id="theme-tip-body"><strong>Don't stay in the car, Chuck.</strong> Interleave your missions &mdash; rotate between subjects in the same session. It's harder but far more effective for long-term retention. Use the <strong>2-3-5-7 protocol</strong>: review intel on days 2, 3, 5, and 7 after first exposure.</p>
+                <p class="tip-quote" id="theme-tip-quote">&ldquo;Trust me, Chuck.&rdquo; &mdash; Sarah Walker 🕶️</p>
             </div>
         </section>
 
         <!-- SCHEDULE VIEW -->
         <section id="view-schedule" class="view">
             <div class="unit-header">
-                <h2>📡 Mission Timeline</h2>
-                <p class="schedule-intro">Upcoming operations, sorted by priority. Filter by division or term. Click a topic to access the relevant intel.</p>
+                <h2 id="theme-schedule-title">📡 Mission Timeline</h2>
+                <p class="schedule-intro" id="theme-schedule-sub">Upcoming operations, sorted by priority. Filter by division or term. Click a topic to access the relevant intel.</p>
             </div>
 
             <div class="schedule-controls">
@@ -123,11 +132,12 @@
     </main>
 
     <footer>
-        <p>The Intersect &mdash; Nerd Herd Study Division &mdash; Grade 12 NSC</p>
-        <p class="footer-tip">&ldquo;Guys, I know kung fu.&rdquo; &mdash; Except it's Biology. Maintained by Sarah Walker 🕶️</p>
+        <p id="theme-footer-1">The Intersect &mdash; Nerd Herd Study Division &mdash; Grade 12 NSC</p>
+        <p class="footer-tip" id="theme-footer-2">&ldquo;Guys, I know kung fu.&rdquo; &mdash; Except it's Biology. Maintained by Sarah Walker 🕶️</p>
     </footer>
 
     <script src="js/schedule-data.js"></script>
+    <script src="js/themes.js"></script>
     <script src="js/deadlines.js"></script>
     <script src="js/exam-countdown.js"></script>
     <script src="js/dashboard.js"></script>

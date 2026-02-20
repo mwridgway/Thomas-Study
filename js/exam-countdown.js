@@ -3,14 +3,26 @@
 // 2026 NSC exam dates — update when official timetable is released
 // Sarah Walker maintains this
 // ============================================================
+// Based on official DBE NSC timetable structure
+// 2026 dates mapped from 2025 pattern (Oct-Nov-Dec)
+// Will update when official 2026 timetable released
 const examDates = [
+    {
+        subject: "CAT",
+        icon: "💻",
+        papers: [
+            { name: "Paper 1 (Practical)", date: "2026-10-20" },
+            { name: "Paper 2 (Theory)", date: "2026-10-26" }
+        ],
+        color: "#60a5fa"
+    },
     {
         subject: "English HL",
         icon: "📖",
         papers: [
-            { name: "Paper 1 (Language)", date: "2026-10-28" },
-            { name: "Paper 2 (Literature)", date: "2026-11-02" },
-            { name: "Paper 3 (Writing)", date: "2026-11-09" }
+            { name: "Paper 3 (Writing)", date: "2026-10-22" },
+            { name: "Paper 1 (Language)", date: "2026-11-02" },
+            { name: "Paper 2 (Literature)", date: "2026-11-11" }
         ],
         color: "#fb923c"
     },
@@ -18,9 +30,9 @@ const examDates = [
         subject: "Afrikaans",
         icon: "📝",
         papers: [
-            { name: "Paper 1 (Taal)", date: "2026-10-30" },
-            { name: "Paper 2 (Letterkunde)", date: "2026-11-04" },
-            { name: "Paper 3 (Skryfwerk)", date: "2026-11-10" }
+            { name: "Paper 3 (Skryfwerk)", date: "2026-10-23" },
+            { name: "Paper 1 (Taal)", date: "2026-10-28" },
+            { name: "Paper 2 (Letterkunde)", date: "2026-11-09" }
         ],
         color: "#c084fc"
     },
@@ -28,8 +40,8 @@ const examDates = [
         subject: "Math Literacy",
         icon: "🔢",
         papers: [
-            { name: "Paper 1", date: "2026-11-03" },
-            { name: "Paper 2", date: "2026-11-06" }
+            { name: "Paper 1", date: "2026-10-29" },
+            { name: "Paper 2", date: "2026-11-02" }
         ],
         color: "#fbbf24"
     },
@@ -37,8 +49,8 @@ const examDates = [
         subject: "Life Sciences",
         icon: "🧬",
         papers: [
-            { name: "Paper 1", date: "2026-11-11" },
-            { name: "Paper 2", date: "2026-11-16" }
+            { name: "Paper 1", date: "2026-11-19" },
+            { name: "Paper 2", date: "2026-11-23" }
         ],
         color: "#34d399"
     },
@@ -46,19 +58,10 @@ const examDates = [
         subject: "Geography",
         icon: "🌍",
         papers: [
-            { name: "Paper 1 (Theory)", date: "2026-11-13" },
-            { name: "Paper 2 (Mapwork)", date: "2026-11-18" }
+            { name: "Paper 1 (Theory)", date: "2026-12-01" },
+            { name: "Paper 2 (Mapwork)", date: "2026-12-01" }
         ],
         color: "#2dd4bf"
-    },
-    {
-        subject: "CAT",
-        icon: "💻",
-        papers: [
-            { name: "Paper 1 (Theory)", date: "2026-11-19" },
-            { name: "Paper 2 (Practical)", date: "2026-11-23" }
-        ],
-        color: "#60a5fa"
     },
     {
         subject: "Life Orientation",
@@ -73,7 +76,7 @@ const examDates = [
 // ============================================================
 // RENDERER
 // ============================================================
-(function renderExamCountdown() {
+function renderExamCountdown() {
     const container = document.getElementById("exam-countdown");
     if (!container) return;
 
@@ -92,8 +95,10 @@ const examDates = [
         return lastDate >= now;
     });
 
+    const labels = (typeof getCurrentThemeLabels === "function") ? getCurrentThemeLabels() : {};
+
     if (upcoming.length === 0) {
-        container.innerHTML = '<div class="exam-done"><h3>🎓 Mission Accomplished!</h3><p>The Intersect is complete. You made it, Chuck.</p></div>';
+        container.innerHTML = '<div class="exam-done"><h3>🎓 Done!</h3><p>All exams complete. You made it!</p></div>';
         return;
     }
 
@@ -103,10 +108,10 @@ const examDates = [
 
     let html = `
         <div class="exam-header">
-            <h3>🕐 Operation: Final Countdown</h3>
+            <h3>${labels.examTitle || "📅 Final Exam Countdown"}</h3>
             <div class="exam-overall">
                 <span class="exam-overall-days">${daysToFirst}</span>
-                <span class="exam-overall-label">days until Operation: NSC</span>
+                <span class="exam-overall-label">${labels.examOverallLabel || "days until first exam"}</span>
             </div>
             <p class="exam-note">⚠️ Dates are estimated — will update when official 2026 timetable is released</p>
         </div>
@@ -159,4 +164,5 @@ const examDates = [
 
     html += "</div>";
     container.innerHTML = html;
-})();
+}
+renderExamCountdown();
