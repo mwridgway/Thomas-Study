@@ -311,12 +311,11 @@ const diagrams = {
 // INJECT DIAGRAMS INTO SECTIONS
 // ============================================================
 document.addEventListener("DOMContentLoaded", () => {
-    const inject = (sectionId, diagramKey, position = "afterbegin") => {
+    const inject = (sectionId, diagramKey) => {
         const section = document.getElementById(sectionId);
         if (section && diagrams[diagramKey]) {
-            const concepts = section.querySelectorAll(".key-concept");
-            const target = concepts.length > 0 ? concepts[concepts.length - 1] : section;
-            target.insertAdjacentHTML("afterend", diagrams[diagramKey]);
+            // Insert at the end of the section
+            section.insertAdjacentHTML("beforeend", diagrams[diagramKey]);
         }
     };
 
