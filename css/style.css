@@ -1375,4 +1375,174 @@ footer {
     .sched-tag { font-size: 0.65rem; }
     .term-heading { font-size: 1rem; }
     .schedule-intro { font-size: 0.85rem; }
+    .deadline-banner { margin: 0.5rem; padding: 0.75rem; }
+    .banner-title { font-size: 1rem; }
+    .banner-icon { font-size: 1.5rem; }
+}
+
+/* ============================================================
+   DEADLINE BANNER
+   ============================================================ */
+.deadline-banner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    border-radius: var(--radius);
+    border-left: 4px solid var(--accent);
+    background: var(--bg-card);
+    box-shadow: var(--shadow);
+    animation: bannerPulse 0.4s ease-out;
+}
+
+.deadline-banner.hidden { display: none; }
+
+.banner-urgent {
+    border-left-color: var(--red);
+    background: linear-gradient(135deg, var(--red-dim), var(--bg-card));
+}
+.banner-warning {
+    border-left-color: var(--yellow);
+    background: linear-gradient(135deg, var(--yellow-dim), var(--bg-card));
+}
+.banner-soon {
+    border-left-color: var(--accent);
+    background: linear-gradient(135deg, var(--accent-dim), var(--bg-card));
+}
+.banner-normal {
+    border-left-color: var(--green);
+    background: linear-gradient(135deg, var(--green-dim), var(--bg-card));
+}
+
+.banner-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.banner-content {
+    flex: 1;
+    min-width: 200px;
+}
+
+.banner-top {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.banner-type {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.1);
+    color: var(--text);
+}
+
+.banner-countdown {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--yellow);
+}
+
+.banner-urgent .banner-countdown { color: var(--red); }
+.banner-soon .banner-countdown { color: var(--accent-light); }
+.banner-normal .banner-countdown { color: var(--green); }
+
+.banner-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.banner-detail {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+}
+
+.banner-action {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.25rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+.banner-action:hover { background: var(--accent-light); }
+
+.banner-upcoming {
+    width: 100%;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+}
+
+.banner-upcoming-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+}
+
+.banner-upcoming-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    font-size: 0.85rem;
+}
+
+.banner-upcoming-icon { flex-shrink: 0; }
+.banner-upcoming-text { flex: 1; color: var(--text); }
+.banner-upcoming-date { color: var(--text-muted); font-size: 0.8rem; }
+
+@keyframes bannerPulse {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   SUBJECT TAGS (Schedule)
+   ============================================================ */
+.tag-bio { background: #1a3a2a; color: #34d399; }
+.tag-cat { background: #1a2a3a; color: #60a5fa; }
+.tag-math { background: #3a3020; color: #fbbf24; }
+.tag-afr { background: #2a1a3a; color: #c084fc; }
+.tag-eng { background: #3a2a1a; color: #fb923c; }
+.tag-geo { background: #1a3a3a; color: #2dd4bf; }
+.tag-lo { background: #2a2a1a; color: #a3e635; }
+.tag-default { background: rgba(255,255,255,0.1); color: var(--text); }
+
+.tag-today {
+    background: var(--red) !important;
+    color: #fff !important;
+    font-weight: 700;
+    animation: tagPulse 1.5s ease-in-out infinite;
+}
+.tag-tomorrow {
+    background: var(--yellow) !important;
+    color: #000 !important;
+    font-weight: 700;
+}
+.tag-soon {
+    background: var(--accent-dim);
+    color: var(--accent-light);
+    font-weight: 600;
+}
+
+@keyframes tagPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
 }

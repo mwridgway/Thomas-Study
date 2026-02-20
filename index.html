@@ -21,6 +21,7 @@
     <main>
         <!-- HOME / SUBJECTS VIEW -->
         <section id="view-home" class="view active">
+            <div id="deadline-banner" class="deadline-banner hidden"></div>
             <div class="hero">
                 <h2>Welcome, Thomas</h2>
                 <p>Choose a subject to start revising. Each module has structured notes, flashcards, quizzes, and Feynman self-test mode.</p>
@@ -85,7 +86,13 @@
                     <label>Subject:</label>
                     <div class="filter-buttons">
                         <button class="filter-btn active" data-schedfilter="all">All</button>
-                        <button class="filter-btn" data-schedfilter="life-sciences">Life Sciences</button>
+                        <button class="filter-btn" data-schedfilter="life-sciences">🧬 Life Sciences</button>
+                        <button class="filter-btn" data-schedfilter="cat">💻 CAT</button>
+                        <button class="filter-btn" data-schedfilter="math-lit">🔢 Math Lit</button>
+                        <button class="filter-btn" data-schedfilter="afrikaans">📝 Afrikaans</button>
+                        <button class="filter-btn" data-schedfilter="english">📖 English</button>
+                        <button class="filter-btn" data-schedfilter="geography">🌍 Geography</button>
+                        <button class="filter-btn" data-schedfilter="lo">🧭 LO</button>
                     </div>
                 </div>
                 <div class="filter-group">
@@ -118,6 +125,7 @@
     </footer>
 
     <script src="js/schedule-data.js"></script>
+    <script src="js/deadlines.js"></script>
     <script src="js/dashboard.js"></script>
 </body>
 </html>
