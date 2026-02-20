@@ -2,6 +2,8 @@
 
 Grade 12 NSC revision web app — built for Thomas @ Paul Roos Gimnasium.
 
+> Maintained by Sarah Walker 🕶️
+
 ## Subjects
 
 - 🌍 **Geography** — Mid-Latitude Cyclones, Tropical Cyclones (40 flashcards, 30 quiz questions, 10 Feynman topics)
