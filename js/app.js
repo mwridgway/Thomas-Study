@@ -511,27 +511,6 @@ document.addEventListener("DOMContentLoaded", () => {
     synth.onvoiceschanged = () => { bestVoice = pickVoice(); };
     bestVoice = pickVoice();
 
-    // Inject per-section read buttons
-    document.querySelectorAll(".content-section > h3").forEach(h3 => {
-        const btn = document.createElement("button");
-        btn.className = "tts-btn";
-        btn.type = "button";
-        btn.title = "Read this section aloud";
-        btn.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
-        h3.style.display = "flex";
-        h3.style.alignItems = "center";
-        h3.style.gap = "0.5rem";
-        h3.appendChild(btn);
-
-        btn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const section = h3.closest(".content-section");
-            if (ttsSource === section) { stopTTS(); return; }
-            stopTTS();
-            playSection(section, btn);
-        });
-    });
-
     // Inject "Read All" button into each unit-header
     document.querySelectorAll(".unit-header").forEach(header => {
         const btn = document.createElement("button");
@@ -550,21 +529,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    function playSection(section, btn) {
-        const sectionId = section.id;
-        ttsSource = section;
-        ttsActiveBtn = btn;
-        btn.classList.add("tts-active");
-
-        // Try ElevenLabs audio first
-        if (audioManifest && audioManifest[sectionId]) {
-            playAudioFile("audio/" + audioManifest[sectionId], () => finishTTS());
-        } else {
-            // Fallback to browser TTS
-            speakWithBrowserTTS(section);
-        }
-    }
-
     function playAllSections(view, btn) {
         const sections = view.querySelectorAll(".content-section");
         ttsQueue = [];
@@ -575,14 +539,38 @@ document.addEventListener("DOMContentLoaded", () => {
         playNextInQueue();
     }
 
+    function switchToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (!section) return;
+        const parent = section.closest("section.view") || section.closest("section");
+        if (!parent) return;
+
+        // Switch active content-section
+        parent.querySelectorAll(".content-section").forEach(s => s.classList.remove("active"));
+        section.classList.add("active");
+
+        // Update the section-jump buttons to match
+        parent.querySelectorAll(".section-jump").forEach(b => {
+            b.classList.toggle("active", b.dataset.section === sectionId);
+            if (b.dataset.section === sectionId) {
+                b.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+            }
+        });
+
+        // Scroll to top of content
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
     function playNextInQueue() {
         if (!ttsQueue.length || !ttsSource) { finishTTS(); return; }
         const sectionId = ttsQueue.shift();
 
+        // Auto-navigate to this section
+        switchToSection(sectionId);
+
         if (audioManifest && audioManifest[sectionId]) {
             playAudioFile("audio/" + audioManifest[sectionId], () => playNextInQueue());
         } else {
-            // Fallback: browser TTS for this section, then continue queue
             const section = document.getElementById(sectionId);
             if (section) {
                 speakWithBrowserTTS(section, () => playNextInQueue());
