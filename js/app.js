@@ -529,9 +529,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button class="tts-ctrl" id="tts-restart" title="Restart">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
                 </button>
+                <button class="tts-ctrl" id="tts-prev" title="Previous section">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                </button>
                 <button class="tts-ctrl tts-ctrl-main" id="tts-playpause" title="Pause">
                     <svg class="tts-icon-pause" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                     <svg class="tts-icon-play hidden" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+                <button class="tts-ctrl" id="tts-next" title="Next section">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
                 </button>
                 <button class="tts-ctrl" id="tts-stop" title="Stop">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6 6h12v12H6z"/></svg>
@@ -557,6 +563,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("tts-playpause").addEventListener("click", togglePause);
     document.getElementById("tts-stop").addEventListener("click", () => { stopTTS(); hidePlayer(); });
     document.getElementById("tts-restart").addEventListener("click", restartTTS);
+    document.getElementById("tts-next").addEventListener("click", skipNext);
+    document.getElementById("tts-prev").addEventListener("click", skipPrev);
 
     function showPlayer(unitName) {
         playerTitle.textContent = unitName;
@@ -738,6 +746,39 @@ document.addEventListener("DOMContentLoaded", () => {
         const btn = ttsActiveBtn;
         stopTTS();
         playAllSections(view, btn);
+    }
+
+    function skipNext() {
+        if (!ttsSource || !ttsQueue.length) return;
+        // Stop current audio/speech
+        if (ttsAudio) { ttsAudio.pause(); ttsAudio.onended = null; }
+        synth.cancel();
+        ttsSectionsPlayed++;
+        ttsCurrentSectionId = null;
+        ttsPaused = false;
+        pauseIcon.classList.remove("hidden");
+        playIcon.classList.add("hidden");
+        playNextInQueue();
+    }
+
+    function skipPrev() {
+        if (!ttsSource || !ttsAllSections.length) return;
+        // Stop current audio/speech
+        if (ttsAudio) { ttsAudio.pause(); ttsAudio.onended = null; }
+        synth.cancel();
+
+        // Figure out current position and go back
+        const currentIdx = ttsAllSections.length - ttsQueue.length - 1;
+        const targetIdx = Math.max(0, currentIdx - 1);
+
+        // Rebuild queue from target onwards
+        ttsQueue = ttsAllSections.slice(targetIdx);
+        ttsSectionsPlayed = targetIdx;
+        ttsCurrentSectionId = null;
+        ttsPaused = false;
+        pauseIcon.classList.remove("hidden");
+        playIcon.classList.add("hidden");
+        playNextInQueue();
     }
 
     function extractText(el) {
