@@ -469,4 +469,103 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Voice input is not supported in your browser. Please use Chrome or Edge.");
         });
     }
+
+    // ============================================================
+    // READ ALOUD (SpeechSynthesis)
+    // ============================================================
+    const synth = window.speechSynthesis;
+    let currentUtterance = null;
+    let ttsSection = null;
+
+    // Inject read-aloud buttons into every content-section h3
+    document.querySelectorAll(".content-section > h3").forEach(h3 => {
+        const btn = document.createElement("button");
+        btn.className = "tts-btn";
+        btn.type = "button";
+        btn.title = "Read aloud";
+        btn.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
+        h3.style.display = "flex";
+        h3.style.alignItems = "center";
+        h3.style.gap = "0.5rem";
+        h3.appendChild(btn);
+
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const section = h3.closest(".content-section");
+            if (synth.speaking && ttsSection === section) {
+                stopTTS();
+                return;
+            }
+            if (synth.speaking) stopTTS();
+            speakSection(section, btn);
+        });
+    });
+
+    function speakSection(section, btn) {
+        if (!synth) {
+            alert("Text-to-speech is not supported in your browser.");
+            return;
+        }
+
+        // Extract readable text from the section (skip the h3 title)
+        const clone = section.cloneNode(true);
+        // Remove script tags, buttons, svg
+        clone.querySelectorAll("script, button, svg, .tts-btn").forEach(el => el.remove());
+        const text = clone.textContent.replace(/\s+/g, " ").trim();
+
+        if (!text) return;
+
+        // Split into chunks (speechSynthesis has ~200 char limit in some browsers)
+        const chunks = splitText(text, 180);
+        ttsSection = section;
+        btn.classList.add("tts-active");
+
+        let index = 0;
+        function speakNext() {
+            if (index >= chunks.length || ttsSection !== section) {
+                btn.classList.remove("tts-active");
+                ttsSection = null;
+                return;
+            }
+            const utter = new SpeechSynthesisUtterance(chunks[index]);
+            utter.lang = "en-ZA";
+            utter.rate = 0.95;
+            utter.onend = () => { index++; speakNext(); };
+            utter.onerror = () => { btn.classList.remove("tts-active"); ttsSection = null; };
+            currentUtterance = utter;
+            synth.speak(utter);
+        }
+        speakNext();
+    }
+
+    function splitText(text, maxLen) {
+        const sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [text];
+        const chunks = [];
+        let current = "";
+        for (const s of sentences) {
+            if ((current + s).length > maxLen && current) {
+                chunks.push(current.trim());
+                current = s;
+            } else {
+                current += s;
+            }
+        }
+        if (current.trim()) chunks.push(current.trim());
+        return chunks;
+    }
+
+    function stopTTS() {
+        synth.cancel();
+        if (ttsSection) {
+            const btn = ttsSection.querySelector(".tts-btn");
+            if (btn) btn.classList.remove("tts-active");
+        }
+        ttsSection = null;
+        currentUtterance = null;
+    }
+
+    // Stop TTS when navigating away
+    document.querySelectorAll(".nav-btn, .section-jump").forEach(btn => {
+        btn.addEventListener("click", stopTTS);
+    });
 });
