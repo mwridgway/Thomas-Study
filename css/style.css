@@ -900,6 +900,155 @@ td { background: var(--bg-card); }
     50% { opacity: 0.6; }
 }
 
+/* Floating player bar */
+.tts-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-card, #1e1e2e);
+    border-top: 1px solid var(--border, #333);
+    padding: 0.6rem 1rem;
+    z-index: 1000;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+
+.tts-player.hidden {
+    transform: translateY(100%);
+    pointer-events: none;
+}
+
+.tts-player-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tts-player-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.tts-player-title {
+    font-size: 0.75rem;
+    color: var(--text-muted, #888);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tts-player-section {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text, #fff);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tts-player-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.tts-ctrl {
+    background: none;
+    border: none;
+    color: var(--text-muted, #888);
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+}
+
+.tts-ctrl:hover {
+    color: var(--text, #fff);
+    background: rgba(255,255,255,0.1);
+}
+
+.tts-ctrl-main {
+    color: var(--text, #fff);
+    background: var(--accent, #6c5ce7);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+.tts-ctrl-main:hover {
+    background: var(--accent-light, #a29bfe);
+    transform: scale(1.05);
+}
+
+.tts-player-progress {
+    flex: 1.5;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.tts-progress-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.tts-progress-fill {
+    height: 100%;
+    background: var(--accent, #6c5ce7);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.tts-progress-text {
+    font-size: 0.75rem;
+    color: var(--text-muted, #888);
+    white-space: nowrap;
+    min-width: 3rem;
+    text-align: right;
+}
+
+/* Mobile: stack player */
+@media (max-width: 600px) {
+    .tts-player-inner {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .tts-player-info {
+        order: 1;
+        flex-basis: 60%;
+    }
+    .tts-player-controls {
+        order: 2;
+    }
+    .tts-player-progress {
+        order: 3;
+        flex-basis: 100%;
+    }
+}
+
+/* Add bottom padding to main when player is visible */
+body:has(.tts-player:not(.hidden)) main {
+    padding-bottom: 5rem;
+}
+
 .feynman-keypoints {
     margin-top: 1.5rem;
 }
