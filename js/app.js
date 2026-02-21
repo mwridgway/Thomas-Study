@@ -474,15 +474,47 @@ document.addEventListener("DOMContentLoaded", () => {
     // READ ALOUD (SpeechSynthesis)
     // ============================================================
     const synth = window.speechSynthesis;
-    let currentUtterance = null;
-    let ttsSection = null;
+    let ttsSource = null; // the element (section or view) currently being read
+    let ttsActiveBtn = null;
+    let ttsChunks = [];
+    let ttsIndex = 0;
+    let bestVoice = null;
 
-    // Inject read-aloud buttons into every content-section h3
+    // Pick the most natural-sounding voice available
+    function pickVoice() {
+        const voices = synth.getVoices();
+        // Preference order: natural/premium voices first
+        const prefs = [
+            v => /natural/i.test(v.name),
+            v => /google.*uk.*female/i.test(v.name),
+            v => /google.*us.*female/i.test(v.name),
+            v => /google.*uk/i.test(v.name),
+            v => /google.*us/i.test(v.name),
+            v => /samantha/i.test(v.name),
+            v => /karen/i.test(v.name),
+            v => /daniel/i.test(v.name),
+            v => /microsoft.*zira/i.test(v.name),
+            v => /microsoft.*aria/i.test(v.name),
+            v => v.lang.startsWith("en") && /female/i.test(v.name),
+            v => v.lang.startsWith("en"),
+        ];
+        for (const test of prefs) {
+            const match = voices.find(test);
+            if (match) return match;
+        }
+        return voices.find(v => v.lang.startsWith("en")) || voices[0] || null;
+    }
+
+    // Load voices (they load async in some browsers)
+    synth.onvoiceschanged = () => { bestVoice = pickVoice(); };
+    bestVoice = pickVoice();
+
+    // Inject per-section read buttons
     document.querySelectorAll(".content-section > h3").forEach(h3 => {
         const btn = document.createElement("button");
         btn.className = "tts-btn";
         btn.type = "button";
-        btn.title = "Read aloud";
+        btn.title = "Read this section aloud";
         btn.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
         h3.style.display = "flex";
         h3.style.alignItems = "center";
@@ -492,50 +524,72 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", (e) => {
             e.stopPropagation();
             const section = h3.closest(".content-section");
-            if (synth.speaking && ttsSection === section) {
-                stopTTS();
-                return;
-            }
+            if (synth.speaking && ttsSource === section) { stopTTS(); return; }
             if (synth.speaking) stopTTS();
-            speakSection(section, btn);
+            startTTS(section, btn);
         });
     });
 
-    function speakSection(section, btn) {
-        if (!synth) {
-            alert("Text-to-speech is not supported in your browser.");
-            return;
-        }
+    // Inject "Read All" button into each unit-header
+    document.querySelectorAll(".unit-header").forEach(header => {
+        const btn = document.createElement("button");
+        btn.className = "tts-btn tts-read-all";
+        btn.type = "button";
+        btn.title = "Read entire unit aloud";
+        btn.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg> <span>Read All</span>`;
+        header.appendChild(btn);
 
-        // Extract readable text from the section (skip the h3 title)
-        const clone = section.cloneNode(true);
-        // Remove script tags, buttons, svg
-        clone.querySelectorAll("script, button, svg, .tts-btn").forEach(el => el.remove());
-        const text = clone.textContent.replace(/\s+/g, " ").trim();
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const view = header.closest(".view");
+            if (synth.speaking && ttsSource === view) { stopTTS(); return; }
+            if (synth.speaking) stopTTS();
+            // Gather text from ALL content-sections in this view
+            startTTS(view, btn);
+        });
+    });
 
+    function extractText(el) {
+        const clone = el.cloneNode(true);
+        clone.querySelectorAll("script, button, svg, .tts-btn, .unit-header, .progress-tracker").forEach(n => n.remove());
+        // Add pauses between sections by inserting periods
+        clone.querySelectorAll("h3, h4").forEach(h => {
+            h.textContent = ". " + h.textContent + ". ";
+        });
+        clone.querySelectorAll("li").forEach(li => {
+            li.textContent = li.textContent + ". ";
+        });
+        return clone.textContent.replace(/\s+/g, " ").replace(/\.{2,}/g, ".").trim();
+    }
+
+    function startTTS(source, btn) {
+        if (!synth) { alert("Text-to-speech not supported in your browser."); return; }
+
+        const text = extractText(source);
         if (!text) return;
 
-        // Split into chunks (speechSynthesis has ~200 char limit in some browsers)
-        const chunks = splitText(text, 180);
-        ttsSection = section;
+        ttsChunks = splitText(text, 180);
+        ttsIndex = 0;
+        ttsSource = source;
+        ttsActiveBtn = btn;
         btn.classList.add("tts-active");
 
-        let index = 0;
-        function speakNext() {
-            if (index >= chunks.length || ttsSection !== section) {
-                btn.classList.remove("tts-active");
-                ttsSection = null;
-                return;
-            }
-            const utter = new SpeechSynthesisUtterance(chunks[index]);
-            utter.lang = "en-ZA";
-            utter.rate = 0.95;
-            utter.onend = () => { index++; speakNext(); };
-            utter.onerror = () => { btn.classList.remove("tts-active"); ttsSection = null; };
-            currentUtterance = utter;
-            synth.speak(utter);
-        }
         speakNext();
+    }
+
+    function speakNext() {
+        if (ttsIndex >= ttsChunks.length || !ttsSource) {
+            finishTTS();
+            return;
+        }
+        const utter = new SpeechSynthesisUtterance(ttsChunks[ttsIndex]);
+        if (bestVoice) utter.voice = bestVoice;
+        utter.lang = "en-GB";
+        utter.rate = 0.92;
+        utter.pitch = 1.05;
+        utter.onend = () => { ttsIndex++; speakNext(); };
+        utter.onerror = () => finishTTS();
+        synth.speak(utter);
     }
 
     function splitText(text, maxLen) {
@@ -554,14 +608,17 @@ document.addEventListener("DOMContentLoaded", () => {
         return chunks;
     }
 
+    function finishTTS() {
+        if (ttsActiveBtn) ttsActiveBtn.classList.remove("tts-active");
+        ttsSource = null;
+        ttsActiveBtn = null;
+        ttsChunks = [];
+        ttsIndex = 0;
+    }
+
     function stopTTS() {
         synth.cancel();
-        if (ttsSection) {
-            const btn = ttsSection.querySelector(".tts-btn");
-            if (btn) btn.classList.remove("tts-active");
-        }
-        ttsSection = null;
-        currentUtterance = null;
+        finishTTS();
     }
 
     // Stop TTS when navigating away

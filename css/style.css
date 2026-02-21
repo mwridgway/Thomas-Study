@@ -882,6 +882,19 @@ td { background: var(--bg-card); }
     animation: tts-pulse 1.5s ease-in-out infinite;
 }
 
+.tts-read-all {
+    border-radius: 1rem;
+    width: auto;
+    padding: 0.4rem 1rem;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+}
+
+.tts-read-all span {
+    font-weight: 600;
+}
+
 @keyframes tts-pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.6; }
