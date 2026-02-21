@@ -398,4 +398,75 @@ document.addEventListener("DOMContentLoaded", () => {
         feynmanWorkspace.classList.add("hidden");
         document.querySelector(".feynman-topics").classList.remove("hidden");
     });
+
+    // VOICE INPUT (Web Speech API)
+    // ============================================================
+    const micBtn = document.getElementById("feynman-mic");
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognition = null;
+    let isRecording = false;
+
+    if (micBtn && SpeechRecognition) {
+        recognition = new SpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.lang = "en-ZA";
+
+        let finalTranscript = "";
+
+        recognition.onresult = (event) => {
+            const textarea = document.getElementById("feynman-input");
+            let interim = "";
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+                if (event.results[i].isFinal) {
+                    finalTranscript += event.results[i][0].transcript + " ";
+                } else {
+                    interim += event.results[i][0].transcript;
+                }
+            }
+            textarea.value = finalTranscript + interim;
+        };
+
+        recognition.onerror = (event) => {
+            if (event.error !== "aborted") {
+                alert("Mic error: " + event.error);
+            }
+            stopRecording();
+        };
+
+        recognition.onend = () => {
+            if (isRecording) {
+                // Auto-restart if still in recording mode (browser may stop after silence)
+                recognition.start();
+            }
+        };
+
+        micBtn.addEventListener("click", () => {
+            if (isRecording) {
+                stopRecording();
+            } else {
+                startRecording();
+            }
+        });
+
+        function startRecording() {
+            const textarea = document.getElementById("feynman-input");
+            finalTranscript = textarea.value ? textarea.value + " " : "";
+            isRecording = true;
+            micBtn.classList.add("recording");
+            micBtn.title = "Stop recording";
+            recognition.start();
+        }
+
+        function stopRecording() {
+            isRecording = false;
+            micBtn.classList.remove("recording");
+            micBtn.title = "Voice input";
+            try { recognition.stop(); } catch(e) {}
+        }
+    } else if (micBtn) {
+        micBtn.addEventListener("click", () => {
+            alert("Voice input is not supported in your browser. Please use Chrome or Edge.");
+        });
+    }
 });
