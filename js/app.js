@@ -471,6 +471,126 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ============================================================
+    // PROGRESS TRACKER
+    // ============================================================
+    const progressSubject = p.includes("life-sciences") ? "ls" : p.includes("it") ? "it" : "geo";
+    const progressKey = "progress-" + progressSubject;
+    let progressData = loadFromStorage(progressKey, {
+        notesRead: {},     // sectionId -> true
+        quizBest: null,    // percentage 0-100
+        feynmanDone: {}    // topicTitle -> true
+    });
+
+    function saveProgress() {
+        localStorage.setItem(progressKey, JSON.stringify(progressData));
+        updateProgressDashboard();
+    }
+
+    // Track notes: mark section as read after 3 seconds of viewing
+    const allContentSections = document.querySelectorAll(".content-section");
+    const totalSections = allContentSections.length;
+    let sectionTimer = null;
+
+    function onSectionVisible() {
+        clearTimeout(sectionTimer);
+        const active = document.querySelector(".content-section.active");
+        if (!active) return;
+        sectionTimer = setTimeout(() => {
+            if (!progressData.notesRead[active.id]) {
+                progressData.notesRead[active.id] = true;
+                saveProgress();
+            }
+        }, 3000);
+    }
+
+    // Hook into section-jump clicks
+    document.querySelectorAll(".section-jump").forEach(btn => {
+        btn.addEventListener("click", onSectionVisible);
+    });
+    // Hook into nav clicks (when entering a unit view)
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+        btn.addEventListener("click", () => setTimeout(onSectionVisible, 100));
+    });
+    // Initial check
+    setTimeout(onSectionVisible, 100);
+
+    // Track quiz: save best score after quiz ends
+    const origShowQuizResults = showQuizResults;
+    showQuizResults = function() {
+        origShowQuizResults();
+        const pct = Math.round((quizScore / quizCurrent.length) * 100);
+        if (progressData.quizBest === null || pct > progressData.quizBest) {
+            progressData.quizBest = pct;
+            saveProgress();
+        }
+    };
+
+    // Track Feynman: mark topic when "Check Against Key Points" is clicked
+    document.getElementById("feynman-check").addEventListener("click", () => {
+        if (currentFeynmanTopic) {
+            progressData.feynmanDone[currentFeynmanTopic.title] = true;
+            saveProgress();
+        }
+    });
+
+    // Dashboard rendering
+    function updateProgressDashboard() {
+        const dashboard = document.getElementById("progress-dashboard");
+        if (!dashboard) return;
+
+        // Notes
+        const notesRead = Object.keys(progressData.notesRead).length;
+        const notesTotal = totalSections;
+        const notesPct = notesTotal > 0 ? (notesRead / notesTotal) * 100 : 0;
+        document.getElementById("prog-notes-val").textContent = `${notesRead} / ${notesTotal}`;
+        document.getElementById("prog-notes-fill").style.width = notesPct + "%";
+
+        // Flashcards (read from existing confidence storage)
+        const fcData = loadFromStorage(storageKey, {});
+        const fcMastered = Object.values(fcData).filter(v => v === "easy").length;
+        const fcTotal = typeof flashcards !== "undefined" ? flashcards.length : 0;
+        const fcPct = fcTotal > 0 ? (fcMastered / fcTotal) * 100 : 0;
+        document.getElementById("prog-fc-val").textContent = `${fcMastered} / ${fcTotal}`;
+        document.getElementById("prog-fc-fill").style.width = fcPct + "%";
+
+        // Quiz
+        const quizPct = progressData.quizBest !== null ? progressData.quizBest : 0;
+        document.getElementById("prog-quiz-val").textContent = progressData.quizBest !== null ? progressData.quizBest + "%" : "—";
+        document.getElementById("prog-quiz-fill").style.width = quizPct + "%";
+
+        // Feynman
+        const feynmanDone = Object.keys(progressData.feynmanDone).length;
+        const feynmanTotal = typeof feynmanTopics !== "undefined" ? feynmanTopics.length : 0;
+        const feynmanPct = feynmanTotal > 0 ? (feynmanDone / feynmanTotal) * 100 : 0;
+        document.getElementById("prog-feynman-val").textContent = `${feynmanDone} / ${feynmanTotal}`;
+        document.getElementById("prog-feynman-fill").style.width = feynmanPct + "%";
+
+        // Overall (weighted: notes 30%, flashcards 25%, quiz 25%, feynman 20%)
+        const overall = (notesPct * 0.3) + (fcPct * 0.25) + (quizPct * 0.25) + (feynmanPct * 0.2);
+        const overallRound = Math.round(overall);
+
+        document.getElementById("progress-overall-pct").textContent = overallRound + "%";
+
+        // Update circular progress ring
+        const ring = document.getElementById("progress-ring-fill");
+        const circumference = 2 * Math.PI * 52; // r=52
+        ring.style.strokeDasharray = circumference;
+        ring.style.strokeDashoffset = circumference - (circumference * overall / 100);
+
+        // Motivational message
+        const msgEl = document.getElementById("progress-overall-msg");
+        if (overall === 0) msgEl.textContent = "Start studying to track your progress!";
+        else if (overall < 25) msgEl.textContent = "You're getting started — keep going!";
+        else if (overall < 50) msgEl.textContent = "Good progress! Keep pushing.";
+        else if (overall < 75) msgEl.textContent = "Over halfway there — strong work!";
+        else if (overall < 100) msgEl.textContent = "Almost there — finish strong!";
+        else msgEl.textContent = "🎉 You've completed everything!";
+    }
+
+    // Initial render
+    updateProgressDashboard();
+
+    // ============================================================
     // READ ALOUD (ElevenLabs audio + browser TTS fallback)
     // With Spotify-style floating player bar
     // ============================================================

@@ -30,6 +30,57 @@
                 <h2>Welcome, Thomas</h2>
                 <p>Your study hub for <strong>Climate and Weather</strong> &mdash; covering Mid-Latitude Cyclones and Tropical Cyclones for NSC Paper 1.</p>
             </div>
+            <!-- Progress Dashboard -->
+            <div id="progress-dashboard" class="progress-dashboard">
+                <div class="progress-overall">
+                    <div class="progress-ring-wrap">
+                        <svg class="progress-ring" viewBox="0 0 120 120">
+                            <circle class="progress-ring-bg" cx="60" cy="60" r="52" />
+                            <circle class="progress-ring-fill" id="progress-ring-fill" cx="60" cy="60" r="52" />
+                        </svg>
+                        <span class="progress-ring-text" id="progress-overall-pct">0%</span>
+                    </div>
+                    <div class="progress-overall-label">
+                        <h3>Your Progress</h3>
+                        <p id="progress-overall-msg">Start studying to track your progress!</p>
+                    </div>
+                </div>
+                <div class="progress-categories">
+                    <div class="progress-cat">
+                        <div class="progress-cat-header">
+                            <span class="progress-cat-icon">📖</span>
+                            <span class="progress-cat-label">Notes Read</span>
+                            <span class="progress-cat-value" id="prog-notes-val">0 / 0</span>
+                        </div>
+                        <div class="progress-cat-bar"><div class="progress-cat-fill" id="prog-notes-fill"></div></div>
+                    </div>
+                    <div class="progress-cat">
+                        <div class="progress-cat-header">
+                            <span class="progress-cat-icon">🃏</span>
+                            <span class="progress-cat-label">Flashcards Mastered</span>
+                            <span class="progress-cat-value" id="prog-fc-val">0 / 0</span>
+                        </div>
+                        <div class="progress-cat-bar"><div class="progress-cat-fill" id="prog-fc-fill"></div></div>
+                    </div>
+                    <div class="progress-cat">
+                        <div class="progress-cat-header">
+                            <span class="progress-cat-icon">✍️</span>
+                            <span class="progress-cat-label">Quiz Best Score</span>
+                            <span class="progress-cat-value" id="prog-quiz-val">—</span>
+                        </div>
+                        <div class="progress-cat-bar"><div class="progress-cat-fill" id="prog-quiz-fill"></div></div>
+                    </div>
+                    <div class="progress-cat">
+                        <div class="progress-cat-header">
+                            <span class="progress-cat-icon">🧠</span>
+                            <span class="progress-cat-label">Feynman Topics</span>
+                            <span class="progress-cat-value" id="prog-feynman-val">0 / 0</span>
+                        </div>
+                        <div class="progress-cat-bar"><div class="progress-cat-fill" id="prog-feynman-fill"></div></div>
+                    </div>
+                </div>
+            </div>
+
             <div class="study-modes">
                 <div class="mode-card" data-target="unit1">
                     <div class="mode-icon">&#127786;</div>
