@@ -478,8 +478,58 @@ document.addEventListener("DOMContentLoaded", () => {
     let progressData = loadFromStorage(progressKey, {
         notesRead: {},     // sectionId -> true
         quizBest: null,    // percentage 0-100
-        feynmanDone: {}    // topicTitle -> true
+        feynmanDone: {},   // topicTitle -> true
+        quizAttempts: 0,   // total quizzes taken
+        sessions: [],      // array of date strings "YYYY-MM-DD"
+        totalSeconds: 0    // cumulative study time in seconds
     });
+
+    // Ensure new fields exist for old data
+    if (!progressData.quizAttempts) progressData.quizAttempts = 0;
+    if (!progressData.sessions) progressData.sessions = [];
+    if (!progressData.totalSeconds) progressData.totalSeconds = 0;
+
+    // Record today's session
+    const today = new Date().toISOString().slice(0, 10);
+    if (!progressData.sessions.includes(today)) {
+        progressData.sessions.push(today);
+    }
+
+    // Track study time: tick every 30 seconds while page is visible
+    let timeTracker = setInterval(() => {
+        if (!document.hidden) {
+            progressData.totalSeconds += 30;
+            localStorage.setItem(progressKey, JSON.stringify(progressData));
+        }
+    }, 30000);
+
+    // Calculate streak
+    function calcStreak(sessions) {
+        if (!sessions.length) return 0;
+        const sorted = [...new Set(sessions)].sort().reverse();
+        // Check if today or yesterday is in the list (streak must be current)
+        const now = new Date();
+        const todayStr = now.toISOString().slice(0, 10);
+        const yesterday = new Date(now - 86400000).toISOString().slice(0, 10);
+        if (sorted[0] !== todayStr && sorted[0] !== yesterday) return 0;
+
+        let streak = 1;
+        for (let i = 0; i < sorted.length - 1; i++) {
+            const curr = new Date(sorted[i]);
+            const prev = new Date(sorted[i + 1]);
+            const diff = (curr - prev) / 86400000;
+            if (diff === 1) streak++;
+            else break;
+        }
+        return streak;
+    }
+
+    function formatTime(totalSec) {
+        const hrs = Math.floor(totalSec / 3600);
+        const mins = Math.floor((totalSec % 3600) / 60);
+        if (hrs > 0) return `${hrs}h ${mins}m`;
+        return `${mins}m`;
+    }
 
     function saveProgress() {
         localStorage.setItem(progressKey, JSON.stringify(progressData));
@@ -519,10 +569,11 @@ document.addEventListener("DOMContentLoaded", () => {
     showQuizResults = function() {
         origShowQuizResults();
         const pct = Math.round((quizScore / quizCurrent.length) * 100);
+        progressData.quizAttempts = (progressData.quizAttempts || 0) + 1;
         if (progressData.quizBest === null || pct > progressData.quizBest) {
             progressData.quizBest = pct;
-            saveProgress();
         }
+        saveProgress();
     };
 
     // Track Feynman: mark topic when "Check Against Key Points" is clicked
@@ -585,10 +636,23 @@ document.addEventListener("DOMContentLoaded", () => {
         else if (overall < 75) msgEl.textContent = "Over halfway there — strong work!";
         else if (overall < 100) msgEl.textContent = "Almost there — finish strong!";
         else msgEl.textContent = "🎉 You've completed everything!";
+
+        // Stats
+        const streakEl = document.getElementById("stat-streak");
+        const timeEl = document.getElementById("stat-time");
+        const sessionsEl = document.getElementById("stat-sessions");
+        const quizzesEl = document.getElementById("stat-quizzes");
+
+        if (streakEl) streakEl.textContent = calcStreak(progressData.sessions || []);
+        if (timeEl) timeEl.textContent = formatTime(progressData.totalSeconds || 0);
+        if (sessionsEl) sessionsEl.textContent = (progressData.sessions || []).length;
+        if (quizzesEl) quizzesEl.textContent = progressData.quizAttempts || 0;
     }
 
     // Initial render
     updateProgressDashboard();
+    // Update stats display every 30s to keep time current
+    setInterval(updateProgressDashboard, 30000);
 
     // ============================================================
     // READ ALOUD (ElevenLabs audio + browser TTS fallback)

@@ -1004,6 +1004,43 @@ td { background: var(--bg-card); }
     transition: width 0.5s ease;
 }
 
+.progress-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.stat-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text, #fff);
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: var(--text-muted, #888);
+    text-align: center;
+}
+
+@media (max-width: 400px) {
+    .progress-stats {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+    .stat-item {
+        flex-basis: 40%;
+    }
+}
+
 .progress-cat:nth-child(1) .progress-cat-fill { background: #00b894; }
 .progress-cat:nth-child(2) .progress-cat-fill { background: #fdcb6e; }
 .progress-cat:nth-child(3) .progress-cat-fill { background: #e17055; }
