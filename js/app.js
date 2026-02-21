@@ -471,19 +471,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ============================================================
-    // READ ALOUD (SpeechSynthesis)
+    // READ ALOUD (ElevenLabs audio + browser TTS fallback)
     // ============================================================
     const synth = window.speechSynthesis;
-    let ttsSource = null; // the element (section or view) currently being read
+    let ttsSource = null;
     let ttsActiveBtn = null;
+    let ttsAudio = null; // HTML Audio element for pre-generated files
     let ttsChunks = [];
     let ttsIndex = 0;
     let bestVoice = null;
+    let audioManifest = null;
+    let ttsQueue = []; // for "Read All" — queue of section ids
 
-    // Pick the most natural-sounding voice available
+    // Load the audio manifest
+    fetch("audio/manifest.json")
+        .then(r => r.ok ? r.json() : {})
+        .then(m => { audioManifest = m; })
+        .catch(() => { audioManifest = {}; });
+
+    // Pick best browser voice as fallback
     function pickVoice() {
         const voices = synth.getVoices();
-        // Preference order: natural/premium voices first
         const prefs = [
             v => /natural/i.test(v.name),
             v => /google.*uk.*female/i.test(v.name),
@@ -491,21 +499,15 @@ document.addEventListener("DOMContentLoaded", () => {
             v => /google.*uk/i.test(v.name),
             v => /google.*us/i.test(v.name),
             v => /samantha/i.test(v.name),
-            v => /karen/i.test(v.name),
-            v => /daniel/i.test(v.name),
-            v => /microsoft.*zira/i.test(v.name),
             v => /microsoft.*aria/i.test(v.name),
-            v => v.lang.startsWith("en") && /female/i.test(v.name),
             v => v.lang.startsWith("en"),
         ];
         for (const test of prefs) {
             const match = voices.find(test);
             if (match) return match;
         }
-        return voices.find(v => v.lang.startsWith("en")) || voices[0] || null;
+        return voices[0] || null;
     }
-
-    // Load voices (they load async in some browsers)
     synth.onvoiceschanged = () => { bestVoice = pickVoice(); };
     bestVoice = pickVoice();
 
@@ -524,9 +526,9 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", (e) => {
             e.stopPropagation();
             const section = h3.closest(".content-section");
-            if (synth.speaking && ttsSource === section) { stopTTS(); return; }
-            if (synth.speaking) stopTTS();
-            startTTS(section, btn);
+            if (ttsSource === section) { stopTTS(); return; }
+            stopTTS();
+            playSection(section, btn);
         });
     });
 
@@ -542,54 +544,99 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", (e) => {
             e.stopPropagation();
             const view = header.closest(".view");
-            if (synth.speaking && ttsSource === view) { stopTTS(); return; }
-            if (synth.speaking) stopTTS();
-            // Gather text from ALL content-sections in this view
-            startTTS(view, btn);
+            if (ttsSource === view) { stopTTS(); return; }
+            stopTTS();
+            playAllSections(view, btn);
         });
     });
+
+    function playSection(section, btn) {
+        const sectionId = section.id;
+        ttsSource = section;
+        ttsActiveBtn = btn;
+        btn.classList.add("tts-active");
+
+        // Try ElevenLabs audio first
+        if (audioManifest && audioManifest[sectionId]) {
+            playAudioFile("audio/" + audioManifest[sectionId], () => finishTTS());
+        } else {
+            // Fallback to browser TTS
+            speakWithBrowserTTS(section);
+        }
+    }
+
+    function playAllSections(view, btn) {
+        const sections = view.querySelectorAll(".content-section");
+        ttsQueue = [];
+        sections.forEach(s => ttsQueue.push(s.id));
+        ttsSource = view;
+        ttsActiveBtn = btn;
+        btn.classList.add("tts-active");
+        playNextInQueue();
+    }
+
+    function playNextInQueue() {
+        if (!ttsQueue.length || !ttsSource) { finishTTS(); return; }
+        const sectionId = ttsQueue.shift();
+
+        if (audioManifest && audioManifest[sectionId]) {
+            playAudioFile("audio/" + audioManifest[sectionId], () => playNextInQueue());
+        } else {
+            // Fallback: browser TTS for this section, then continue queue
+            const section = document.getElementById(sectionId);
+            if (section) {
+                speakWithBrowserTTS(section, () => playNextInQueue());
+            } else {
+                playNextInQueue();
+            }
+        }
+    }
+
+    function playAudioFile(src, onEnd) {
+        ttsAudio = new Audio(src);
+        ttsAudio.onended = onEnd;
+        ttsAudio.onerror = () => {
+            console.warn("Audio file failed, falling back to browser TTS");
+            // Try browser fallback
+            if (ttsSource && ttsSource.classList && ttsSource.classList.contains("content-section")) {
+                speakWithBrowserTTS(ttsSource);
+            } else if (onEnd) {
+                onEnd();
+            }
+        };
+        ttsAudio.play();
+    }
+
+    function speakWithBrowserTTS(section, onDone) {
+        const text = extractText(section);
+        if (!text) { if (onDone) onDone(); return; }
+
+        ttsChunks = splitText(text, 180);
+        ttsIndex = 0;
+
+        function speakNext() {
+            if (ttsIndex >= ttsChunks.length || !ttsSource) {
+                if (onDone) onDone(); else finishTTS();
+                return;
+            }
+            const utter = new SpeechSynthesisUtterance(ttsChunks[ttsIndex]);
+            if (bestVoice) utter.voice = bestVoice;
+            utter.lang = "en-GB";
+            utter.rate = 0.92;
+            utter.pitch = 1.05;
+            utter.onend = () => { ttsIndex++; speakNext(); };
+            utter.onerror = () => { if (onDone) onDone(); else finishTTS(); };
+            synth.speak(utter);
+        }
+        speakNext();
+    }
 
     function extractText(el) {
         const clone = el.cloneNode(true);
         clone.querySelectorAll("script, button, svg, .tts-btn, .unit-header, .progress-tracker").forEach(n => n.remove());
-        // Add pauses between sections by inserting periods
-        clone.querySelectorAll("h3, h4").forEach(h => {
-            h.textContent = ". " + h.textContent + ". ";
-        });
-        clone.querySelectorAll("li").forEach(li => {
-            li.textContent = li.textContent + ". ";
-        });
+        clone.querySelectorAll("h3, h4").forEach(h => { h.textContent = ". " + h.textContent + ". "; });
+        clone.querySelectorAll("li").forEach(li => { li.textContent = li.textContent + ". "; });
         return clone.textContent.replace(/\s+/g, " ").replace(/\.{2,}/g, ".").trim();
-    }
-
-    function startTTS(source, btn) {
-        if (!synth) { alert("Text-to-speech not supported in your browser."); return; }
-
-        const text = extractText(source);
-        if (!text) return;
-
-        ttsChunks = splitText(text, 180);
-        ttsIndex = 0;
-        ttsSource = source;
-        ttsActiveBtn = btn;
-        btn.classList.add("tts-active");
-
-        speakNext();
-    }
-
-    function speakNext() {
-        if (ttsIndex >= ttsChunks.length || !ttsSource) {
-            finishTTS();
-            return;
-        }
-        const utter = new SpeechSynthesisUtterance(ttsChunks[ttsIndex]);
-        if (bestVoice) utter.voice = bestVoice;
-        utter.lang = "en-GB";
-        utter.rate = 0.92;
-        utter.pitch = 1.05;
-        utter.onend = () => { ttsIndex++; speakNext(); };
-        utter.onerror = () => finishTTS();
-        synth.speak(utter);
     }
 
     function splitText(text, maxLen) {
@@ -612,11 +659,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (ttsActiveBtn) ttsActiveBtn.classList.remove("tts-active");
         ttsSource = null;
         ttsActiveBtn = null;
+        ttsAudio = null;
         ttsChunks = [];
         ttsIndex = 0;
+        ttsQueue = [];
     }
 
     function stopTTS() {
+        if (ttsAudio) { ttsAudio.pause(); ttsAudio.currentTime = 0; }
         synth.cancel();
         finishTTS();
     }
