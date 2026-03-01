@@ -52,6 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (itemDate < today) return false;
             }
             if (activeSubject !== "all" && item.subject !== activeSubject) return false;
+            // Global subject filter: hide disabled subjects
+            const enabledSubjects = getEnabledSubjects();
+            const subjectMap = {"cat":"it","math-lit":"maths"};
+            const mapped = subjectMap[item.subject] || item.subject;
+            if (!enabledSubjects.includes(mapped)) return false;
             if (activeTerm !== "all" && item.term !== parseInt(activeTerm)) return false;
             if (activeType !== "all" && item.type !== activeType) return false;
             return true;
@@ -152,14 +157,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const SUBJECT_STORAGE_KEY = "enabled-subjects";
 
     function getEnabledSubjects() {
-        try {
-            const val = localStorage.getItem(SUBJECT_STORAGE_KEY);
-            return val ? JSON.parse(val) : ALL_SUBJECTS.map(s => s.id);
-        } catch { return ALL_SUBJECTS.map(s => s.id); }
+        return SubjectFilter.getEnabledSubjects();
     }
 
     function saveEnabledSubjects(enabled) {
-        localStorage.setItem(SUBJECT_STORAGE_KEY, JSON.stringify(enabled));
+        SubjectFilter.saveEnabledSubjects(enabled);
     }
 
     function applySubjectFilter() {
@@ -210,3 +212,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     applySubjectFilter();
 });
+
+
