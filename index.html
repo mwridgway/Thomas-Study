@@ -35,8 +35,25 @@
                 <h2 id="theme-welcome">Welcome back, Chuck</h2>
                 <p id="theme-welcome-sub">Time to flash on some knowledge. Pick a mission below &mdash; each one's loaded with intel, flashcards, quizzes, and Feynman debrief mode.</p>
             </div>
+            <div class="subject-manage-wrap">
+                <button class="manage-subjects-btn" id="manage-subjects-btn">⚙️ Manage Subjects</button>
+            </div>
+
+            <!-- Subject Filter Modal -->
+            <div class="subject-modal-overlay hidden" id="subject-modal-overlay">
+                <div class="subject-modal">
+                    <h3>📋 Manage Subjects</h3>
+                    <p class="modal-desc">Toggle which subjects appear on your dashboard.</p>
+                    <div class="subject-checklist" id="subject-checklist"></div>
+                    <div class="modal-actions">
+                        <button class="primary-btn" id="subject-modal-save">Save</button>
+                        <button class="secondary-btn" id="subject-modal-cancel">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
             <div class="subject-grid">
-                <a href="geography.html" class="subject-card subject-geo">
+                <a href="geography.html" class="subject-card subject-geo" data-subject="geography">
                     <div class="subject-icon">&#127758;</div>
                     <div class="subject-info">
                         <h3>Geography</h3>
@@ -49,7 +66,7 @@
                     </div>
                     <span class="subject-arrow">&rarr;</span>
                 </a>
-                <a href="life-sciences.html" class="subject-card subject-bio">
+                <a href="life-sciences.html" class="subject-card subject-bio" data-subject="life-sciences">
                     <div class="subject-icon">&#129516;</div>
                     <div class="subject-info">
                         <h3>Life Sciences</h3>
@@ -63,7 +80,7 @@
                     </div>
                     <span class="subject-arrow">&rarr;</span>
                 </a>
-                <a href="maths.html" class="subject-card subject-math">
+                <a href="maths.html" class="subject-card subject-math" data-subject="maths">
                     <div class="subject-icon">&#128202;</div>
                     <div class="subject-info">
                         <h3>Mathematics</h3>
@@ -77,7 +94,7 @@
                     </div>
                     <span class="subject-arrow">&rarr;</span>
                 </a>
-                <a href="it.html" class="subject-card subject-it">
+                <a href="it.html" class="subject-card subject-it" data-subject="it">
                     <div class="subject-icon">&#128187;</div>
                     <div class="subject-info">
                         <h3>CAT (Computer Applications Technology)</h3>

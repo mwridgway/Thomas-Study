@@ -28,15 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let activeTerm = "all";
     let activeType = "all";
 
-    // Subject display config
     const subjectConfig = {
-        "life-sciences": { label: "Life Sciences", tag: "tag-bio", icon: "🧬" },
-        "cat":           { label: "CAT", tag: "tag-cat", icon: "💻" },
-        "math-lit":      { label: "Math Literacy", tag: "tag-math", icon: "🔢" },
-        "afrikaans":     { label: "Afrikaans", tag: "tag-afr", icon: "📝" },
-        "english":       { label: "English HL", tag: "tag-eng", icon: "📖" },
-        "geography":     { label: "Geography", tag: "tag-geo", icon: "🌍" },
-        "lo":            { label: "Life Orientation", tag: "tag-lo", icon: "🧭" }
+        "life-sciences": { label: "Life Sciences", tag: "tag-bio", icon: "\u{1F9EC}" },
+        "cat":           { label: "CAT", tag: "tag-cat", icon: "\u{1F4BB}" },
+        "math-lit":      { label: "Math Literacy", tag: "tag-math", icon: "\u{1F522}" },
+        "afrikaans":     { label: "Afrikaans", tag: "tag-afr", icon: "\u{1F4DD}" },
+        "english":       { label: "English HL", tag: "tag-eng", icon: "\u{1F4D6}" },
+        "geography":     { label: "Geography", tag: "tag-geo", icon: "\u{1F30D}" },
+        "lo":            { label: "Life Orientation", tag: "tag-lo", icon: "\u{1F9ED}" }
     };
 
     function getToday() {
@@ -47,9 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderSchedule() {
         const today = getToday();
-
         const filtered = scheduleData.filter(item => {
-            // Dynamic: only show today or future
             if (item.sortDate) {
                 const itemDate = new Date(item.sortDate + "T00:00:00");
                 if (itemDate < today) return false;
@@ -60,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return true;
         });
 
-        // Sort by date
         filtered.sort((a, b) => {
             if (a.sortDate && b.sortDate) return a.sortDate.localeCompare(b.sortDate);
             if (a.sortDate) return -1;
@@ -72,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Group by term
         const grouped = {};
         filtered.forEach(item => {
             if (!grouped[item.term]) grouped[item.term] = [];
@@ -81,29 +76,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let html = "";
         Object.keys(grouped).sort((a, b) => a - b).forEach(term => {
-            html += `<div class="schedule-term">
-                <h3 class="term-heading">Term ${term}</h3>
-                <div class="schedule-items">`;
-
+            html += `<div class="schedule-term"><h3 class="term-heading">Term ${term}</h3><div class="schedule-items">`;
             grouped[term].forEach(item => {
                 const isAssessment = item.type === "assessment";
-                const hasLink = item.link && item.topic;
-                const config = subjectConfig[item.subject] || { label: item.subject, tag: "tag-default", icon: "📚" };
-
-                // Calculate days until
+                const config = subjectConfig[item.subject] || { label: item.subject, tag: "tag-default", icon: "\u{1F4DA}" };
                 let daysTag = "";
                 if (item.sortDate) {
                     const itemDate = new Date(item.sortDate + "T00:00:00");
                     const diffDays = Math.round((itemDate - today) / (1000 * 60 * 60 * 24));
-                    if (diffDays === 0) {
-                        daysTag = '<span class="sched-tag tag-today">TODAY</span>';
-                    } else if (diffDays === 1) {
-                        daysTag = '<span class="sched-tag tag-tomorrow">TOMORROW</span>';
-                    } else if (diffDays <= 7) {
-                        daysTag = `<span class="sched-tag tag-soon">${diffDays} days</span>`;
-                    }
+                    if (diffDays === 0) daysTag = '<span class="sched-tag tag-today">TODAY</span>';
+                    else if (diffDays === 1) daysTag = '<span class="sched-tag tag-tomorrow">TOMORROW</span>';
+                    else if (diffDays <= 7) daysTag = `<span class="sched-tag tag-soon">${diffDays} days</span>`;
                 }
-
                 html += `<div class="schedule-item ${isAssessment ? "schedule-assessment" : ""}">
                     <div class="schedule-date">${item.dates}</div>
                     <div class="schedule-content-wrap">
@@ -118,14 +102,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>`;
             });
-
             html += `</div></div>`;
         });
-
         container.innerHTML = html;
     }
 
-    // Filter handlers
     document.querySelectorAll("[data-schedfilter]").forEach(btn => {
         btn.addEventListener("click", () => {
             btn.closest(".filter-buttons").querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
@@ -154,4 +135,78 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     renderSchedule();
+
+    // ============================================================
+    // SUBJECT FILTER (Manage Subjects)
+    // ============================================================
+    const ALL_SUBJECTS = [
+        { id: "geography", label: "\u{1F30D} Geography" },
+        { id: "life-sciences", label: "\u{1F9EC} Life Sciences" },
+        { id: "it", label: "\u{1F4BB} IT / CAT" },
+        { id: "maths", label: "\u{1F4CA} Mathematics" },
+        { id: "afrikaans", label: "\u{1F4DD} Afrikaans" },
+        { id: "english", label: "\u{1F4D6} English" },
+        { id: "lo", label: "\u{1F9ED} Life Orientation" }
+    ];
+
+    const SUBJECT_STORAGE_KEY = "enabled-subjects";
+
+    function getEnabledSubjects() {
+        try {
+            const val = localStorage.getItem(SUBJECT_STORAGE_KEY);
+            return val ? JSON.parse(val) : ALL_SUBJECTS.map(s => s.id);
+        } catch { return ALL_SUBJECTS.map(s => s.id); }
+    }
+
+    function saveEnabledSubjects(enabled) {
+        localStorage.setItem(SUBJECT_STORAGE_KEY, JSON.stringify(enabled));
+    }
+
+    function applySubjectFilter() {
+        const enabled = getEnabledSubjects();
+        document.querySelectorAll(".subject-card[data-subject]").forEach(card => {
+            card.classList.toggle("subject-hidden", !enabled.includes(card.dataset.subject));
+        });
+    }
+
+    const modalOverlay = document.getElementById("subject-modal-overlay");
+    const checklist = document.getElementById("subject-checklist");
+    const manageBtn = document.getElementById("manage-subjects-btn");
+
+    if (manageBtn && modalOverlay && checklist) {
+        manageBtn.addEventListener("click", () => {
+            const enabled = getEnabledSubjects();
+            checklist.innerHTML = "";
+            ALL_SUBJECTS.forEach(subj => {
+                const item = document.createElement("div");
+                item.className = "subject-check-item";
+                const checked = enabled.includes(subj.id) ? "checked" : "";
+                item.innerHTML = `<input type="checkbox" id="chk-${subj.id}" value="${subj.id}" ${checked}><label for="chk-${subj.id}">${subj.label}</label>`;
+                item.addEventListener("click", (e) => {
+                    if (e.target.tagName !== "INPUT") {
+                        item.querySelector("input").checked = !item.querySelector("input").checked;
+                    }
+                });
+                checklist.appendChild(item);
+            });
+            modalOverlay.classList.remove("hidden");
+        });
+
+        document.getElementById("subject-modal-save").addEventListener("click", () => {
+            const checked = [...checklist.querySelectorAll("input:checked")].map(cb => cb.value);
+            saveEnabledSubjects(checked);
+            applySubjectFilter();
+            modalOverlay.classList.add("hidden");
+        });
+
+        document.getElementById("subject-modal-cancel").addEventListener("click", () => {
+            modalOverlay.classList.add("hidden");
+        });
+
+        modalOverlay.addEventListener("click", (e) => {
+            if (e.target === modalOverlay) modalOverlay.classList.add("hidden");
+        });
+    }
+
+    applySubjectFilter();
 });

@@ -2278,3 +2278,126 @@ body::after {
     max-width: 1100px;
     margin: 0 auto;
 }
+
+/* ============================================================
+   SUBJECT FILTER / MANAGE SUBJECTS
+   ============================================================ */
+.subject-manage-wrap {
+    text-align: right;
+    margin-bottom: 0.75rem;
+}
+
+.manage-subjects-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 0.4rem 1rem;
+    font-size: 0.82rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font);
+}
+
+.manage-subjects-btn:hover {
+    border-color: var(--accent-dim);
+    color: var(--text);
+}
+
+/* Modal overlay */
+.subject-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+}
+
+.subject-modal-overlay.hidden {
+    display: none !important;
+}
+
+.subject-modal {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    max-width: 420px;
+    width: 90%;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.subject-modal h3 {
+    color: var(--accent-light);
+    margin-bottom: 0.3rem;
+    font-size: 1.1rem;
+}
+
+.modal-desc {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
+}
+
+.subject-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.subject-check-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-section);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.subject-check-item:hover {
+    background: var(--bg-card-hover);
+}
+
+.subject-check-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.subject-check-item label {
+    cursor: pointer;
+    font-size: 0.92rem;
+    color: var(--text);
+    flex: 1;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+
+.modal-actions .primary-btn {
+    padding: 0.5rem 1.5rem;
+    min-width: auto;
+    width: auto;
+}
+
+.modal-actions .secondary-btn {
+    padding: 0.5rem 1.25rem;
+}
+
+/* Hidden subject card */
+.subject-card.subject-hidden {
+    display: none;
+}
