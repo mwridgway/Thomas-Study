@@ -11,14 +11,13 @@
         <div class="header-content">
             <a href="index.html" class="back-link">&larr; Dashboard</a>
             <h1>Life Sciences Study Hub</h1>
-            <p class="subtitle">Grade 12 NSC &mdash; DNA, RNA, Meiosis &amp; Plant Hormones</p>
+            <p class="subtitle">Grade 12 NSC &mdash; DNA, RNA &amp; Meiosis</p>
         </div>
         <nav id="main-nav">
             <button class="nav-btn active" data-view="home">Home</button>
             <button class="nav-btn" data-view="unit1">DNA Structure &amp; Replication</button>
             <button class="nav-btn" data-view="unit2">DNA Profiles &amp; RNA</button>
             <button class="nav-btn" data-view="unit3">Meiosis</button>
-            <button class="nav-btn" data-view="unit4">Plant Hormones</button>
             <button class="nav-btn" data-view="flashcards">Flashcards</button>
             <button class="nav-btn" data-view="quiz">Quiz</button>
             <button class="nav-btn" data-view="feynman">Feynman Mode</button>
@@ -29,8 +28,8 @@
         <!-- HOME VIEW -->
         <section id="view-home" class="view active">
             <div class="hero">
-                <h2>DNA, RNA, Meiosis &amp; Plant Hormones</h2>
-                <p>Revision hub for <strong>DNA, RNA, Meiosis, and Plant Hormones</strong> &mdash; DNA is worth <strong>18% (27 marks)</strong> and Meiosis <strong>14% (21 marks)</strong> of Paper 1. Plant Hormones is a key topic for your <strong>Practical 1 (30 marks)</strong>.</p>
+                <h2>DNA, RNA &amp; Meiosis</h2>
+                <p>Revision hub for <strong>DNA, RNA, and Meiosis</strong> &mdash; DNA is worth <strong>18% (27 marks)</strong> and Meiosis <strong>14% (21 marks)</strong> of your Life Sciences Paper 1. Together = <strong>32% of Paper 1</strong>.</p>
             </div>
             <!-- Progress Dashboard -->
             <div id="progress-dashboard" class="progress-dashboard">
@@ -116,11 +115,6 @@
                     <div class="mode-icon">🧫</div>
                     <h3>Meiosis</h3>
                     <p>Cell division for gametes. Phases, crossing over, independent assortment, non-disjunction, and mitosis vs meiosis.</p>
-                </div>
-                <div class="mode-card" data-target="unit4">
-                    <div class="mode-icon">🌱</div>
-                    <h3>Plant Hormones</h3>
-                    <p>Auxins, gibberellins, abscisic acid, cytokinins, ethylene &mdash; experiments, functions, and commercial uses.</p>
                 </div>
                 <div class="mode-card" data-target="flashcards">
                     <div class="mode-icon">&#128218;</div>
@@ -632,221 +626,6 @@
             </div>
         </section>
 
-        <!-- UNIT 4: PLANT HORMONES -->
-        <section id="view-unit4" class="view">
-            <div class="unit-header">
-                <h2>Plant Hormones</h2>
-                <div class="progress-tracker">
-                    <button class="section-jump active" data-section="ph-intro">Introduction</button>
-                    <button class="section-jump" data-section="ph-auxins">Auxins</button>
-                    <button class="section-jump" data-section="ph-gibberellins">Gibberellins</button>
-                    <button class="section-jump" data-section="ph-aba">Abscisic Acid</button>
-                    <button class="section-jump" data-section="ph-cytokinins">Cytokinins</button>
-                    <button class="section-jump" data-section="ph-ethylene">Ethylene</button>
-                    <button class="section-jump" data-section="ph-experiments">Experiments</button>
-                    <button class="section-jump" data-section="ph-commercial">Commercial Uses</button>
-                </div>
-            </div>
-
-            <div id="ph-intro" class="content-section active">
-                <h3>What are Plant Hormones?</h3>
-                <div class="key-concept">
-                    <ul>
-                        <li>Plant hormones (phytohormones) are <strong>chemical substances</strong> produced in small quantities in one part of the plant and transported to another part where they have an effect.</li>
-                        <li>They <strong>regulate plant growth, development, and responses</strong> to environmental stimuli.</li>
-                        <li>Unlike animal hormones, plant hormones are <strong>not produced in specific glands</strong>.</li>
-                        <li>The five main plant hormones: <strong>Auxins, Gibberellins, Abscisic acid, Cytokinins, and Ethylene</strong>.</li>
-                    </ul>
-                    <h4>Key Terms</h4>
-                    <ul>
-                        <li><strong>Tropism:</strong> A directional growth response of a plant towards or away from a stimulus.</li>
-                        <li><strong>Positive tropism:</strong> Growth <strong>towards</strong> the stimulus.</li>
-                        <li><strong>Negative tropism:</strong> Growth <strong>away from</strong> the stimulus.</li>
-                        <li><strong>Phototropism:</strong> Growth response to <strong>light</strong>.</li>
-                        <li><strong>Geotropism (gravitropism):</strong> Growth response to <strong>gravity</strong>.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div id="ph-auxins" class="content-section">
-                <h3>Auxins</h3>
-                <div class="key-concept">
-                    <h4>Production &amp; Transport</h4>
-                    <ul>
-                        <li>Produced in the <strong>apical meristems</strong> (tips of shoots and roots).</li>
-                        <li>Transported <strong>away from the tip</strong> (basipetally &mdash; from top to bottom).</li>
-                        <li>Main natural auxin: <strong>Indole-3-acetic acid (IAA)</strong>.</li>
-                    </ul>
-                    <h4>Functions of Auxins</h4>
-                    <ul>
-                        <li><strong>Cell elongation:</strong> Stimulates elongation of cells in the shoot.</li>
-                        <li><strong>Phototropism:</strong> Auxin moves to the <strong>shaded side</strong> of the shoot, causing cells there to elongate more &rarr; shoot bends <strong>towards light</strong> (positive phototropism).</li>
-                        <li><strong>Geotropism in shoots:</strong> In a horizontal shoot, auxin accumulates on the <strong>lower side</strong>, causing more elongation &rarr; shoot grows <strong>upward</strong> (negative geotropism).</li>
-                        <li><strong>Geotropism in roots:</strong> Auxin accumulates on the <strong>lower side</strong>, but roots are <strong>sensitive to high auxin concentrations</strong> &mdash; growth is <strong>inhibited</strong> on the lower side &rarr; root grows <strong>downward</strong> (positive geotropism).</li>
-                        <li><strong>Apical dominance:</strong> The apical bud produces auxin that <strong>inhibits growth of lateral (side) buds</strong>. Removing the tip removes auxin &rarr; lateral buds grow &rarr; bushier plant.</li>
-                    </ul>
-                    <div class="pressure-info">Key concept: Auxin has <strong>opposite effects</strong> in shoots vs roots at the same concentration. Shoots are stimulated; roots are inhibited.</div>
-                </div>
-            </div>
-
-            <div id="ph-gibberellins" class="content-section">
-                <h3>Gibberellins</h3>
-                <div class="key-concept">
-                    <h4>Production &amp; Functions</h4>
-                    <ul>
-                        <li>Produced in <strong>young leaves, roots, and developing seeds</strong>.</li>
-                        <li><strong>Stem elongation:</strong> Promotes elongation of internodes (the space between nodes on a stem).</li>
-                        <li><strong>Seed germination:</strong> Triggers the production of enzymes that break down stored food in the seed &rarr; provides energy for the growing embryo.</li>
-                        <li><strong>Bolting:</strong> Rapid elongation of the stem before flowering in some plants (e.g., cabbage).</li>
-                        <li><strong>Fruit development:</strong> Can stimulate fruit growth.</li>
-                    </ul>
-                    <h4>Gibberellins vs Auxins</h4>
-                    <ul>
-                        <li>Gibberellins promote <strong>stem elongation</strong> (internode lengthening), while auxins promote <strong>cell elongation</strong> at the tip.</li>
-                        <li>Gibberellins do <strong>not</strong> cause tropisms.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div id="ph-aba" class="content-section">
-                <h3>Abscisic Acid (ABA)</h3>
-                <div class="key-concept">
-                    <h4>Production &amp; Functions</h4>
-                    <ul>
-                        <li>Produced in <strong>mature leaves, stems, and roots</strong>.</li>
-                        <li>Known as the <strong>"stress hormone"</strong> &mdash; helps the plant cope with unfavourable conditions.</li>
-                        <li><strong>Stomatal closure:</strong> Causes guard cells to close stomata during <strong>water stress/drought</strong> &rarr; reduces water loss by transpiration.</li>
-                        <li><strong>Seed dormancy:</strong> Maintains seeds in a dormant state, preventing germination during unfavourable conditions.</li>
-                        <li><strong>Bud dormancy:</strong> Inhibits growth of buds during winter.</li>
-                        <li><strong>Leaf abscission:</strong> Promotes the dropping of leaves in some species.</li>
-                    </ul>
-                    <div class="pressure-info">ABA is an <strong>inhibitory hormone</strong> &mdash; it generally <strong>slows down or stops</strong> growth processes. It opposes the effects of gibberellins and auxins.</div>
-                </div>
-            </div>
-
-            <div id="ph-cytokinins" class="content-section">
-                <h3>Cytokinins</h3>
-                <div class="key-concept">
-                    <h4>Production &amp; Functions</h4>
-                    <ul>
-                        <li>Produced mainly in the <strong>roots</strong> and transported upward in the xylem.</li>
-                        <li><strong>Cell division:</strong> Stimulate <strong>cytokinesis</strong> (cell division), especially in the presence of auxins.</li>
-                        <li><strong>Delay senescence (ageing):</strong> Slow down the ageing and death of leaves and other plant organs &rarr; keep leaves green longer.</li>
-                        <li><strong>Promote lateral bud growth:</strong> Counteract apical dominance by encouraging side branches to grow.</li>
-                        <li><strong>Promote shoot growth in tissue culture:</strong> Used with auxins to control differentiation.</li>
-                    </ul>
-                    <h4>Cytokinins vs Auxins</h4>
-                    <ul>
-                        <li>Auxins promote <strong>apical dominance</strong> (suppress lateral buds); cytokinins <strong>counteract</strong> this by promoting lateral bud growth.</li>
-                        <li>The <strong>ratio of auxin to cytokinin</strong> determines whether roots or shoots develop in tissue culture.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div id="ph-ethylene" class="content-section">
-                <h3>Ethylene</h3>
-                <div class="key-concept">
-                    <h4>Production &amp; Properties</h4>
-                    <ul>
-                        <li>Ethylene is the only plant hormone that is a <strong>gas</strong>.</li>
-                        <li>Produced in <strong>ripening fruits, ageing flowers, and damaged/stressed tissues</strong>.</li>
-                    </ul>
-                    <h4>Functions</h4>
-                    <ul>
-                        <li><strong>Fruit ripening:</strong> Stimulates the ripening process. One ripe fruit produces ethylene that triggers ripening in nearby fruits (chain reaction).</li>
-                        <li><strong>Abscission:</strong> Promotes the <strong>dropping of leaves, flowers, and fruits</strong> (leaf fall in autumn).</li>
-                        <li><strong>Senescence:</strong> Accelerates ageing of plant organs.</li>
-                        <li><strong>Triple response:</strong> In seedlings &mdash; inhibits stem elongation, promotes lateral growth (thickening), and causes horizontal growth.</li>
-                    </ul>
-                    <div class="pressure-info">Practical tip: Placing a ripe banana with unripe avocados speeds up ripening &mdash; the banana releases ethylene gas!</div>
-                </div>
-            </div>
-
-            <div id="ph-experiments" class="content-section">
-                <h3>Classic Plant Hormone Experiments</h3>
-                <div class="stage-card">
-                    <h4>Charles Darwin &amp; Francis Darwin (1880)</h4>
-                    <div class="stage-details">
-                        <ul>
-                            <li>Experimented with <strong>grass coleoptiles</strong> (protective sheath around emerging shoot).</li>
-                            <li>Found that the <strong>tip of the coleoptile</strong> is responsible for detecting light.</li>
-                            <li>When the tip was <strong>removed</strong> &rarr; no bending towards light.</li>
-                            <li>When the tip was <strong>covered with an opaque cap</strong> &rarr; no bending.</li>
-                            <li>When the <strong>base was covered</strong> but the tip exposed &rarr; bending still occurred.</li>
-                            <li><strong>Conclusion:</strong> The tip detects light, and a signal (later identified as auxin) travels from the tip to the elongation zone below to cause bending.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="stage-card">
-                    <h4>Boysen-Jensen (1913)</h4>
-                    <div class="stage-details">
-                        <ul>
-                            <li>Cut the tip off a coleoptile and placed a <strong>gelatin block</strong> between the tip and stump &rarr; bending still occurred.</li>
-                            <li>Placed a <strong>mica sheet</strong> (impermeable barrier) between tip and stump &rarr; <strong>no bending</strong>.</li>
-                            <li><strong>Conclusion:</strong> The signal from the tip is a <strong>chemical substance</strong> (not electrical) that can diffuse through gelatin but not through mica.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="stage-card">
-                    <h4>Fritz Went (1928)</h4>
-                    <div class="stage-details">
-                        <ul>
-                            <li>Removed coleoptile tips and placed them on <strong>agar blocks</strong> to collect the chemical.</li>
-                            <li>Placed the agar block <strong>off-centre</strong> on a decapitated coleoptile (in the dark) &rarr; the coleoptile <strong>bent away</strong> from the side with the agar block.</li>
-                            <li>The degree of bending was <strong>proportional</strong> to the amount of chemical in the agar.</li>
-                            <li><strong>Named the chemical "auxin"</strong> (from Greek "auxein" = to grow).</li>
-                            <li><strong>Conclusion:</strong> Auxin is the chemical that causes cell elongation. Unequal distribution of auxin causes bending.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="key-concept">
-                    <h4>Summary of Experiments</h4>
-                    <table>
-                        <thead><tr><th>Scientist</th><th>Year</th><th>Key Finding</th></tr></thead>
-                        <tbody>
-                            <tr><td><strong>Darwin</strong></td><td>1880</td><td>The tip of the coleoptile detects light and sends a signal downward</td></tr>
-                            <tr><td><strong>Boysen-Jensen</strong></td><td>1913</td><td>The signal is a chemical (diffuses through gelatin, not mica)</td></tr>
-                            <tr><td><strong>Went</strong></td><td>1928</td><td>Isolated the chemical and named it auxin; showed it causes cell elongation</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div id="ph-commercial" class="content-section">
-                <h3>Commercial Uses of Plant Hormones</h3>
-                <div class="key-concept">
-                    <h4>Auxins</h4>
-                    <ul>
-                        <li><strong>Rooting powder:</strong> Synthetic auxins promote root growth in stem cuttings.</li>
-                        <li><strong>Herbicides:</strong> Synthetic auxins (e.g., 2,4-D) used as selective weedkillers &mdash; kill broadleaf weeds but not grasses.</li>
-                        <li><strong>Seedless fruit:</strong> Auxin application can produce seedless (parthenocarpic) fruits.</li>
-                        <li><strong>Prevent fruit drop:</strong> Auxin sprays keep fruit on trees until harvest.</li>
-                    </ul>
-                    <h4>Gibberellins</h4>
-                    <ul>
-                        <li><strong>Increase fruit size:</strong> Applied to grapes to produce larger, seedless grapes.</li>
-                        <li><strong>Break seed dormancy:</strong> Used in brewing to speed up malting (barley germination).</li>
-                        <li><strong>Promote bolting:</strong> Used to increase stem length in sugar cane.</li>
-                    </ul>
-                    <h4>Cytokinins</h4>
-                    <ul>
-                        <li><strong>Tissue culture:</strong> Used with auxins to grow plants from small tissue samples.</li>
-                        <li><strong>Delay senescence:</strong> Keep cut flowers and harvested vegetables fresh longer.</li>
-                    </ul>
-                    <h4>Ethylene</h4>
-                    <ul>
-                        <li><strong>Ripen fruit artificially:</strong> Bananas and tomatoes are often picked green and ripened with ethylene gas during transport.</li>
-                        <li><strong>Synchronise pineapple flowering:</strong> Used to make all plants flower and fruit at the same time for efficient harvesting.</li>
-                        <li><strong>Promote latex flow:</strong> Applied to rubber trees to increase latex production.</li>
-                    </ul>
-                    <h4>Abscisic Acid</h4>
-                    <ul>
-                        <li><strong>Anti-transpirant sprays:</strong> Can reduce water loss in transplanted crops.</li>
-                        <li><strong>Maintain dormancy:</strong> Used to keep stored potatoes from sprouting.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
         <!-- FLASHCARDS VIEW -->
         <section id="view-flashcards" class="view">
             <h2>Active Recall Flashcards</h2>
@@ -856,7 +635,6 @@
                     <button class="filter-btn" data-filter="dna">DNA Structure &amp; Replication</button>
                     <button class="filter-btn" data-filter="rna">DNA Profiles &amp; RNA</button>
                     <button class="filter-btn" data-filter="meiosis">Meiosis</button>
-                    <button class="filter-btn" data-filter="hormones">Plant Hormones</button>
                     <button class="filter-btn" data-filter="unseen">Unseen Only</button>
                 </div>
                 <div class="flashcard-progress">
@@ -900,7 +678,6 @@
                     <button class="filter-btn" data-quizfilter="dna">DNA Structure &amp; Replication</button>
                     <button class="filter-btn" data-quizfilter="rna">DNA Profiles &amp; RNA</button>
                     <button class="filter-btn" data-quizfilter="meiosis">Meiosis</button>
-                    <button class="filter-btn" data-quizfilter="hormones">Plant Hormones</button>
                 </div>
                 <button id="start-quiz" class="primary-btn">Start Quiz (15 Questions)</button>
             </div>
@@ -961,7 +738,7 @@
     </main>
 
     <footer>
-        <p>The Intersect &mdash; Life Sciences Division &mdash; DNA, RNA, Meiosis &amp; Plant Hormones</p>
+        <p>The Intersect &mdash; Life Sciences Division &mdash; DNA, RNA &amp; Meiosis</p>
         <p class="footer-tip">Study tip: Use spaced repetition &mdash; review on days 2, 3, 5, and 7 after first studying.</p>
     </footer>
 

@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // FLASHCARD DATA
 // ============================================================
 const flashcards = [
@@ -297,7 +297,170 @@ const flashcards = [
         q: "What are chiasmata (singular: chiasma)?",
         a: "Chiasmata are the points where non-sister chromatids of homologous chromosomes cross over and exchange genetic material during prophase I. They are visible evidence that crossing over has occurred."
     }
-];
+,
+
+    // --- Plant Hormones ---
+    {
+        id: 59, unit: "hormones",
+        q: "What are plant hormones (phytohormones)?",
+        a: "Chemical substances produced in small quantities in one part of the plant and transported to another part where they have an effect. They regulate plant growth, development, and responses to environmental stimuli."
+    },
+    {
+        id: 60, unit: "hormones",
+        q: "Name the five main plant hormones.",
+        a: "1. Auxins\n2. Gibberellins\n3. Abscisic acid (ABA)\n4. Cytokinins\n5. Ethylene"
+    },
+    {
+        id: 61, unit: "hormones",
+        q: "What is a tropism? Distinguish between positive and negative tropism.",
+        a: "A tropism is a directional growth response towards or away from a stimulus.\nPositive tropism: growth TOWARDS the stimulus.\nNegative tropism: growth AWAY FROM the stimulus."
+    },
+    {
+        id: 62, unit: "hormones",
+        q: "Where are auxins produced and what is the main natural auxin?",
+        a: "Auxins are produced in the apical meristems (tips of shoots and roots). The main natural auxin is Indole-3-acetic acid (IAA)."
+    },
+    {
+        id: 63, unit: "hormones",
+        q: "Explain how auxin causes phototropism in a shoot.",
+        a: "Auxin moves to the SHADED side of the shoot. Higher auxin concentration causes cells to elongate MORE on that side. The shoot bends TOWARDS the light (positive phototropism)."
+    },
+    {
+        id: 64, unit: "hormones",
+        q: "Why do roots and shoots respond differently to the same auxin concentration?",
+        a: "Shoots are stimulated by high auxin (cells elongate more). Roots are INHIBITED by high auxin. In a horizontal plant, auxin on the lower side: shoot bends UP (stimulated), root bends DOWN (inhibited below, grows more above)."
+    },
+    {
+        id: 65, unit: "hormones",
+        q: "What is apical dominance?",
+        a: "The apical bud produces auxin that inhibits lateral (side) bud growth. Removing the tip removes auxin, allowing lateral buds to grow, producing a bushier plant."
+    },
+    {
+        id: 66, unit: "hormones",
+        q: "What are the main functions of gibberellins?",
+        a: "1. Stem elongation (internode lengthening)\n2. Seed germination (triggers enzymes to break down stored food)\n3. Bolting (rapid stem elongation before flowering)\n4. Fruit development"
+    },
+    {
+        id: 67, unit: "hormones",
+        q: "Why is abscisic acid called the stress hormone?",
+        a: "ABA helps plants cope with unfavourable conditions: stomatal closure during drought, seed dormancy in bad conditions, bud dormancy in winter. It generally SLOWS DOWN or STOPS growth."
+    },
+    {
+        id: 68, unit: "hormones",
+        q: "What are the main functions of cytokinins?",
+        a: "1. Stimulate cell division (cytokinesis)\n2. Delay senescence (ageing)\n3. Promote lateral bud growth (counteract apical dominance)\n4. Used with auxins in tissue culture"
+    },
+    {
+        id: 69, unit: "hormones",
+        q: "What is unique about ethylene? List its functions.",
+        a: "Ethylene is the only gaseous plant hormone.\n1. Fruit ripening (chain reaction between fruits)\n2. Abscission (leaf/fruit drop)\n3. Accelerates senescence\n4. Triple response in seedlings"
+    },
+    {
+        id: 70, unit: "hormones",
+        q: "Describe Darwin's coleoptile experiment (1880).",
+        a: "Tip removed: no bending. Tip covered with opaque cap: no bending. Base covered, tip exposed: bending occurs. Conclusion: The TIP detects light and sends a signal downward."
+    },
+    {
+        id: 71, unit: "hormones",
+        q: "What did Boysen-Jensen prove in 1913?",
+        a: "The signal from the tip is CHEMICAL (not electrical). Gelatin block between tip and stump: bending occurred (chemical diffused through). Mica sheet (impermeable): no bending."
+    },
+    {
+        id: 72, unit: "hormones",
+        q: "Describe Went's experiment (1928).",
+        a: "Placed coleoptile tips on agar blocks to collect the chemical. Agar placed off-centre on decapitated coleoptile in the dark caused bending AWAY from the agar. Degree of bending proportional to chemical amount. Named it AUXIN."
+    },
+    {
+        id: 73, unit: "hormones",
+        q: "List commercial uses of plant hormones.",
+        a: "Auxins: rooting powder, herbicides (2,4-D), seedless fruit\nGibberellins: larger grapes, break seed dormancy, malting\nCytokinins: tissue culture, keep flowers fresh\nEthylene: ripen fruit artificially, synchronise pineapple flowering\nABA: anti-transpirant sprays, prevent potato sprouting"
+    },
+
+    // --- Plant Hormones ---
+    {
+        id: 46, unit: "hormones", type: "mc",
+        question: "Which plant hormone is responsible for phototropism?",
+        options: ["Gibberellins", "Auxins", "Cytokinins", "Ethylene"],
+        correct: 1,
+        explanation: "Auxins cause phototropism by moving to the shaded side of the shoot, causing cells there to elongate more, bending the shoot towards light."
+    },
+    {
+        id: 47, unit: "hormones", type: "mc",
+        question: "In a horizontal plant, auxin accumulates on the lower side. What happens to the root?",
+        options: ["Root bends upward", "Root grows faster on the lower side", "Root bends downward (positive geotropism)", "Root is unaffected"],
+        correct: 2,
+        explanation: "Roots are inhibited by high auxin concentrations. Auxin on the lower side inhibits growth there, so the upper side grows faster, bending the root downward (positive geotropism)."
+    },
+    {
+        id: 48, unit: "hormones", type: "mc",
+        question: "What is apical dominance?",
+        options: ["The tip of the root grows fastest", "The apical bud produces auxin that inhibits lateral bud growth", "Gibberellins cause the main stem to grow taller", "Cytokinins promote tip growth"],
+        correct: 1,
+        explanation: "Apical dominance occurs when the apical bud produces auxin that inhibits the growth of lateral (side) buds. Removing the tip removes this inhibition."
+    },
+    {
+        id: 49, unit: "hormones", type: "mc",
+        question: "Which scientist named the chemical substance 'auxin'?",
+        options: ["Darwin", "Boysen-Jensen", "Went", "Mendel"],
+        correct: 2,
+        explanation: "Fritz Went (1928) isolated the chemical from coleoptile tips using agar blocks and named it auxin (from Greek 'auxein' = to grow)."
+    },
+    {
+        id: 50, unit: "hormones", type: "mc",
+        question: "Boysen-Jensen's experiment proved that the signal from the coleoptile tip is:",
+        options: ["Electrical", "Chemical", "Light-based", "Mechanical"],
+        correct: 1,
+        explanation: "Boysen-Jensen showed the signal could pass through gelatin (permeable) but not mica (impermeable), proving it is a chemical substance, not an electrical signal."
+    },
+    {
+        id: 51, unit: "hormones", type: "mc",
+        question: "Which hormone is known as the 'stress hormone' in plants?",
+        options: ["Auxin", "Ethylene", "Abscisic acid (ABA)", "Cytokinin"],
+        correct: 2,
+        explanation: "Abscisic acid (ABA) is the stress hormone. It causes stomatal closure during drought, maintains seed dormancy, and generally inhibits growth during unfavourable conditions."
+    },
+    {
+        id: 52, unit: "hormones", type: "mc",
+        question: "Which plant hormone is the only one that exists as a gas?",
+        options: ["Auxin", "Gibberellin", "Cytokinin", "Ethylene"],
+        correct: 3,
+        explanation: "Ethylene is the only gaseous plant hormone. It is produced by ripening fruits and promotes fruit ripening, abscission, and senescence."
+    },
+    {
+        id: 53, unit: "hormones", type: "mc",
+        question: "What is the main function of gibberellins?",
+        options: ["Fruit ripening", "Stomatal closure", "Stem elongation and seed germination", "Apical dominance"],
+        correct: 2,
+        explanation: "Gibberellins promote stem elongation (internode lengthening) and seed germination by triggering enzymes that break down stored food in seeds."
+    },
+    {
+        id: 54, unit: "hormones", type: "mc",
+        question: "Cytokinins counteract which effect of auxins?",
+        options: ["Phototropism", "Apical dominance", "Cell elongation", "Root growth"],
+        correct: 1,
+        explanation: "Cytokinins promote lateral bud growth, counteracting apical dominance caused by auxins. The ratio of auxin to cytokinin determines growth patterns."
+    },
+    {
+        id: 55, unit: "hormones", type: "mc",
+        question: "Placing a ripe banana with unripe avocados speeds up ripening because:",
+        options: ["The banana releases auxin", "The banana releases ethylene gas", "The banana absorbs oxygen", "The banana releases gibberellin"],
+        correct: 1,
+        explanation: "Ripe bananas release ethylene gas, which triggers ripening in nearby fruits. This is why ripe and unripe fruits should be stored separately (or together to speed ripening)."
+    },
+    {
+        id: 56, unit: "hormones", type: "mc",
+        question: "Darwin's experiment showed that the part of the coleoptile that detects light is the:",
+        options: ["Base", "Middle section", "Tip", "Entire coleoptile equally"],
+        correct: 2,
+        explanation: "Darwin showed that covering or removing the tip prevented bending, while covering the base still allowed bending. The tip detects light and sends a chemical signal downward."
+    },
+    {
+        id: 57, unit: "hormones", type: "mc",
+        question: "2,4-D is a synthetic auxin used commercially as a:",
+        options: ["Fertiliser", "Selective herbicide (weedkiller)", "Fruit ripening agent", "Growth stimulant for roots"],
+        correct: 1,
+        explanation: "2,4-D is a synthetic auxin used as a selective herbicide. It kills broadleaf weeds but does not affect grasses, making it useful for lawns and cereal crops."
+    }];
 
 
 // ============================================================
@@ -908,4 +1071,57 @@ const feynmanTopics = [
             "Mitosis: daughter cells genetically identical to parent; Meiosis: daughter cells genetically unique"
         ]
     }
-];
+,
+
+    // --- Plant Hormones ---
+    {
+        id: "f15",
+        title: "Auxins and Tropisms",
+        unit: "hormones",
+        keyPoints: [
+            "Auxins produced in apical meristems (shoot and root tips)",
+            "Main natural auxin: IAA (Indole-3-acetic acid)",
+            "Phototropism: auxin moves to shaded side, cells elongate more, shoot bends towards light",
+            "Geotropism: auxin accumulates on lower side of horizontal plant",
+            "Shoots: high auxin stimulates elongation (negative geotropism - grows up)",
+            "Roots: high auxin inhibits growth (positive geotropism - grows down)",
+            "Apical dominance: auxin from tip inhibits lateral buds; remove tip = bushier plant"
+        ]
+    },
+    {
+        id: "f16",
+        title: "Classic Phototropism Experiments (Darwin, Boysen-Jensen, Went)",
+        unit: "hormones",
+        keyPoints: [
+            "Darwin (1880): tip detects light and sends signal downward; removing/covering tip prevents bending",
+            "Boysen-Jensen (1913): signal is chemical - passes through gelatin but not mica",
+            "Went (1928): collected chemical in agar blocks; off-centre agar caused bending; named it auxin",
+            "Degree of bending proportional to amount of auxin",
+            "These experiments together proved auxin is the chemical causing phototropism"
+        ]
+    },
+    {
+        id: "f17",
+        title: "The Five Plant Hormones and Their Functions",
+        unit: "hormones",
+        keyPoints: [
+            "Auxins: cell elongation, phototropism, geotropism, apical dominance",
+            "Gibberellins: stem elongation, seed germination, bolting",
+            "Abscisic acid (ABA): stress hormone - stomatal closure, seed/bud dormancy",
+            "Cytokinins: cell division, delay senescence, promote lateral bud growth",
+            "Ethylene: only gaseous hormone - fruit ripening, abscission, senescence",
+            "Hormones often work together or oppose each other (e.g., auxin vs cytokinin)"
+        ]
+    },
+    {
+        id: "f18",
+        title: "Commercial Uses of Plant Hormones",
+        unit: "hormones",
+        keyPoints: [
+            "Auxins: rooting powder for cuttings, 2,4-D herbicide (kills broadleaf weeds), seedless fruit",
+            "Gibberellins: larger seedless grapes, break seed dormancy, malting in brewing",
+            "Cytokinins: tissue culture with auxins, keeping cut flowers fresh",
+            "Ethylene: artificial fruit ripening (bananas/tomatoes), synchronise pineapple flowering",
+            "ABA: anti-transpirant sprays, prevent potato sprouting during storage"
+        ]
+    }];
