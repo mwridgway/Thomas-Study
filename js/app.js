@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Use page-specific storage key so subjects don't share confidence data
     const p = location.pathname;
-    const storageKey = "fc-confidence-" + (p.includes("life-sciences") ? "ls" : p.includes("it") ? "it" : "geo");
+    const storageKey = "fc-confidence-" + (p.includes("life-sciences") ? "ls" : p.includes("it") ? "it" : p.includes("maths") ? "maths" : "geo");
     cardConfidence = loadFromStorage(storageKey, {});
 
     function renderCard() {
@@ -473,7 +473,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ============================================================
     // PROGRESS TRACKER
     // ============================================================
-    const progressSubject = p.includes("life-sciences") ? "ls" : p.includes("it") ? "it" : "geo";
+    const progressSubject = p.includes("life-sciences") ? "ls" : p.includes("it") ? "it" : p.includes("maths") ? "maths" : "geo";
     const progressKey = "progress-" + progressSubject;
     let progressData = loadFromStorage(progressKey, {
         notesRead: {},     // sectionId -> true

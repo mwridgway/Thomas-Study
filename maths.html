@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics Study Hub | Grade 12 NSC</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="back-link">&larr; Dashboard</a>
+            <h1>Mathematics Study Hub</h1>
+            <p class="subtitle">Grade 12 NSC &mdash; Functions &amp; Inverses, Euclidean Geometry, Circle Geometry</p>
+        </div>
+        <nav id="main-nav">
+            <button class="nav-btn active" data-view="home">Home</button>
+            <button class="nav-btn" data-view="unit1">Functions &amp; Inverses</button>
+            <button class="nav-btn" data-view="unit2">Euclidean Geometry</button>
+            <button class="nav-btn" data-view="unit3">Circle Geometry</button>
+            <button class="nav-btn" data-view="flashcards">Flashcards</button>
+            <button class="nav-btn" data-view="quiz">Quiz</button>
+            <button class="nav-btn" data-view="feynman">Feynman Mode</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HOME VIEW -->
+        <section id="view-home" class="view active">
+            <div class="hero">
+                <h2>Functions &amp; Inverses, Euclidean Geometry, Circle Geometry</h2>
+                <p>Revision hub for your <strong>5 March test</strong> covering <strong>Functions &amp; Inverses (Ch 2)</strong>, <strong>Euclidean Geometry (Ch 8)</strong>, and <strong>Circle Geometry (Gr11 Ch 9)</strong>.</p>
+            </div>
+            <div id="progress-dashboard" class="progress-dashboard">
+                <div class="progress-overall">
+                    <div class="progress-ring-wrap">
+                        <svg class="progress-ring" viewBox="0 0 120 120">
+                            <circle class="progress-ring-bg" cx="60" cy="60" r="52" />
+                            <circle class="progress-ring-fill" id="progress-ring-fill" cx="60" cy="60" r="52" />
+                        </svg>
+                        <span class="progress-ring-text" id="progress-overall-pct">0%</span>
+                    </div>
+                    <div class="progress-overall-label">
+                        <h3>Your Progress</h3>
+                        <p id="progress-overall-msg">Start studying to track your progress!</p>
+                    </div>
+                </div>
+                <div class="progress-categories">
+                    <div class="progress-cat">
+                        <div class="progress-cat-header">
+                            <span class="progress-cat-icon">&#128214;</span>
+                            <span class="progress-cat-label">Notes Read</span>
+                            <span class="progress-cat-value" id="prog-notes-val">0 / 0</span>
+                        </div>
+                        <div class="progress-cat-bar"><div class="progress-cat-fill" id="prog-notes-fill"></div></div>
+                    </div>
+                    <div class="progress-cat">
+                        <div class="progress-cat-header">
+                            <span class="progress-cat-icon">&#127183;</span>
+                            <span class="progress-cat-label">Flashcards Mastered</span>
+                            <span class="progress-cat-value" id="prog-fc-val">0 / 0</span>
+                        </div>
+                        <div class="progress-cat-bar"><div class="progress-cat-fill" id="prog-fc-fill"></div></div>
+                    </div>
+                    <div class="progress-cat">
+                        <div class="progress-cat-header">
+                            <span class="progress-cat-icon">&#9997;&#65039;</span>
+                            <span class="progress-cat-label">Quiz Best Score</span>
+                            <span class="progress-cat-value" id="prog-quiz-val">&mdash;</span>
+                        </div>
+                        <div class="progress-cat-bar"><div class="progress-cat-fill" id="prog-quiz-fill"></div></div>
+                    </div>
+                    <div class="progress-cat">
+                        <div class="progress-cat-header">
+                            <span class="progress-cat-icon">&#129504;</span>
+                            <span class="progress-cat-label">Feynman Topics</span>
+                            <span class="progress-cat-value" id="prog-feynman-val">0 / 0</span>
+                        </div>
+                        <div class="progress-cat-bar"><div class="progress-cat-fill" id="prog-feynman-fill"></div></div>
+                    </div>
+                </div>
+                <div class="progress-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="stat-streak">0</span>
+                        <span class="stat-label">&#128293; Day Streak</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="stat-time">0m</span>
+                        <span class="stat-label">&#9201;&#65039; Study Time</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="stat-sessions">0</span>
+                        <span class="stat-label">&#128197; Sessions</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="stat-quizzes">0</span>
+                        <span class="stat-label">&#128221; Quizzes Taken</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="study-modes">
+                <div class="mode-card" data-target="unit1">
+                    <div class="mode-icon">&#128200;</div>
+                    <h3>Functions &amp; Inverses</h3>
+                    <p>Parabola, exponential, log inverses, restricting domains, sketching inverses, reading from graphs.</p>
+                </div>
+                <div class="mode-card" data-target="unit2">
+                    <div class="mode-icon">&#128208;</div>
+                    <h3>Euclidean Geometry</h3>
+                    <p>Proportionality theorem, similar triangles, Pythagoras proof, midpoint theorem.</p>
+                </div>
+                <div class="mode-card" data-target="unit3">
+                    <div class="mode-icon">&#11093;</div>
+                    <h3>Circle Geometry</h3>
+                    <p>Tangent-chord, angles in same segment, cyclic quadrilaterals, tangent properties.</p>
+                </div>
+                <div class="mode-card" data-target="flashcards">
+                    <div class="mode-icon">&#128218;</div>
+                    <h3>Active Recall Flashcards</h3>
+                    <p>Test yourself with 36 flashcards covering all three topics.</p>
+                </div>
+                <div class="mode-card" data-target="quiz">
+                    <div class="mode-icon">&#9997;</div>
+                    <h3>NSC-Style Quiz</h3>
+                    <p>20 practice questions in exam format with explanations.</p>
+                </div>
+                <div class="mode-card" data-target="feynman">
+                    <div class="mode-icon">&#129504;</div>
+                    <h3>Feynman Mode</h3>
+                    <p>Explain concepts in your own words to find knowledge gaps.</p>
+                </div>
+            </div>
+            <div class="study-tip">
+                <h3>&#128680; Test on 5 March: Functions, Euclidean &amp; Circle Geometry</h3>
+                <p>Your test covers <strong>Functions &amp; Inverses</strong>, <strong>Euclidean Geometry</strong>, and <strong>Circle Geometry</strong>. Know your theorems and proofs &mdash; especially Pythagoras (similar triangles proof) and the Proportionality Theorem proof. Practice sketching inverses and identifying cyclic quad properties.</p>
+            </div>
+        </section>
+
+        <!-- UNIT 1: FUNCTIONS & INVERSES -->
+        <section id="view-unit1" class="view">
+            <div class="unit-header">
+                <h2>Functions &amp; Inverses</h2>
+                <div class="progress-tracker">
+                    <button class="section-jump active" data-section="fn-basics">Basics</button>
+                    <button class="section-jump" data-section="fn-linear">Linear Inverses</button>
+                    <button class="section-jump" data-section="fn-parabola">Parabola Inverses</button>
+                    <button class="section-jump" data-section="fn-exp-log">Exponential &amp; Log</button>
+                    <button class="section-jump" data-section="fn-sketching">Sketching Inverses</button>
+                </div>
+            </div>
+
+            <div id="fn-basics" class="content-section active">
+                <h3>What is a Function?</h3>
+                <div class="key-concept">
+                    <ul>
+                        <li>A <strong>function</strong> is a relation where every input (x) maps to <strong>exactly one</strong> output (y).</li>
+                        <li>Use the <strong>vertical line test</strong>: if any vertical line cuts the graph more than once, it is NOT a function.</li>
+                    </ul>
+                    <h4>What is an Inverse?</h4>
+                    <ul>
+                        <li>The <strong>inverse</strong> of function f, written f&#8315;&#185;, is obtained by <strong>swapping x and y</strong>.</li>
+                        <li>If f(a) = b, then f&#8315;&#185;(b) = a.</li>
+                        <li>Graphically: the inverse is the <strong>reflection in the line y = x</strong>.</li>
+                        <li>The <strong>domain</strong> of f becomes the <strong>range</strong> of f&#8315;&#185;, and vice versa.</li>
+                    </ul>
+                    <h4>One-to-One Functions</h4>
+                    <ul>
+                        <li>A function is <strong>one-to-one</strong> if each y-value corresponds to only one x-value.</li>
+                        <li>Use the <strong>horizontal line test</strong>: if any horizontal line cuts the graph more than once, the function is NOT one-to-one.</li>
+                        <li>Only one-to-one functions have inverses that are also functions (without restriction).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="fn-linear" class="content-section">
+                <h3>Inverse of a Linear Function</h3>
+                <div class="key-concept">
+                    <h4>Finding the Inverse of y = ax + q</h4>
+                    <ol>
+                        <li>Swap x and y: <strong>x = ay + q</strong></li>
+                        <li>Solve for y: <strong>y = (x &#8722; q)/a</strong></li>
+                    </ol>
+                    <p>The inverse of a linear function is <strong>always a function</strong> (linear functions are one-to-one).</p>
+                    <h4>Example</h4>
+                    <p>f(x) = 2x + 4</p>
+                    <ul>
+                        <li>Swap: x = 2y + 4</li>
+                        <li>Solve: y = (x &#8722; 4)/2 = &#189;x &#8722; 2</li>
+                        <li>f&#8315;&#185;(x) = &#189;x &#8722; 2</li>
+                    </ul>
+                    <h4>Graphical Properties</h4>
+                    <ul>
+                        <li>f and f&#8315;&#185; are reflections of each other in y = x.</li>
+                        <li>They intersect <strong>on the line y = x</strong>.</li>
+                        <li>The gradient of f&#8315;&#185; is the <strong>reciprocal</strong> of the gradient of f.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="fn-parabola" class="content-section">
+                <h3>Inverse of a Quadratic Function (Parabola)</h3>
+                <div class="key-concept">
+                    <h4>y = ax&#178; (parabola with vertex at origin)</h4>
+                    <ol>
+                        <li>Swap: <strong>x = ay&#178;</strong></li>
+                        <li>Solve: <strong>y = &#177;&#8730;(x/a)</strong></li>
+                    </ol>
+                    <p>This is <strong>NOT a function</strong> because each x gives two y-values (&#177; square root). The graph is a <strong>sideways parabola</strong>.</p>
+
+                    <h4>Restricting the Domain</h4>
+                    <p>To make the inverse a function, restrict the domain of the <strong>original</strong> parabola:</p>
+                    <ul>
+                        <li><strong>x &#8805; 0</strong> (right half): inverse is y = &#8730;(x/a) &mdash; top branch</li>
+                        <li><strong>x &#8804; 0</strong> (left half): inverse is y = &#8722;&#8730;(x/a) &mdash; bottom branch</li>
+                    </ul>
+
+                    <h4>Diagram Description: Parabola and Its Inverse</h4>
+                    <div class="pressure-info">
+                        <p><strong>Original:</strong> y = x&#178; is a U-shaped parabola opening upward, vertex at (0,0), passing through (1,1), (2,4), (&#8722;1,1), (&#8722;2,4).</p>
+                        <p><strong>Inverse (unrestricted):</strong> x = y&#178; is a sideways parabola opening right, passing through (1,1), (1,&#8722;1), (4,2), (4,&#8722;2).</p>
+                        <p><strong>Line y = x:</strong> The diagonal line through origin at 45&#176;. The original and inverse are mirror images across this line.</p>
+                        <p><strong>Restricted inverse (x &#8805; 0):</strong> Only the top branch: y = &#8730;x, passing through (0,0), (1,1), (4,2).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="fn-exp-log" class="content-section">
+                <h3>Exponential &amp; Logarithmic Functions</h3>
+                <div class="key-concept">
+                    <h4>Exponential Function: y = b&#739; (b &gt; 0, b &#8800; 1)</h4>
+                    <ul>
+                        <li><strong>Domain:</strong> x &#8712; &#8477;</li>
+                        <li><strong>Range:</strong> y &gt; 0</li>
+                        <li><strong>Asymptote:</strong> y = 0 (x-axis)</li>
+                        <li><strong>y-intercept:</strong> (0, 1) &mdash; because b&#8304; = 1</li>
+                        <li>If b &gt; 1: graph increases (growth). If 0 &lt; b &lt; 1: graph decreases (decay).</li>
+                    </ul>
+
+                    <h4>Finding the Inverse</h4>
+                    <ol>
+                        <li>Swap: <strong>x = b&#696;</strong></li>
+                        <li>Rewrite in log form: <strong>y = log_b(x)</strong></li>
+                    </ol>
+                    <p>The inverse is <strong>always a function</strong> &mdash; exponentials are one-to-one.</p>
+
+                    <h4>Logarithmic Function: y = log_b(x)</h4>
+                    <ul>
+                        <li><strong>Domain:</strong> x &gt; 0</li>
+                        <li><strong>Range:</strong> y &#8712; &#8477;</li>
+                        <li><strong>Asymptote:</strong> x = 0 (y-axis)</li>
+                        <li><strong>x-intercept:</strong> (1, 0) &mdash; because log_b(1) = 0</li>
+                        <li>Passes through <strong>(b, 1)</strong> &mdash; because log_b(b) = 1</li>
+                    </ul>
+
+                    <h4>Key Relationship</h4>
+                    <ul>
+                        <li>log_b(b&#739;) = x and b^(log_b(x)) = x &mdash; they <strong>undo</strong> each other.</li>
+                        <li>The domains and ranges swap between the exponential and its log inverse.</li>
+                    </ul>
+
+                    <h4>Diagram Description: Exponential and Log Graphs</h4>
+                    <div class="pressure-info">
+                        <p><strong>y = 2&#739;:</strong> Curve through (0,1), (1,2), (2,4), (&#8722;1,0.5), approaching y = 0 on the left.</p>
+                        <p><strong>y = log&#8322;(x):</strong> Curve through (1,0), (2,1), (4,2), (0.5,&#8722;1), approaching x = 0 from the right.</p>
+                        <p><strong>y = x:</strong> Both graphs are reflections across this line.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="fn-sketching" class="content-section">
+                <h3>Sketching Inverses &amp; Reading from Graphs</h3>
+                <div class="key-concept">
+                    <h4>Steps to Sketch an Inverse</h4>
+                    <ol>
+                        <li>Identify <strong>key points</strong> on the original (intercepts, turning points, asymptote points).</li>
+                        <li><strong>Swap x and y</strong> coordinates: (a, b) &#8594; (b, a).</li>
+                        <li>Plot the new points and draw the curve.</li>
+                        <li>Draw the line y = x to check the reflection.</li>
+                    </ol>
+
+                    <h4>What Swaps</h4>
+                    <table>
+                        <thead><tr><th>Original f</th><th>Inverse f&#8315;&#185;</th></tr></thead>
+                        <tbody>
+                            <tr><td>x-intercept (a, 0)</td><td>y-intercept (0, a)</td></tr>
+                            <tr><td>y-intercept (0, b)</td><td>x-intercept (b, 0)</td></tr>
+                            <tr><td>Horizontal asymptote y = k</td><td>Vertical asymptote x = k</td></tr>
+                            <tr><td>Vertical asymptote x = k</td><td>Horizontal asymptote y = k</td></tr>
+                            <tr><td>Domain</td><td>Range</td></tr>
+                            <tr><td>Range</td><td>Domain</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Reading from Graphs</h4>
+                    <ul>
+                        <li>If given the graph of f, you can read f&#8315;&#185;(a) by finding where y = a on the graph of f, then the corresponding x-value is f&#8315;&#185;(a).</li>
+                        <li>f and f&#8315;&#185; <strong>intersect on the line y = x</strong>.</li>
+                        <li>To find intersection points, solve f(x) = x.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- UNIT 2: EUCLIDEAN GEOMETRY -->
+        <section id="view-unit2" class="view">
+            <div class="unit-header">
+                <h2>Euclidean Geometry</h2>
+                <div class="progress-tracker">
+                    <button class="section-jump active" data-section="eg-proportion">Proportionality Theorem</button>
+                    <button class="section-jump" data-section="eg-midpoint">Midpoint Theorem</button>
+                    <button class="section-jump" data-section="eg-similar">Similar Triangles</button>
+                    <button class="section-jump" data-section="eg-pythagoras">Pythagoras Proof</button>
+                </div>
+            </div>
+
+            <div id="eg-proportion" class="content-section active">
+                <h3>The Proportionality Theorem</h3>
+                <div class="key-concept">
+                    <h4>Theorem Statement</h4>
+                    <p>A line drawn <strong>parallel to one side</strong> of a triangle divides the other two sides <strong>proportionally</strong>.</p>
+                    <p>If DE &#8741; BC in &#9651;ABC (D on AB, E on AC), then: <strong>AD/DB = AE/EC</strong></p>
+                    <p>Also: AD/AB = AE/AC and DB/AB = EC/AC.</p>
+
+                    <h4>Diagram Description</h4>
+                    <div class="pressure-info">
+                        <p>&#9651;ABC with A at top, B bottom-left, C bottom-right. Point D is on AB between A and B. Point E is on AC between A and C. Line DE is drawn parallel to BC. The small triangle &#9651;ADE sits inside the larger &#9651;ABC.</p>
+                    </div>
+
+                    <h4>Proof (Examinable)</h4>
+                    <div class="key-concept">
+                        <p><strong>Given:</strong> &#9651;ABC with DE &#8741; BC, D on AB, E on AC.</p>
+                        <p><strong>Required to prove:</strong> AD/DB = AE/EC</p>
+                        <p><strong>Construction:</strong> Draw heights h&#8321; from E perpendicular to AB, and h&#8322; from D perpendicular to AC. Join BE and CD.</p>
+                        <ol>
+                            <li>Area(&#9651;ADE)/Area(&#9651;BDE) = (&#189; &#183; AD &#183; h&#8321;)/(&#189; &#183; DB &#183; h&#8321;) = <strong>AD/DB</strong> ... (same height h&#8321; from E)</li>
+                            <li>Area(&#9651;ADE)/Area(&#9651;CDE) = (&#189; &#183; AE &#183; h&#8322;)/(&#189; &#183; EC &#183; h&#8322;) = <strong>AE/EC</strong> ... (same height h&#8322; from D)</li>
+                            <li>But &#9651;BDE and &#9651;CDE have the <strong>same base DE</strong> and lie between parallel lines DE and BC, so they have <strong>equal areas</strong>.</li>
+                            <li>Therefore Area(&#9651;ADE)/Area(&#9651;BDE) = Area(&#9651;ADE)/Area(&#9651;CDE)</li>
+                            <li>Therefore <strong>AD/DB = AE/EC</strong>. &#8718;</li>
+                        </ol>
+                    </div>
+
+                    <h4>Converse</h4>
+                    <p>If a line divides two sides of a triangle in the same proportion, then that line is <strong>parallel to the third side</strong>.</p>
+                </div>
+            </div>
+
+            <div id="eg-midpoint" class="content-section">
+                <h3>The Midpoint Theorem</h3>
+                <div class="key-concept">
+                    <h4>Theorem</h4>
+                    <p>The segment joining the <strong>midpoints of two sides</strong> of a triangle is:</p>
+                    <ul>
+                        <li><strong>Parallel</strong> to the third side, and</li>
+                        <li><strong>Equal to half</strong> its length.</li>
+                    </ul>
+                    <p>If D is the midpoint of AB and E is the midpoint of AC, then DE &#8741; BC and DE = &#189;BC.</p>
+
+                    <h4>Converse</h4>
+                    <p>A line drawn through the midpoint of one side of a triangle, parallel to another side, bisects the third side.</p>
+
+                    <h4>Diagram Description</h4>
+                    <div class="pressure-info">
+                        <p>&#9651;ABC. D is the midpoint of AB (AD = DB). E is the midpoint of AC (AE = EC). Line DE is parallel to BC. DE = &#189;BC.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="eg-similar" class="content-section">
+                <h3>Similar Triangles</h3>
+                <div class="key-concept">
+                    <h4>Definition</h4>
+                    <p>Two triangles are <strong>similar</strong> (|||) if they have the <strong>same shape</strong> (but not necessarily the same size).</p>
+
+                    <h4>Conditions for Similarity</h4>
+                    <ol>
+                        <li><strong>AAA (Angle-Angle-Angle):</strong> All corresponding angles are equal. (In practice, you only need to prove <strong>2 angles equal</strong> since the third follows.)</li>
+                        <li><strong>SSS (proportional sides):</strong> All corresponding sides are in the <strong>same proportion</strong>.</li>
+                    </ol>
+
+                    <h4>Theorem: Equiangular Triangles Have Proportional Sides</h4>
+                    <p>If two triangles are equiangular, then their <strong>corresponding sides are proportional</strong>.</p>
+                    <p>If &#9651;ABC ||| &#9651;DEF, then AB/DE = BC/EF = AC/DF.</p>
+
+                    <h4>Converse</h4>
+                    <p>If the corresponding sides of two triangles are proportional, then the triangles are equiangular (and therefore similar).</p>
+
+                    <h4>Writing Similarity Statements</h4>
+                    <p>Always list vertices in <strong>corresponding order</strong>. If &#194; = &#272;, &#374; = &#202;, &#264; = &#374;, write: <strong>&#9651;ABC ||| &#9651;DEF</strong>.</p>
+
+                    <h4>Area Ratio</h4>
+                    <p>If two similar triangles have sides in ratio k:1, their <strong>areas are in ratio k&#178;:1</strong>.</p>
+
+                    <h4>Triangles with Same Base Between Parallel Lines</h4>
+                    <p>Triangles on the same base and between the same parallel lines have <strong>equal areas</strong> (same base, same height).</p>
+                </div>
+            </div>
+
+            <div id="eg-pythagoras" class="content-section">
+                <h3>Theorem of Pythagoras &mdash; Proof Using Similar Triangles</h3>
+                <div class="key-concept">
+                    <h4>Theorem</h4>
+                    <p>In a <strong>right-angled triangle</strong>, the square of the hypotenuse equals the sum of the squares of the other two sides: <strong>AB&#178; = AC&#178; + BC&#178;</strong>.</p>
+
+                    <h4>Diagram Description</h4>
+                    <div class="pressure-info">
+                        <p>&#9651;ABC with the right angle at C. AB is the hypotenuse. The altitude CD is drawn from C perpendicular to AB, meeting AB at D. This creates two smaller triangles: &#9651;ACD (left) and &#9651;BCD (right).</p>
+                    </div>
+
+                    <h4>Proof (Examinable)</h4>
+                    <div class="key-concept">
+                        <p><strong>Given:</strong> &#9651;ABC with &#264; = 90&#176;.</p>
+                        <p><strong>Construction:</strong> Draw CD &#8869; AB (altitude from C to hypotenuse).</p>
+                        <p><strong>Step 1: Show &#9651;ACD ||| &#9651;ABC</strong></p>
+                        <ul>
+                            <li>In &#9651;ACD and &#9651;ABC:</li>
+                            <li>&#194; is common</li>
+                            <li>AD&#770;C = A&#264;B = 90&#176;</li>
+                            <li>Therefore &#9651;ACD ||| &#9651;ABC (AA)</li>
+                            <li>So: AC/AB = AD/AC &#8594; <strong>AC&#178; = AD &#183; AB</strong> ... (i)</li>
+                        </ul>
+                        <p><strong>Step 2: Show &#9651;BCD ||| &#9651;ABC</strong></p>
+                        <ul>
+                            <li>In &#9651;BCD and &#9651;ABC:</li>
+                            <li>&#374; is common</li>
+                            <li>BD&#770;C = B&#264;A = 90&#176;</li>
+                            <li>Therefore &#9651;BCD ||| &#9651;ABC (AA)</li>
+                            <li>So: BC/AB = BD/BC &#8594; <strong>BC&#178; = BD &#183; AB</strong> ... (ii)</li>
+                        </ul>
+                        <p><strong>Step 3: Add (i) and (ii)</strong></p>
+                        <ul>
+                            <li>AC&#178; + BC&#178; = AD &#183; AB + BD &#183; AB</li>
+                            <li>= AB(AD + BD)</li>
+                            <li>= AB &#183; AB</li>
+                            <li>= <strong>AB&#178;</strong></li>
+                        </ul>
+                        <p>Therefore <strong>AC&#178; + BC&#178; = AB&#178;</strong>. &#8718;</p>
+                    </div>
+
+                    <h4>Converse</h4>
+                    <p>If the square of one side of a triangle equals the sum of the squares of the other two sides, then the angle opposite the longest side is <strong>90&#176;</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- UNIT 3: CIRCLE GEOMETRY -->
+        <section id="view-unit3" class="view">
+            <div class="unit-header">
+                <h2>Circle Geometry</h2>
+                <div class="progress-tracker">
+                    <button class="section-jump active" data-section="cg-central">Central &amp; Inscribed Angles</button>
+                    <button class="section-jump" data-section="cg-cyclic">Cyclic Quadrilaterals</button>
+                    <button class="section-jump" data-section="cg-tangent">Tangent Theorems</button>
+                    <button class="section-jump" data-section="cg-chords">Chord Properties</button>
+                </div>
+            </div>
+
+            <div id="cg-central" class="content-section active">
+                <h3>Central Angle &amp; Inscribed Angle Theorems</h3>
+                <div class="key-concept">
+                    <h4>Theorem 1: Angle at the Centre = 2 &#215; Angle at Circumference</h4>
+                    <p>The angle subtended by an arc at the <strong>centre</strong> of a circle is <strong>twice</strong> the angle subtended by the same arc at any point on the <strong>circumference</strong> (on the same side of the chord).</p>
+                    <div class="pressure-info">
+                        <p><strong>Diagram:</strong> Circle with centre O. Points A and B on circumference define an arc. Point C on circumference (same side). A&#212;B (central angle) = 2 &#215; A&#264;B (inscribed angle).</p>
+                    </div>
+
+                    <h4>Theorem 2: Angle in a Semicircle = 90&#176;</h4>
+                    <p>The angle subtended by a <strong>diameter</strong> at the circumference is always <strong>90&#176;</strong>.</p>
+                    <p><em>Special case:</em> The central angle for a diameter is 180&#176;, so the inscribed angle = 180&#176;/2 = 90&#176;.</p>
+
+                    <h4>Theorem 3: Angles in the Same Segment Are Equal</h4>
+                    <p>Angles subtended by the <strong>same chord</strong> (or arc) at the circumference, on the <strong>same side</strong> of the chord, are <strong>equal</strong>.</p>
+                    <div class="pressure-info">
+                        <p><strong>Diagram:</strong> Circle with chord PQ. Points A and B are both on the major arc. P&#194;Q = P&#374;Q (both subtend the same arc PQ).</p>
+                    </div>
+
+                    <h4>Converse</h4>
+                    <p>If a line segment subtends equal angles at two points on the same side, then the four points are <strong>concyclic</strong> (lie on a circle).</p>
+                </div>
+            </div>
+
+            <div id="cg-cyclic" class="content-section">
+                <h3>Cyclic Quadrilaterals</h3>
+                <div class="key-concept">
+                    <h4>Definition</h4>
+                    <p>A <strong>cyclic quadrilateral</strong> has all four vertices on the circumference of a circle.</p>
+
+                    <h4>Theorem: Opposite Angles Are Supplementary</h4>
+                    <p>The opposite angles of a cyclic quadrilateral add up to <strong>180&#176;</strong>.</p>
+                    <p>If ABCD is cyclic: &#194; + &#264; = 180&#176; and &#374; + &#272; = 180&#176;.</p>
+                    <div class="pressure-info">
+                        <p><strong>Proof outline:</strong> &#194; is subtended by arc BCD, and &#264; is subtended by arc BAD. Together, arcs BCD and BAD make the full circle (360&#176;). The central angles sum to 360&#176;, so the inscribed angles sum to 180&#176;.</p>
+                    </div>
+
+                    <h4>Converse</h4>
+                    <p>If the opposite angles of a quadrilateral are supplementary, the quadrilateral is <strong>cyclic</strong>.</p>
+
+                    <h4>Exterior Angle Theorem</h4>
+                    <p>An <strong>exterior angle</strong> of a cyclic quadrilateral equals the <strong>interior opposite angle</strong>.</p>
+
+                    <h4>How to Prove a Quadrilateral is Cyclic</h4>
+                    <ol>
+                        <li>Show opposite angles are <strong>supplementary</strong> (sum to 180&#176;).</li>
+                        <li>Show an exterior angle equals the interior opposite angle.</li>
+                        <li>Show two points subtend <strong>equal angles</strong> to a line segment (same segment theorem converse).</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div id="cg-tangent" class="content-section">
+                <h3>Tangent Theorems</h3>
+                <div class="key-concept">
+                    <h4>Tangent &#8869; Radius</h4>
+                    <p>A tangent to a circle is <strong>perpendicular</strong> to the radius drawn to the point of tangency. The angle between them is always <strong>90&#176;</strong>.</p>
+
+                    <h4>Two Tangents from an External Point</h4>
+                    <p>If two tangents are drawn from the same external point to a circle, then:</p>
+                    <ul>
+                        <li>The tangent segments are <strong>equal in length</strong>.</li>
+                        <li>The line from the external point to the centre <strong>bisects</strong> the angle between the tangents.</li>
+                    </ul>
+                    <div class="pressure-info">
+                        <p><strong>Diagram:</strong> External point P. Two tangent lines from P touch the circle at A and B. PA = PB. Line PO (O = centre) bisects angle APB.</p>
+                    </div>
+
+                    <h4>Tangent-Chord (Tan-Chord) Theorem</h4>
+                    <p>The angle between a tangent and a chord drawn from the point of tangency equals the <strong>inscribed angle</strong> subtended by the chord in the <strong>alternate segment</strong>.</p>
+                    <div class="pressure-info">
+                        <p><strong>Diagram:</strong> Circle with tangent line at point A. Chord AB is drawn. The angle between the tangent and AB (on one side) equals the inscribed angle ACB where C is any point on the arc on the opposite side of AB.</p>
+                    </div>
+                    <p><em>This is one of the most useful theorems &mdash; look for tangent lines touching a circle and chords from that point.</em></p>
+                </div>
+            </div>
+
+            <div id="cg-chords" class="content-section">
+                <h3>Chord Properties</h3>
+                <div class="key-concept">
+                    <h4>Perpendicular from Centre Bisects the Chord</h4>
+                    <p>A line drawn from the centre of a circle <strong>perpendicular</strong> to a chord <strong>bisects</strong> (cuts in half) that chord.</p>
+                    <p><strong>Converse:</strong> A line from the centre to the <strong>midpoint</strong> of a chord is perpendicular to the chord.</p>
+
+                    <h4>Equal Chords Subtend Equal Angles</h4>
+                    <p>If two chords are <strong>equal in length</strong>, they subtend <strong>equal angles</strong> at the centre.</p>
+                    <p><strong>Converse:</strong> If two chords subtend equal angles at the centre, the chords are equal.</p>
+
+                    <h4>Equal Chords Are Equidistant from the Centre</h4>
+                    <p>Equal chords in a circle are the same distance from the centre. The converse also holds.</p>
+
+                    <h4>Summary of Circle Theorems</h4>
+                    <table>
+                        <thead><tr><th>Theorem</th><th>Key Statement</th></tr></thead>
+                        <tbody>
+                            <tr><td>Central angle</td><td>= 2 &#215; inscribed angle</td></tr>
+                            <tr><td>Semicircle</td><td>Inscribed angle = 90&#176;</td></tr>
+                            <tr><td>Same segment</td><td>Inscribed angles are equal</td></tr>
+                            <tr><td>Cyclic quad</td><td>Opposite angles sum to 180&#176;</td></tr>
+                            <tr><td>Ext angle (cyclic)</td><td>= Interior opposite angle</td></tr>
+                            <tr><td>Tan-chord</td><td>= Angle in alternate segment</td></tr>
+                            <tr><td>Tangent &#8869; radius</td><td>90&#176; at point of tangency</td></tr>
+                            <tr><td>Two tangents</td><td>Equal length from external point</td></tr>
+                            <tr><td>&#8869; from centre</td><td>Bisects the chord</td></tr>
+                            <tr><td>Equal chords</td><td>Equal central angles</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- FLASHCARDS -->
+        <section id="view-flashcards" class="view">
+            <h2>Active Recall Flashcards</h2>
+            <div class="flashcard-controls">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All (36)</button>
+                    <button class="filter-btn" data-filter="functions">Functions &amp; Inverses</button>
+                    <button class="filter-btn" data-filter="euclidean">Euclidean Geometry</button>
+                    <button class="filter-btn" data-filter="circles">Circle Geometry</button>
+                    <button class="filter-btn" data-filter="unseen">Unseen Only</button>
+                </div>
+            </div>
+            <div class="flashcard-container">
+                <div class="flashcard" id="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front" id="fc-question">Loading...</div>
+                        <div class="flashcard-back" id="fc-answer"></div>
+                    </div>
+                </div>
+                <p class="fc-hint">Click card to flip</p>
+                <div class="fc-nav">
+                    <button id="fc-prev" class="secondary-btn">&larr; Previous</button>
+                    <span id="fc-progress">1 / 36</span>
+                    <button id="fc-next" class="secondary-btn">Next &rarr;</button>
+                </div>
+                <div class="fc-confidence">
+                    <p>How well did you know this?</p>
+                    <button class="conf-btn conf-hard" data-conf="hard">&#128560; Hard</button>
+                    <button class="conf-btn conf-medium" data-conf="medium">&#129300; Medium</button>
+                    <button class="conf-btn conf-easy" data-conf="easy">&#128526; Easy</button>
+                </div>
+                <div class="fc-stats" id="fc-stats"></div>
+                <button id="fc-reset" class="secondary-btn">Reset Progress</button>
+            </div>
+        </section>
+
+        <!-- QUIZ -->
+        <section id="view-quiz" class="view">
+            <h2>NSC-Style Quiz</h2>
+            <div class="quiz-setup" id="quiz-setup">
+                <p>Test your knowledge with exam-style multiple choice questions.</p>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-quizfilter="all">All Topics</button>
+                    <button class="filter-btn" data-quizfilter="functions">Functions &amp; Inverses</button>
+                    <button class="filter-btn" data-quizfilter="euclidean">Euclidean Geometry</button>
+                    <button class="filter-btn" data-quizfilter="circles">Circle Geometry</button>
+                </div>
+                <button id="start-quiz" class="primary-btn">Start Quiz (15 Questions)</button>
+            </div>
+            <div id="quiz-area" class="quiz-area hidden">
+                <div class="quiz-progress-bar">
+                    <div id="quiz-progress-fill" class="quiz-progress-fill"></div>
+                </div>
+                <p class="quiz-counter"><span id="q-num">1</span> of <span id="q-total">15</span></p>
+                <div id="quiz-question" class="quiz-question"></div>
+                <div id="quiz-options" class="quiz-options"></div>
+                <div id="quiz-feedback" class="quiz-feedback hidden"></div>
+                <button id="quiz-next" class="primary-btn hidden">Next Question</button>
+            </div>
+            <div id="quiz-results" class="quiz-results hidden">
+                <h3>Quiz Complete!</h3>
+                <div class="score-display">
+                    <span id="quiz-score" class="score">0</span> / <span id="quiz-out-of">15</span>
+                </div>
+                <p id="quiz-message"></p>
+                <div id="quiz-review"></div>
+                <button id="quiz-retry" class="primary-btn">Try Again</button>
+            </div>
+        </section>
+
+        <!-- FEYNMAN MODE -->
+        <section id="view-feynman" class="view">
+            <h2>Feynman Technique: Teach to Learn</h2>
+            <div class="feynman-intro">
+                <p><strong>How it works:</strong> Pick a topic below. Explain it in your own words as if teaching someone who knows nothing about maths. Then reveal the key points to check what you missed.</p>
+                <p class="study-tip-inline">If you can't explain it simply, you don't understand it well enough.</p>
+            </div>
+            <div class="feynman-topics">
+                <h3>Choose a Topic to Explain:</h3>
+                <div class="topic-grid" id="feynman-topics"></div>
+            </div>
+            <div id="feynman-workspace" class="feynman-workspace hidden">
+                <h3 id="feynman-title"></h3>
+                <div class="feynman-step">
+                    <label for="feynman-input"><strong>Step 1:</strong> Explain this concept in your own words (no jargon, no peeking!):</label>
+                    <div class="feynman-input-wrap">
+                        <textarea id="feynman-input" rows="8" placeholder="Type or tap the mic to speak your explanation as if teaching a friend who has never studied maths..."></textarea>
+                        <button id="feynman-mic" class="mic-btn" type="button" title="Voice input"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm-1-9a1 1 0 1 1 2 0v6a1 1 0 1 1-2 0V5zm6 6a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.93V21h2v-3.07A7 7 0 0 0 19 11h-2z"/></svg></button>
+                    </div>
+                </div>
+                <button id="feynman-check" class="primary-btn">Check Against Key Points</button>
+                <div id="feynman-keypoints" class="feynman-keypoints hidden">
+                    <h4>Key Points You Should Have Covered:</h4>
+                    <div id="feynman-checklist"></div>
+                    <div class="feynman-reflection">
+                        <h4>Step 3: Reflect</h4>
+                        <p>Look at the points you missed. These are your <strong>knowledge gaps</strong>. Go back to the notes section and review those specific points, then try explaining again.</p>
+                        <button id="feynman-retry" class="secondary-btn">Try Again</button>
+                        <button id="feynman-back" class="secondary-btn">Choose Another Topic</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>The Intersect &mdash; Mathematics Division &mdash; Functions, Euclidean Geometry, Circle Geometry</p>
+        <p class="footer-tip">Study tip: Use spaced repetition &mdash; review on days 2, 3, 5, and 7 after first studying.</p>
+    </footer>
+
+    <script src="js/maths-data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
