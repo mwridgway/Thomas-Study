@@ -3,179 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Intersect | Thomas's Study Hub</title>
+    <title>CAPS Study Hub | South African Curriculum</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="header-row">
-                <div>
-                    <h1 id="theme-title">⚡ The Intersect</h1>
-                    <p class="subtitle" id="theme-subtitle">Nerd Herd Study Division &mdash; Agent Bartowski, Grade 12 NSC</p>
+    <!-- SETUP SCREEN -->
+    <div id="setup-screen" class="setup-screen">
+        <div class="setup-container">
+            <div class="setup-header">
+                <h1>&#128218; CAPS Study Hub</h1>
+                <p class="setup-subtitle">South African Curriculum &mdash; Grades 8 to 12</p>
+            </div>
+            <div class="setup-step active" data-step="1">
+                <h2>Choose your grade</h2>
+                <div class="grade-grid">
+                    <button class="grade-btn" data-grade="8">Grade 8</button>
+                    <button class="grade-btn" data-grade="9">Grade 9</button>
+                    <button class="grade-btn" data-grade="10">Grade 10</button>
+                    <button class="grade-btn" data-grade="11">Grade 11</button>
+                    <button class="grade-btn" data-grade="12">Grade 12</button>
                 </div>
-                <div class="theme-picker">
-                    <button class="theme-btn" data-theme="default" title="Default">🎓</button>
-                    <button class="theme-btn active" data-theme="chuck" title="Chuck">⚡</button>
-                    <button class="theme-btn" data-theme="orangeorange" title="Orange Orange">🍊</button>
+            </div>
+            <div class="setup-step" data-step="2">
+                <h2>Select your subjects</h2>
+                <p class="step-hint">Pick the subjects you are taking this year.</p>
+                <div class="subject-select-grid" id="subject-select-grid"></div>
+                <button class="setup-next-btn" id="subjects-continue" disabled>Continue</button>
+            </div>
+            <div class="setup-step" data-step="3">
+                <h2>Choose your region</h2>
+                <p class="step-hint">This filters past papers to your province trial exams.</p>
+                <div class="region-grid">
+                    <button class="region-btn" data-region="national">&#127487;&#127462; National (NSC)</button>
+                    <button class="region-btn" data-region="gauteng">Gauteng</button>
+                    <button class="region-btn" data-region="western-cape">Western Cape</button>
+                    <button class="region-btn" data-region="kzn">KwaZulu-Natal</button>
+                    <button class="region-btn" data-region="eastern-cape">Eastern Cape</button>
+                    <button class="region-btn" data-region="free-state">Free State</button>
+                    <button class="region-btn" data-region="limpopo">Limpopo</button>
+                    <button class="region-btn" data-region="mpumalanga">Mpumalanga</button>
+                    <button class="region-btn" data-region="north-west">North West</button>
+                    <button class="region-btn" data-region="northern-cape">Northern Cape</button>
                 </div>
             </div>
         </div>
-        <nav id="main-nav">
-            <button class="nav-btn active" data-view="home" id="theme-nav-home">🏠 Castle</button>
-            <a href="preferences.html" class="nav-btn" style="text-decoration:none">&#9881; Preferences</a>
-            <button class="nav-btn" data-view="schedule" id="theme-nav-schedule">📡 Missions</button>
-        </nav>
-    </header>
+    </div>
 
-    <main>
-        <!-- HOME / SUBJECTS VIEW -->
-        <section id="view-home" class="view active">
-            <div id="deadline-banner" class="deadline-banner hidden"></div>
-            <div class="hero">
-                <h2 id="theme-welcome">Welcome back, Chuck</h2>
-                <p id="theme-welcome-sub">Time to flash on some knowledge. Pick a mission below &mdash; each one's loaded with intel, flashcards, quizzes, and Feynman debrief mode.</p>
-            </div>
-            <div class="subject-manage-wrap">
-                <button class="manage-subjects-btn" id="manage-subjects-btn">⚙️ Manage Subjects</button>
-            </div>
-
-            <!-- Subject Filter Modal -->
-            <div class="subject-modal-overlay hidden" id="subject-modal-overlay">
-                <div class="subject-modal">
-                    <h3>📋 Manage Subjects</h3>
-                    <p class="modal-desc">Toggle which subjects appear on your dashboard.</p>
-                    <div class="subject-checklist" id="subject-checklist"></div>
-                    <div class="modal-actions">
-                        <button class="primary-btn" id="subject-modal-save">Save</button>
-                        <button class="secondary-btn" id="subject-modal-cancel">Cancel</button>
+    <!-- MAIN APP -->
+    <div id="app" class="app hidden">
+        <header>
+            <div class="header-content">
+                <div class="header-row">
+                    <div>
+                        <h1>&#128218; CAPS Study Hub</h1>
+                        <p class="subtitle" id="user-info-line">Grade 12 &middot; Western Cape</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="icon-btn" id="settings-btn" title="Settings">&#9881;</button>
                     </div>
                 </div>
             </div>
-
-            <div class="subject-grid">
-                <a href="geography.html" class="subject-card subject-geo" data-subject="geography">
-                    <div class="subject-icon">&#127758;</div>
-                    <div class="subject-info">
-                        <h3>Geography</h3>
-                        <p class="subject-topic">Climate &amp; Weather</p>
-                        <div class="subject-modules">
-                            <span class="module-tag">Mid-Latitude Cyclones</span>
-                            <span class="module-tag">Tropical Cyclones</span>
-                        </div>
-                        <p class="subject-meta">Paper 1 &mdash; 40 Flashcards &middot; 30 Quiz Questions &middot; 10 Feynman Topics</p>
+            <nav id="main-nav">
+                <button class="nav-btn active" data-view="subjects">&#128214; Subjects</button>
+                <button class="nav-btn" data-view="past-papers">&#128221; Past Papers</button>
+                <button class="nav-btn" data-view="curriculum">&#128203; Curriculum</button>
+            </nav>
+        </header>
+        <main>
+            <section id="view-subjects" class="view active">
+                <div class="hero">
+                    <h2>Your Subjects</h2>
+                    <p>Select a subject to start studying.</p>
+                </div>
+                <div class="subject-grid" id="subject-grid"></div>
+            </section>
+            <section id="view-subject-detail" class="view">
+                <button class="back-btn" id="back-to-subjects">&larr; Back to Subjects</button>
+                <div id="subject-detail-content"></div>
+            </section>
+            <section id="view-past-papers" class="view">
+                <div class="hero">
+                    <h2>&#128221; Past Papers</h2>
+                    <p>NSC and provincial trial exam papers with memos.</p>
+                </div>
+                <div class="papers-controls">
+                    <div class="filter-group">
+                        <label>Subject:</label>
+                        <select id="paper-subject-filter" class="filter-select"></select>
                     </div>
-                    <span class="subject-arrow">&rarr;</span>
-                </a>
-                <a href="life-sciences.html" class="subject-card subject-bio" data-subject="life-sciences">
-                    <div class="subject-icon">&#129516;</div>
-                    <div class="subject-info">
-                        <h3>Life Sciences</h3>
-                        <p class="subject-topic">DNA, RNA &amp; Meiosis</p>
-                        <div class="subject-modules">
-                            <span class="module-tag">DNA Structure &amp; Replication</span>
-                            <span class="module-tag">DNA Profiles &amp; RNA</span>
-                            <span class="module-tag">Meiosis</span>
-                        </div>
-                        <p class="subject-meta">Paper 1 &mdash; 32% of marks &middot; 58 Flashcards &middot; 45 Quiz Questions &middot; Feynman Mode</p>
+                    <div class="filter-group">
+                        <label>Year:</label>
+                        <select id="paper-year-filter" class="filter-select">
+                            <option value="all">All Years</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                        </select>
                     </div>
-                    <span class="subject-arrow">&rarr;</span>
-                </a>
-                <a href="maths.html" class="subject-card subject-math" data-subject="maths">
-                    <div class="subject-icon">&#128202;</div>
-                    <div class="subject-info">
-                        <h3>Mathematics</h3>
-                        <p class="subject-topic">Functions, Euclidean &amp; Circle Geometry</p>
-                        <div class="subject-modules">
-                            <span class="module-tag">Functions &amp; Inverses</span>
-                            <span class="module-tag">Euclidean Geometry</span>
-                            <span class="module-tag">Circle Geometry</span>
-                        </div>
-                        <p class="subject-meta">Test 5 March &mdash; 36 Flashcards &middot; 20 Quiz Questions &middot; 9 Feynman Topics</p>
-                    </div>
-                    <span class="subject-arrow">&rarr;</span>
-                </a>
-                <a href="it.html" class="subject-card subject-it" data-subject="it">
-                    <div class="subject-icon">&#128187;</div>
-                    <div class="subject-info">
-                        <h3>CAT (Computer Applications Technology)</h3>
-                        <p class="subject-topic">Section 1: System Technologies</p>
-                        <div class="subject-modules">
-                            <span class="module-tag">Computers in Everyday Life</span>
-                            <span class="module-tag">Hardware Devices</span>
-                        </div>
-                        <p class="subject-meta">Paper 1 &mdash; 40 Flashcards &middot; 30 Quiz Questions &middot; 10 Feynman Topics</p>
-                    </div>
-                    <span class="subject-arrow">&rarr;</span>
-                </a>
-            </div>
-            <div id="exam-countdown" class="exam-countdown"></div>
-
-            <div class="study-tip">
-                <h3 id="theme-tip-title">🎯 Handler's Briefing</h3>
-                <p id="theme-tip-body"><strong>Don't stay in the car, Chuck.</strong> Interleave your missions &mdash; rotate between subjects in the same session. It's harder but far more effective for long-term retention. Use the <strong>2-3-5-7 protocol</strong>: review intel on days 2, 3, 5, and 7 after first exposure.</p>
-                <p class="tip-quote" id="theme-tip-quote">&ldquo;Trust me, Chuck.&rdquo; &mdash; Sarah Walker 🕶️</p>
-            </div>
-        </section>
-
-        <!-- SCHEDULE VIEW -->
-        <section id="view-schedule" class="view">
-            <div class="unit-header">
-                <h2 id="theme-schedule-title">📡 Mission Timeline</h2>
-                <p class="schedule-intro" id="theme-schedule-sub">Upcoming operations, sorted by priority. Filter by division or term. Click a topic to access the relevant intel.</p>
-            </div>
-
-            <div class="schedule-controls">
-                <div class="filter-group">
-                    <label>Subject:</label>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-schedfilter="all">All</button>
-                        <button class="filter-btn" data-schedfilter="life-sciences">🧬 Life Sciences</button>
-                        <button class="filter-btn" data-schedfilter="cat">💻 CAT</button>
-                        <button class="filter-btn" data-schedfilter="math-lit">🔢 Math Lit</button>
-                        <button class="filter-btn" data-schedfilter="afrikaans">📝 Afrikaans</button>
-                        <button class="filter-btn" data-schedfilter="english">📖 English</button>
-                        <button class="filter-btn" data-schedfilter="geography">🌍 Geography</button>
-                        <button class="filter-btn" data-schedfilter="lo">🧭 LO</button>
+                    <div class="filter-group">
+                        <label>Region:</label>
+                        <select id="paper-region-filter" class="filter-select">
+                            <option value="all">All Regions</option>
+                            <option value="national">National (NSC)</option>
+                            <option value="gauteng">Gauteng</option>
+                            <option value="western-cape">Western Cape</option>
+                            <option value="kzn">KwaZulu-Natal</option>
+                            <option value="eastern-cape">Eastern Cape</option>
+                            <option value="free-state">Free State</option>
+                            <option value="limpopo">Limpopo</option>
+                            <option value="mpumalanga">Mpumalanga</option>
+                            <option value="north-west">North West</option>
+                            <option value="northern-cape">Northern Cape</option>
+                        </select>
                     </div>
                 </div>
-                <div class="filter-group">
-                    <label>Term:</label>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-termfilter="all">All Terms</button>
-                        <button class="filter-btn" data-termfilter="1">Term 1</button>
-                        <button class="filter-btn" data-termfilter="2">Term 2</button>
-                        <button class="filter-btn" data-termfilter="3">Term 3</button>
-                        <button class="filter-btn" data-termfilter="4">Term 4</button>
+                <div id="papers-list" class="papers-list">
+                    <div class="empty-state"><p>&#128194; Past papers will be added soon. Check back after the next update!</p></div>
+                </div>
+            </section>
+            <section id="view-curriculum" class="view">
+                <div class="hero">
+                    <h2>&#128203; CAPS Curriculum</h2>
+                    <p>Full curriculum breakdown by subject and term.</p>
+                </div>
+                <div class="curriculum-controls">
+                    <div class="filter-group">
+                        <label>Subject:</label>
+                        <select id="curriculum-subject-filter" class="filter-select"></select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Term:</label>
+                        <select id="curriculum-term-filter" class="filter-select">
+                            <option value="all">All Terms</option>
+                            <option value="1">Term 1</option>
+                            <option value="2">Term 2</option>
+                            <option value="3">Term 3</option>
+                            <option value="4">Term 4</option>
+                        </select>
                     </div>
                 </div>
-                <div class="filter-group">
-                    <label>Show:</label>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-typefilter="all">All</button>
-                        <button class="filter-btn" data-typefilter="content">Content Only</button>
-                        <button class="filter-btn" data-typefilter="assessment">Assessments Only</button>
-                    </div>
+                <div id="curriculum-content" class="curriculum-content">
+                    <div class="empty-state"><p>&#128214; Select a subject to view the CAPS curriculum outline.</p></div>
                 </div>
+            </section>
+        </main>
+        <footer>
+            <p>CAPS Study Hub &mdash; South African National Curriculum</p>
+            <p class="footer-tip">Built for learners, by learners. &#127487;&#127462;</p>
+        </footer>
+    </div>
+
+    <!-- SETTINGS MODAL -->
+    <div class="modal-overlay hidden" id="settings-modal">
+        <div class="modal">
+            <h3>&#9881; Settings</h3>
+            <div class="setting-row">
+                <label>Grade:</label>
+                <select id="settings-grade" class="filter-select">
+                    <option value="8">Grade 8</option>
+                    <option value="9">Grade 9</option>
+                    <option value="10">Grade 10</option>
+                    <option value="11">Grade 11</option>
+                    <option value="12">Grade 12</option>
+                </select>
             </div>
+            <div class="setting-row">
+                <label>Region:</label>
+                <select id="settings-region" class="filter-select">
+                    <option value="national">National (NSC)</option>
+                    <option value="gauteng">Gauteng</option>
+                    <option value="western-cape">Western Cape</option>
+                    <option value="kzn">KwaZulu-Natal</option>
+                    <option value="eastern-cape">Eastern Cape</option>
+                    <option value="free-state">Free State</option>
+                    <option value="limpopo">Limpopo</option>
+                    <option value="mpumalanga">Mpumalanga</option>
+                    <option value="north-west">North West</option>
+                    <option value="northern-cape">Northern Cape</option>
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button class="primary-btn" id="settings-save">Save</button>
+                <button class="secondary-btn" id="settings-cancel">Cancel</button>
+                <button class="danger-btn" id="settings-reset">Reset All</button>
+            </div>
+        </div>
+    </div>
 
-            <div id="schedule-container" class="schedule-container"></div>
-        </section>
-    </main>
-
-    <footer>
-        <p id="theme-footer-1">The Intersect &mdash; Nerd Herd Study Division &mdash; Grade 12 NSC</p>
-        <p class="footer-tip" id="theme-footer-2">&ldquo;Guys, I know kung fu.&rdquo; &mdash; Except it's Biology. Maintained by Sarah Walker 🕶️</p>
-    </footer>
-
-    <script src="js/schedule-data.js"></script>
-    <script src="js/themes.js"></script>
-    <script src="js/deadlines.js"></script>
-    <script src="js/exam-countdown.js"></script>
-    <script src="js/subject-filter.js"></script>
-    <script src="js/dashboard.js"></script>
+    <script src="js/caps-subjects.js"></script>
+    <script src="js/caps-curriculum.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
-
-
-
