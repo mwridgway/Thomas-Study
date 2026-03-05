@@ -86,6 +86,68 @@ const CAPS_CURRICULUM = {
       ]
     }
   },
+  "afrikaans-fal": {
+    "12": {
+      "1": [
+        { topic: "Begrip & Opsomming", weeks: 3, content: "Leestrategieë, begripsvrae, opsommingstegnieke, hoofgedagtes" },
+        { topic: "Taalstrukture & -konvensies", weeks: 4, content: "Tye, direkte/indirekte rede, lydende/bedrywende vorm, voegwoorde, voornaamwoorde" },
+        { topic: "Skryfwerk", weeks: 3, content: "Opstelle, briewe, artikels, dialoë, dagboekinskrywings, toesprake" }
+      ],
+      "2": [
+        { topic: "Gedigte", weeks: 3, content: "Beeldspraak, digterlike tegnieke, gediganalise, rymskemas" },
+        { topic: "Literatuur", weeks: 4, content: "Kortverhaalontleding, romanontleding, literêre terme, karakteranalise" },
+        { topic: "Visuele Geletterdheid", weeks: 2, content: "Spotprente, advertensies, grafieke, visuele tekste" }
+      ],
+      "3": [
+        { topic: "Mondelinge", weeks: 2, content: "Voorbereide toespraak, voorlees, luisterbegrip" },
+        { topic: "Eksamenvoorbereiding", weeks: 3, content: "Vraestelanalise, tydsbeplanning, hersiening" }
+      ],
+      "4": [
+        { topic: "Hersiening", weeks: 4, content: "Volledige hersiening vir finale eksamen" }
+      ]
+    }
+  },
+  "english-hl": {
+    "12": {
+      "1": [
+        { topic: "Literature — Poetry", weeks: 3, content: "Poetry analysis techniques, imagery, diction, tone, theme, sound devices" },
+        { topic: "Literature — Novel/Drama", weeks: 4, content: "Plot, character, theme, setting, narrative voice, dramatic techniques" },
+        { topic: "Transactional Writing", weeks: 3, content: "Formal/informal letters, reports, reviews, speeches, dialogues" }
+      ],
+      "2": [
+        { topic: "Language Skills", weeks: 3, content: "Summary writing, comprehension strategies, visual literacy" },
+        { topic: "Grammar Review", weeks: 3, content: "Parts of speech, sentence types, active/passive voice, direct/indirect speech, concord" },
+        { topic: "Creative Writing", weeks: 2, content: "Narrative, descriptive, argumentative essays" }
+      ],
+      "3": [
+        { topic: "Literary Essays", weeks: 3, content: "Contextual questions, essay techniques, textual analysis" },
+        { topic: "Oral Communication", weeks: 2, content: "Prepared speech, reading aloud, listening comprehension" }
+      ],
+      "4": [
+        { topic: "Revision", weeks: 4, content: "Full syllabus revision for final exams" }
+      ]
+    }
+  },
+  "life-orientation": {
+    "12": {
+      "1": [
+        { topic: "Democracy & Human Rights", weeks: 3, content: "Bill of Rights, types of rights, responsibilities, constitutional court" },
+        { topic: "Responsible Citizenship", weeks: 3, content: "Volunteerism, community involvement, diversity, Ubuntu, social cohesion" },
+        { topic: "Careers & Career Choices", weeks: 3, content: "Career fields, study opportunities, CV writing, interview skills, labour laws" }
+      ],
+      "2": [
+        { topic: "Study Skills & Exam Preparation", weeks: 3, content: "Time management, study methods, exam techniques, stress management" },
+        { topic: "Physical Fitness & Health", weeks: 3, content: "Fitness components, FITT principle, nutrition, lifestyle diseases, substance abuse" }
+      ],
+      "3": [
+        { topic: "Social & Environmental Responsibility", weeks: 3, content: "Environmental issues, sustainable living, recycling, corporate social responsibility" },
+        { topic: "World of Work", weeks: 3, content: "Entrepreneurship, workplace ethics, BCEA, LRA, EEA, SETA, NQF" }
+      ],
+      "4": [
+        { topic: "Revision", weeks: 4, content: "Full syllabus revision for final exams" }
+      ]
+    }
+  },
   "cat": {
     "12": {
       "1": [

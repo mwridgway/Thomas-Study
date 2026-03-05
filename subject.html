@@ -175,7 +175,9 @@
         'life-sciences': 'js/data/life-sciences-data.js',
         'geography': 'js/data/geography-data.js',
         'afrikaans-fal': 'js/data/afrikaans-data.js',
-        'cat': 'js/data/cat-data.js'
+        'cat': 'js/data/cat-data.js',
+        'english-hl': 'js/data/english-data.js',
+        'life-orientation': 'js/data/life-orientation-data.js'
     };
     var _sp = new URLSearchParams(location.search);
     var _subjectId = _sp.get('subject') || '';
@@ -206,11 +208,31 @@
         // --- Unit name mapping ---
         var unitNames = {
             'functions': 'Functions & Inverses', 'euclidean': 'Euclidean Geometry',
-            'circles': 'Circle Geometry', 'dna': 'DNA', 'rna': 'RNA & Protein Synthesis',
+            'circles': 'Circle Geometry', 'sequences': 'Sequences & Series',
+            'finance': 'Financial Mathematics', 'calculus': 'Differential Calculus',
+            'probability': 'Probability', 'statistics': 'Statistics',
+            'trigonometry': 'Trigonometry',
+            'dna': 'DNA', 'rna': 'RNA & Protein Synthesis',
             'meiosis': 'Meiosis', 'hormones': 'Plant Hormones',
+            'protein-synthesis': 'Protein Synthesis', 'genetics': 'Genetics',
+            'evolution': 'Evolution', 'human-evolution': 'Human Evolution',
+            'ecology': 'Population Ecology', 'environment': 'Human Impact on Environment',
             'mlc': 'Mid-Latitude Cyclones', 'tc': 'Tropical Cyclones',
+            'drainage': 'Drainage Systems', 'geomorphology': 'Geomorphology',
+            'climatology': 'Climatology', 'rural-urban': 'Rural-Urban Migration',
+            'settlement': 'Settlement Geography', 'economic': 'Economic Geography',
+            'development': 'Development Geography',
             'begrip': 'Begrip & Opsomming', 'gedigte': 'Gedigte', 'skryfwerk': 'Skryfwerk',
-            'comp': 'Computers & ICT', 'hw': 'Hardware Devices'
+            'taalstrukture': 'Taalstrukture', 'literatuur': 'Literatuur',
+            'mondelinge': 'Mondelinge', 'visueel': 'Visuele Geletterdheid',
+            'comp': 'Computers & ICT', 'hw': 'Hardware Devices',
+            'solution-dev': 'Solution Development', 'systems': 'System Technologies',
+            'info-mgmt': 'Information Management', 'e-comm': 'e-Communications',
+            'literature': 'Literature', 'language': 'Language Skills',
+            'grammar': 'Grammar Review',
+            'democracy': 'Democracy & Human Rights', 'citizenship': 'Responsible Citizenship',
+            'careers': 'Careers & Career Choices', 'study-skills': 'Study Skills & Exam Prep',
+            'fitness': 'Physical Fitness & Health', 'social-env': 'Social & Environmental Responsibility'
         };
 
         // --- Unique units from flashcard data ---
