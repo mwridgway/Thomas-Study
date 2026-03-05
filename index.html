@@ -9,195 +9,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- SETUP SCREEN -->
-    <div id="setup-screen" class="setup-screen">
-        <div class="setup-container">
-            <div class="setup-header">
-                <h1>&#128218; CAPS Study Hub</h1>
-                <p class="setup-subtitle">South African Curriculum &mdash; Grades 8 to 12</p>
-            </div>
-            <div class="setup-step active" data-step="1">
-                <h2>Choose your grade</h2>
-                <div class="grade-grid">
-                    <button class="grade-btn" data-grade="8">Grade 8</button>
-                    <button class="grade-btn" data-grade="9">Grade 9</button>
-                    <button class="grade-btn" data-grade="10">Grade 10</button>
-                    <button class="grade-btn" data-grade="11">Grade 11</button>
-                    <button class="grade-btn" data-grade="12">Grade 12</button>
-                </div>
-            </div>
-            <div class="setup-step" data-step="2">
-                <h2>Select your subjects</h2>
-                <p class="step-hint">Pick the subjects you are taking this year.</p>
-                <div class="subject-select-grid" id="subject-select-grid"></div>
-                <button class="setup-next-btn" id="subjects-continue" disabled>Continue</button>
-            </div>
-            <div class="setup-step" data-step="3">
-                <h2>Choose your region</h2>
-                <p class="step-hint">This filters past papers to your province trial exams.</p>
-                <div class="region-grid">
-                    <button class="region-btn" data-region="national">&#127487;&#127462; National (NSC)</button>
-                    <button class="region-btn" data-region="gauteng">Gauteng</button>
-                    <button class="region-btn" data-region="western-cape">Western Cape</button>
-                    <button class="region-btn" data-region="kzn">KwaZulu-Natal</button>
-                    <button class="region-btn" data-region="eastern-cape">Eastern Cape</button>
-                    <button class="region-btn" data-region="free-state">Free State</button>
-                    <button class="region-btn" data-region="limpopo">Limpopo</button>
-                    <button class="region-btn" data-region="mpumalanga">Mpumalanga</button>
-                    <button class="region-btn" data-region="north-west">North West</button>
-                    <button class="region-btn" data-region="northern-cape">Northern Cape</button>
-                </div>
-            </div>
+    <div class="landing" id="landing">
+        <div class="landing-header">
+            <span class="landing-flag">&#127487;&#127462;</span>
+            <h1>CAPS Study Hub</h1>
+            <p class="landing-subtitle">South African National Curriculum &mdash; Grades 8 to 12</p>
+            <p class="landing-tagline">Pick your grade to get started</p>
+        </div>
+
+        <div class="grade-cards">
+            <a href="grade.html?grade=8" class="grade-card">
+                <span class="grade-number">8</span>
+                <span class="grade-label">Grade 8</span>
+                <span class="grade-desc">GET Phase &mdash; 9 subjects</span>
+            </a>
+            <a href="grade.html?grade=9" class="grade-card">
+                <span class="grade-number">9</span>
+                <span class="grade-label">Grade 9</span>
+                <span class="grade-desc">GET Phase &mdash; 9 subjects</span>
+            </a>
+            <a href="grade.html?grade=10" class="grade-card">
+                <span class="grade-number">10</span>
+                <span class="grade-label">Grade 10</span>
+                <span class="grade-desc">FET Phase &mdash; 7 subjects</span>
+            </a>
+            <a href="grade.html?grade=11" class="grade-card">
+                <span class="grade-number">11</span>
+                <span class="grade-label">Grade 11</span>
+                <span class="grade-desc">FET Phase &mdash; 7 subjects</span>
+            </a>
+            <a href="grade.html?grade=12" class="grade-card">
+                <span class="grade-number">12</span>
+                <span class="grade-label">Grade 12</span>
+                <span class="grade-desc">Matric &mdash; NSC Exams</span>
+            </a>
+        </div>
+
+        <div class="landing-footer">
+            <p>Built for South African learners &mdash; <a href="past-papers.html">Past Papers</a></p>
         </div>
     </div>
-
-    <!-- MAIN APP -->
-    <div id="app" class="app hidden">
-        <header>
-            <div class="header-content">
-                <div class="header-row">
-                    <div>
-                        <h1>&#128218; CAPS Study Hub</h1>
-                        <p class="subtitle" id="user-info-line">Grade 12 &middot; Western Cape</p>
-                    </div>
-                    <div class="header-actions">
-                        <button class="icon-btn" id="settings-btn" title="Settings">&#9881;</button>
-                    </div>
-                </div>
-            </div>
-            <nav id="main-nav">
-                <button class="nav-btn active" data-view="subjects">&#128214; Subjects</button>
-                <button class="nav-btn" data-view="past-papers">&#128221; Past Papers</button>
-                <button class="nav-btn" data-view="curriculum">&#128203; Curriculum</button>
-            </nav>
-        </header>
-        <main>
-            <section id="view-subjects" class="view active">
-                <div class="hero">
-                    <h2>Your Subjects</h2>
-                    <p>Select a subject to start studying.</p>
-                </div>
-                <div class="subject-grid" id="subject-grid"></div>
-            </section>
-            <section id="view-subject-detail" class="view">
-                <button class="back-btn" id="back-to-subjects">&larr; Back to Subjects</button>
-                <div id="subject-detail-content"></div>
-            </section>
-            <section id="view-past-papers" class="view">
-                <div class="hero">
-                    <h2>&#128221; Past Papers</h2>
-                    <p>NSC and provincial trial exam papers with memos.</p>
-                </div>
-                <div class="papers-controls">
-                    <div class="filter-group">
-                        <label>Subject:</label>
-                        <select id="paper-subject-filter" class="filter-select"></select>
-                    </div>
-                    <div class="filter-group">
-                        <label>Year:</label>
-                        <select id="paper-year-filter" class="filter-select">
-                            <option value="all">All Years</option>
-                            <option value="2025">2025</option>
-                            <option value="2024">2024</option>
-                            <option value="2023">2023</option>
-                            <option value="2022">2022</option>
-                            <option value="2021">2021</option>
-                            <option value="2020">2020</option>
-                            <option value="2019">2019</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label>Region:</label>
-                        <select id="paper-region-filter" class="filter-select">
-                            <option value="all">All Regions</option>
-                            <option value="national">National (NSC)</option>
-                            <option value="gauteng">Gauteng</option>
-                            <option value="western-cape">Western Cape</option>
-                            <option value="kzn">KwaZulu-Natal</option>
-                            <option value="eastern-cape">Eastern Cape</option>
-                            <option value="free-state">Free State</option>
-                            <option value="limpopo">Limpopo</option>
-                            <option value="mpumalanga">Mpumalanga</option>
-                            <option value="north-west">North West</option>
-                            <option value="northern-cape">Northern Cape</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="papers-list" class="papers-list">
-                    <div class="empty-state"><p>&#128194; Past papers will be added soon. Check back after the next update!</p></div>
-                </div>
-            </section>
-            <section id="view-curriculum" class="view">
-                <div class="hero">
-                    <h2>&#128203; CAPS Curriculum</h2>
-                    <p>Full curriculum breakdown by subject and term.</p>
-                </div>
-                <div class="curriculum-controls">
-                    <div class="filter-group">
-                        <label>Subject:</label>
-                        <select id="curriculum-subject-filter" class="filter-select"></select>
-                    </div>
-                    <div class="filter-group">
-                        <label>Term:</label>
-                        <select id="curriculum-term-filter" class="filter-select">
-                            <option value="all">All Terms</option>
-                            <option value="1">Term 1</option>
-                            <option value="2">Term 2</option>
-                            <option value="3">Term 3</option>
-                            <option value="4">Term 4</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="curriculum-content" class="curriculum-content">
-                    <div class="empty-state"><p>&#128214; Select a subject to view the CAPS curriculum outline.</p></div>
-                </div>
-            </section>
-        </main>
-        <footer>
-            <p>CAPS Study Hub &mdash; South African National Curriculum</p>
-            <p class="footer-tip">Built for learners, by learners. &#127487;&#127462;</p>
-        </footer>
-    </div>
-
-    <!-- SETTINGS MODAL -->
-    <div class="modal-overlay hidden" id="settings-modal">
-        <div class="modal">
-            <h3>&#9881; Settings</h3>
-            <div class="setting-row">
-                <label>Grade:</label>
-                <select id="settings-grade" class="filter-select">
-                    <option value="8">Grade 8</option>
-                    <option value="9">Grade 9</option>
-                    <option value="10">Grade 10</option>
-                    <option value="11">Grade 11</option>
-                    <option value="12">Grade 12</option>
-                </select>
-            </div>
-            <div class="setting-row">
-                <label>Region:</label>
-                <select id="settings-region" class="filter-select">
-                    <option value="national">National (NSC)</option>
-                    <option value="gauteng">Gauteng</option>
-                    <option value="western-cape">Western Cape</option>
-                    <option value="kzn">KwaZulu-Natal</option>
-                    <option value="eastern-cape">Eastern Cape</option>
-                    <option value="free-state">Free State</option>
-                    <option value="limpopo">Limpopo</option>
-                    <option value="mpumalanga">Mpumalanga</option>
-                    <option value="north-west">North West</option>
-                    <option value="northern-cape">Northern Cape</option>
-                </select>
-            </div>
-            <div class="modal-actions">
-                <button class="primary-btn" id="settings-save">Save</button>
-                <button class="secondary-btn" id="settings-cancel">Cancel</button>
-                <button class="danger-btn" id="settings-reset">Reset All</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="js/caps-subjects.js"></script>
-    <script src="js/caps-curriculum.js"></script>
-    <script src="js/app.js"></script>
 </body>
 </html>

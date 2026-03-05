@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Subjects | CAPS Study Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-container">
+        <header class="page-header">
+            <div class="page-header-inner">
+                <div>
+                    <a href="index.html" class="back-link">&larr; Change Grade</a>
+                    <h1 id="page-title">Grade 12 Subjects</h1>
+                </div>
+                <div class="header-actions">
+                    <a href="past-papers.html" class="icon-btn" title="Past Papers">&#128221;</a>
+                </div>
+            </div>
+        </header>
+
+        <main class="page-main" id="subjects-container">
+            <!-- Populated by JS -->
+        </main>
+
+        <footer class="page-footer">
+            <p>CAPS Study Hub &mdash; South African National Curriculum &#127487;&#127462;</p>
+        </footer>
+    </div>
+
+    <script src="js/caps-subjects.js"></script>
+    <script src="js/caps-curriculum.js"></script>
+    <script>
+    (function() {
+        const params = new URLSearchParams(window.location.search);
+        const grade = parseInt(params.get('grade')) || 12;
+
+        document.getElementById('page-title').textContent = `Grade ${grade} Subjects`;
+        document.title = `Grade ${grade} Subjects | CAPS Study Hub`;
+
+        // Store current grade for use by subject pages
+        localStorage.setItem('caps-current-grade', grade);
+
+        const container = document.getElementById('subjects-container');
+        const available = CAPS_SUBJECTS.getForGrade(grade);
+
+        // Subjects that have study content (flashcards, quiz, feynman data)
+        const subjectsWithContent = {
+            'life-sciences': 12,
+            'geography': 12,
+            'mathematics': 12,
+            'afrikaans-fal': 12,
+            'cat': 12
+        };
+
+        function renderSubjectCard(subject) {
+            const hasContent = subjectsWithContent[subject.id] && subjectsWithContent[subject.id] <= grade;
+            const hasCurriculum = CAPS_CURRICULUM.has(subject.id, grade);
+
+            const card = document.createElement('a');
+            card.className = 'subject-card';
+            card.style.setProperty('--subject-color', subject.color);
+
+            // All subjects link to subject.html with query params
+            card.href = 'subject.html?subject=' + subject.id + '&grade=' + grade;
+
+            let badge = '';
+            if (hasContent) {
+                badge = '<span class="badge badge-green">Study Ready</span>';
+            } else if (hasCurriculum) {
+                badge = '<span class="badge badge-blue">Curriculum</span>';
+            } else {
+                badge = '<span class="badge badge-grey">Coming Soon</span>';
+            }
+
+            card.innerHTML = `
+                <div class="subject-icon">${subject.icon}</div>
+                <div class="subject-info">
+                    <h3>${subject.name}</h3>
+                    <p class="subject-meta">Grade ${grade} CAPS</p>
+                    ${badge}
+                </div>
+                <span class="subject-arrow">&rarr;</span>
+            `;
+            return card;
+        }
+
+        // For Grades 8-9: all subjects are compulsory, one group
+        if (grade <= 9) {
+            const group = document.createElement('div');
+            group.className = 'subject-group';
+            group.innerHTML = '<h2>Your Subjects</h2>';
+            const grid = document.createElement('div');
+            grid.className = 'subject-grid';
+            available.compulsory.forEach(s => grid.appendChild(renderSubjectCard(s)));
+            group.appendChild(grid);
+            container.appendChild(group);
+        } else {
+            // Compulsory languages
+            const compGroup = document.createElement('div');
+            compGroup.className = 'subject-group';
+            compGroup.innerHTML = '<h2>Compulsory Subjects</h2>';
+            const compGrid = document.createElement('div');
+            compGrid.className = 'subject-grid';
+            available.compulsory.forEach(s => compGrid.appendChild(renderSubjectCard(s)));
+            compGroup.appendChild(compGrid);
+            container.appendChild(compGroup);
+
+            // Electives grouped by category
+            const groups = {};
+            available.electives.forEach(s => {
+                if (!groups[s.group]) groups[s.group] = [];
+                groups[s.group].push(s);
+            });
+
+            const groupOrder = ['Group A', 'Sciences', 'Commerce', 'Technology', 'Arts', 'Services', 'Languages', 'Humanities'];
+            groupOrder.forEach(groupName => {
+                if (!groups[groupName]) return;
+                const group = document.createElement('div');
+                group.className = 'subject-group';
+                group.innerHTML = `<h2>${groupName}</h2>`;
+                const grid = document.createElement('div');
+                grid.className = 'subject-grid';
+                groups[groupName].forEach(s => grid.appendChild(renderSubjectCard(s)));
+                group.appendChild(grid);
+                container.appendChild(group);
+            });
+        }
+    })();
+    </script>
+</body>
+</html>

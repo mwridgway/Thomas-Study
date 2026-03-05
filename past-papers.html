@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Papers | CAPS Study Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-container">
+        <header class="page-header">
+            <div class="page-header-inner">
+                <div>
+                    <a href="index.html" class="back-link">&larr; Home</a>
+                    <h1>Past Papers</h1>
+                </div>
+            </div>
+        </header>
+
+        <main class="page-main">
+            <div class="papers-hero">
+                <h2>NSC Past Exam Papers</h2>
+                <p>Find and practise with official CAPS exam papers from 2019&ndash;2025</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="papers-filters" id="papers-filters">
+                <div class="filter-group">
+                    <label>Grade</label>
+                    <select class="filter-select" id="pp-grade">
+                        <option value="12" selected>Grade 12 (Matric NSC)</option>
+                        <option value="11">Grade 11</option>
+                        <option value="10">Grade 10</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Subject</label>
+                    <select class="filter-select" id="pp-subject">
+                        <option value="all">All Subjects</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Year</label>
+                    <select class="filter-select" id="pp-year">
+                        <option value="all">All Years</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Province</label>
+                    <select class="filter-select" id="pp-province">
+                        <option value="national" selected>National (DBE)</option>
+                        <option value="gauteng">Gauteng</option>
+                        <option value="western-cape">Western Cape</option>
+                        <option value="kzn">KwaZulu-Natal</option>
+                        <option value="eastern-cape">Eastern Cape</option>
+                        <option value="free-state">Free State</option>
+                        <option value="limpopo">Limpopo</option>
+                        <option value="mpumalanga">Mpumalanga</option>
+                        <option value="north-west">North West</option>
+                        <option value="northern-cape">Northern Cape</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Paper</label>
+                    <select class="filter-select" id="pp-paper">
+                        <option value="all">All Papers</option>
+                        <option value="P1">Paper 1</option>
+                        <option value="P2">Paper 2</option>
+                        <option value="P3">Paper 3</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Include Memos</label>
+                    <select class="filter-select" id="pp-memo">
+                        <option value="yes" selected>Papers &amp; Memos</option>
+                        <option value="no">Papers Only</option>
+                        <option value="memo-only">Memos Only</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="papers-list" id="papers-list"></div>
+
+            <!-- External Resources -->
+            <div class="key-concept" style="margin-top:2rem">
+                <h4>Where to Find Official Past Papers</h4>
+                <p>Past papers are published by the Department of Basic Education and provincial education departments. Access them directly from these official sources:</p>
+                <ul>
+                    <li><strong>Department of Basic Education (National)</strong> &mdash; Official NSC exam papers and memos for all subjects</li>
+                    <li><strong>Provincial Education Departments</strong> &mdash; Provincial preparatory exam papers</li>
+                    <li><strong>Your school</strong> &mdash; Internal exam papers and trial exams</li>
+                </ul>
+                <p style="margin-top:0.75rem;color:var(--text-muted);font-size:0.85rem">Papers are typically available as PDF downloads. Always practise under timed conditions for the best preparation.</p>
+            </div>
+
+            <!-- Study Tips -->
+            <div class="key-concept" style="margin-top:1rem">
+                <h4>How to Use Past Papers Effectively</h4>
+                <ul>
+                    <li><strong>Time yourself</strong> &mdash; Simulate real exam conditions (3 hours for most papers)</li>
+                    <li><strong>Mark your own work</strong> &mdash; Use the memo to identify gaps in your knowledge</li>
+                    <li><strong>Track your scores</strong> &mdash; Aim to improve with each attempt</li>
+                    <li><strong>Identify patterns</strong> &mdash; Notice which topics appear frequently</li>
+                    <li><strong>Work backwards</strong> &mdash; Start with the most recent year and work backwards</li>
+                    <li><strong>Focus on weak areas</strong> &mdash; Spend extra time on questions you get wrong</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer class="page-footer">
+            <p>CAPS Study Hub &mdash; South African National Curriculum &#127487;&#127462;</p>
+        </footer>
+    </div>
+
+    <script src="js/caps-subjects.js"></script>
+    <script>
+    (function() {
+        var gradeSelect = document.getElementById('pp-grade');
+        var subjectSelect = document.getElementById('pp-subject');
+        var yearSelect = document.getElementById('pp-year');
+        var provinceSelect = document.getElementById('pp-province');
+        var paperSelect = document.getElementById('pp-paper');
+        var memoSelect = document.getElementById('pp-memo');
+        var listEl = document.getElementById('papers-list');
+
+        // Paper structure per subject — which papers exist
+        var subjectPapers = {
+            'mathematics': ['P1', 'P2'],
+            'maths-literacy': ['P1', 'P2'],
+            'physical-sciences': ['P1', 'P2'],
+            'life-sciences': ['P1', 'P2'],
+            'accounting': ['P1', 'P2'],
+            'geography': ['P1', 'P2'],
+            'history': ['P1', 'P2'],
+            'economics': ['P1', 'P2'],
+            'business-studies': ['P1', 'P2'],
+            'cat': ['P1'],
+            'it': ['P1', 'P2'],
+            'english-hl': ['P1', 'P2', 'P3'],
+            'english-fal': ['P1', 'P2', 'P3'],
+            'afrikaans-hl': ['P1', 'P2', 'P3'],
+            'afrikaans-fal': ['P1', 'P2'],
+            'life-orientation': []
+        };
+
+        var provinceNames = {
+            'national': 'National (DBE)', 'gauteng': 'Gauteng', 'western-cape': 'Western Cape',
+            'kzn': 'KwaZulu-Natal', 'eastern-cape': 'Eastern Cape', 'free-state': 'Free State',
+            'limpopo': 'Limpopo', 'mpumalanga': 'Mpumalanga', 'north-west': 'North West',
+            'northern-cape': 'Northern Cape'
+        };
+
+        function populateSubjects() {
+            var grade = parseInt(gradeSelect.value);
+            var available = CAPS_SUBJECTS.getForGrade(grade);
+            subjectSelect.innerHTML = '<option value="all">All Subjects</option>';
+
+            var allSubjects = available.compulsory.concat(available.electives || []);
+            allSubjects.forEach(function(s) {
+                var opt = document.createElement('option');
+                opt.value = s.id;
+                opt.textContent = s.name;
+                subjectSelect.appendChild(opt);
+            });
+        }
+
+        function renderPapers() {
+            var grade = gradeSelect.value;
+            var subjectId = subjectSelect.value;
+            var year = yearSelect.value;
+            var province = provinceSelect.value;
+            var paper = paperSelect.value;
+            var memo = memoSelect.value;
+
+            var gradeNum = parseInt(grade);
+            var available = CAPS_SUBJECTS.getForGrade(gradeNum);
+            var subjects = subjectId === 'all'
+                ? available.compulsory.concat(available.electives || [])
+                : [CAPS_SUBJECTS.getById(subjectId)].filter(Boolean);
+
+            var years = year === 'all' ? [2025, 2024, 2023, 2022, 2021, 2020, 2019] : [parseInt(year)];
+
+            var html = '';
+            var count = 0;
+
+            years.forEach(function(yr) {
+                subjects.forEach(function(s) {
+                    var papers = subjectPapers[s.id] || ['P1'];
+                    if (papers.length === 0) return;
+
+                    papers.forEach(function(p) {
+                        if (paper !== 'all' && p !== paper) return;
+
+                        // Paper entry
+                        if (memo !== 'memo-only') {
+                            html += '<div class="paper-item">';
+                            html += '<div class="paper-info">';
+                            html += '<h4>' + s.name + ' &mdash; ' + p + '</h4>';
+                            html += '<p>Grade ' + grade + ' &middot; ' + yr + ' &middot; ' + provinceNames[province] + '</p>';
+                            html += '</div>';
+                            html += '<div class="paper-links">';
+                            html += '<span class="paper-link">Paper PDF</span>';
+                            html += '</div></div>';
+                            count++;
+                        }
+
+                        // Memo entry
+                        if (memo !== 'no') {
+                            html += '<div class="paper-item">';
+                            html += '<div class="paper-info">';
+                            html += '<h4>' + s.name + ' &mdash; ' + p + ' Memo</h4>';
+                            html += '<p>Grade ' + grade + ' &middot; ' + yr + ' &middot; ' + provinceNames[province] + '</p>';
+                            html += '</div>';
+                            html += '<div class="paper-links">';
+                            html += '<span class="paper-link">Memo PDF</span>';
+                            html += '</div></div>';
+                            count++;
+                        }
+                    });
+                });
+            });
+
+            if (count === 0) {
+                html = '<div class="empty-state"><span class="empty-icon">&#128196;</span><p>No papers match your filters. Try adjusting your selection.</p></div>';
+            } else {
+                html = '<p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1rem">' + count + ' result' + (count !== 1 ? 's' : '') + ' &mdash; Paper links will be added as they become available</p>' + html;
+            }
+
+            listEl.innerHTML = html;
+        }
+
+        // Initialise
+        populateSubjects();
+        renderPapers();
+
+        // Events
+        gradeSelect.addEventListener('change', function() {
+            populateSubjects();
+            renderPapers();
+        });
+        [subjectSelect, yearSelect, provinceSelect, paperSelect, memoSelect].forEach(function(el) {
+            el.addEventListener('change', renderPapers);
+        });
+    })();
+    </script>
+</body>
+</html>

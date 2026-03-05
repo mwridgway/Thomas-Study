@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject | CAPS Study Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="subject-header">
+        <div class="subject-header-inner">
+            <div class="subject-header-top">
+                <div>
+                    <a href="grade.html" id="back-link" class="back-link">&larr; Back to Subjects</a>
+                    <h1 id="subject-title">Loading&hellip;</h1>
+                    <p class="subtitle" id="subject-subtitle"></p>
+                </div>
+                <div class="header-actions">
+                    <a href="past-papers.html" class="icon-btn" title="Past Papers">&#128221;</a>
+                </div>
+            </div>
+            <nav class="tab-nav">
+                <button class="tab-btn active" data-tab="notes">Notes</button>
+                <button class="tab-btn" data-tab="flashcards">Flashcards</button>
+                <button class="tab-btn" data-tab="quiz">Quiz</button>
+                <button class="tab-btn" data-tab="feynman">Feynman</button>
+                <button class="tab-btn" data-tab="progress">Progress</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ====== NOTES ====== -->
+    <div class="tab-panel active" id="panel-notes">
+        <div id="notes-content"></div>
+    </div>
+
+    <!-- ====== FLASHCARDS ====== -->
+    <div class="tab-panel" id="panel-flashcards">
+        <div class="filter-buttons" id="fc-filters"></div>
+        <div id="fc-content" class="hidden">
+            <div class="flashcard-container">
+                <div class="flashcard-inner" id="flashcard">
+                    <div class="flashcard-front"><p id="fc-question"></p></div>
+                    <div class="flashcard-back"><p id="fc-answer"></p></div>
+                </div>
+            </div>
+            <div class="fc-progress"><span id="fc-progress">0 / 0</span></div>
+            <div class="fc-controls">
+                <button class="fc-btn" id="fc-prev">&larr; Prev</button>
+                <button class="fc-btn" id="fc-flip">Flip</button>
+                <button class="fc-btn" id="fc-next">Next &rarr;</button>
+                <button class="fc-btn" id="fc-shuffle">Shuffle</button>
+                <button class="fc-btn" id="fc-reset">Reset</button>
+            </div>
+            <div class="confidence-buttons">
+                <button class="confidence-btn" data-confidence="hard">Hard</button>
+                <button class="confidence-btn" data-confidence="medium">Medium</button>
+                <button class="confidence-btn" data-confidence="easy">Easy</button>
+            </div>
+            <p class="swipe-hint">Swipe or use arrow keys to navigate</p>
+        </div>
+        <div class="empty-state" id="fc-empty">
+            <span class="empty-icon">&#127183;</span>
+            <p>Flashcards for this subject are coming soon.</p>
+        </div>
+    </div>
+
+    <!-- ====== QUIZ ====== -->
+    <div class="tab-panel" id="panel-quiz">
+        <div class="filter-buttons" id="quiz-filters"></div>
+        <div id="quiz-content" class="hidden">
+            <button class="quiz-start-btn" id="start-quiz">Start Quiz</button>
+            <div class="hidden" id="quiz-area">
+                <div class="quiz-header">
+                    <span>Question <span id="q-num">1</span> of <span id="q-total">15</span></span>
+                </div>
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+                </div>
+                <p class="quiz-question" id="quiz-question"></p>
+                <div class="quiz-options" id="quiz-options"></div>
+                <div class="quiz-feedback hidden" id="quiz-feedback"></div>
+                <button class="quiz-next-btn hidden" id="quiz-next">Next Question &rarr;</button>
+            </div>
+            <div class="quiz-results hidden" id="quiz-results">
+                <div class="quiz-score-display"><span id="quiz-score">0</span> / <span id="quiz-out-of">0</span></div>
+                <p class="quiz-message" id="quiz-message"></p>
+                <button class="quiz-retry-btn" id="quiz-retry">Try Again</button>
+                <div id="quiz-review" style="margin-top:1.5rem"></div>
+            </div>
+        </div>
+        <div class="empty-state" id="quiz-empty">
+            <span class="empty-icon">&#10067;</span>
+            <p>Quiz questions for this subject are coming soon.</p>
+        </div>
+    </div>
+
+    <!-- ====== FEYNMAN ====== -->
+    <div class="tab-panel" id="panel-feynman">
+        <div class="feynman-topics" id="feynman-topics"></div>
+        <div class="feynman-workspace hidden" id="feynman-workspace">
+            <h3 id="feynman-title"></h3>
+            <p style="color:var(--text-muted);margin-bottom:1rem">Explain this topic in your own words, as if teaching someone who knows nothing about it.</p>
+            <textarea id="feynman-input" placeholder="Start explaining..."></textarea>
+            <div class="feynman-actions">
+                <button class="feynman-btn feynman-btn-primary" id="feynman-check">Check My Explanation</button>
+                <button class="feynman-btn feynman-btn-secondary" id="feynman-retry">Clear &amp; Retry</button>
+                <button class="feynman-btn feynman-btn-secondary" id="feynman-back">&larr; Back to Topics</button>
+                <button class="mic-btn" id="feynman-mic" title="Voice Input">&#127908;</button>
+            </div>
+            <div class="hidden" id="feynman-keypoints">
+                <h4 style="margin-bottom:0.75rem;color:var(--text-muted)">Key Points Coverage:</h4>
+                <div id="feynman-checklist"></div>
+            </div>
+        </div>
+        <div class="empty-state" id="feynman-empty">
+            <span class="empty-icon">&#129504;</span>
+            <p>Feynman topics for this subject are coming soon.</p>
+        </div>
+    </div>
+
+    <!-- ====== PROGRESS ====== -->
+    <div class="tab-panel" id="panel-progress">
+        <div class="progress-dashboard" id="progress-dashboard">
+            <div class="progress-overall">
+                <div class="progress-ring-wrap">
+                    <svg class="progress-ring" viewBox="0 0 120 120">
+                        <circle class="progress-ring-bg" cx="60" cy="60" r="52"/>
+                        <circle class="progress-ring-fill" id="progress-ring-fill" cx="60" cy="60" r="52"/>
+                    </svg>
+                    <div class="progress-ring-text" id="progress-overall-pct">0%</div>
+                </div>
+                <p class="progress-overall-msg" id="progress-overall-msg">Start studying to track your progress!</p>
+            </div>
+            <div class="progress-bars">
+                <div class="progress-bar-item">
+                    <label><span>Notes Read</span><span id="prog-notes-val">0 / 0</span></label>
+                    <div class="progress-bar-track"><div class="progress-bar-fill notes" id="prog-notes-fill"></div></div>
+                </div>
+                <div class="progress-bar-item">
+                    <label><span>Flashcards Mastered</span><span id="prog-fc-val">0 / 0</span></label>
+                    <div class="progress-bar-track"><div class="progress-bar-fill fc" id="prog-fc-fill"></div></div>
+                </div>
+                <div class="progress-bar-item">
+                    <label><span>Quiz Best Score</span><span id="prog-quiz-val">&mdash;</span></label>
+                    <div class="progress-bar-track"><div class="progress-bar-fill quiz" id="prog-quiz-fill"></div></div>
+                </div>
+                <div class="progress-bar-item">
+                    <label><span>Feynman Topics</span><span id="prog-feynman-val">0 / 0</span></label>
+                    <div class="progress-bar-track"><div class="progress-bar-fill feynman" id="prog-feynman-fill"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="stats-row">
+            <div class="stat-card"><div class="stat-value" id="stat-streak">0</div><div class="stat-label">Day Streak</div></div>
+            <div class="stat-card"><div class="stat-value" id="stat-time">0m</div><div class="stat-label">Study Time</div></div>
+            <div class="stat-card"><div class="stat-value" id="stat-sessions">0</div><div class="stat-label">Sessions</div></div>
+            <div class="stat-card"><div class="stat-value" id="stat-quizzes">0</div><div class="stat-label">Quizzes</div></div>
+        </div>
+    </div>
+
+    <footer class="page-footer">
+        <p>CAPS Study Hub &mdash; South African National Curriculum &#127487;&#127462;</p>
+    </footer>
+
+    <!-- Scripts: order matters -->
+    <script src="js/caps-subjects.js"></script>
+    <script src="js/caps-curriculum.js"></script>
+    <script>
+    // Synchronous data loader — determines subject from URL and writes the data script tag
+    var _dataMap = {
+        'mathematics': 'js/data/maths-data.js',
+        'life-sciences': 'js/data/life-sciences-data.js',
+        'geography': 'js/data/geography-data.js',
+        'afrikaans-fal': 'js/data/afrikaans-data.js',
+        'cat': 'js/data/cat-data.js'
+    };
+    var _sp = new URLSearchParams(location.search);
+    var _subjectId = _sp.get('subject') || '';
+    var _grade = parseInt(_sp.get('grade')) || 12;
+    if (_dataMap[_subjectId]) {
+        document.write('<scr' + 'ipt src="' + _dataMap[_subjectId] + '"><\/scr' + 'ipt>');
+    }
+    </script>
+    <script>
+    // Setup: runs after data file is loaded but before study-tools.js
+    // Populates header, notes, filter buttons, and toggles empty states
+    document.addEventListener('DOMContentLoaded', function() {
+        var subjectId = _subjectId;
+        var grade = _grade;
+        var subject = CAPS_SUBJECTS.getById(subjectId);
+
+        // --- Header ---
+        if (subject) {
+            document.getElementById('subject-title').textContent = subject.icon + ' ' + subject.name;
+            document.getElementById('subject-subtitle').textContent = 'Grade ' + grade + ' CAPS';
+            document.title = subject.name + ' \u2014 Grade ' + grade + ' | CAPS Study Hub';
+        } else {
+            document.getElementById('subject-title').textContent = 'Subject Not Found';
+            document.getElementById('subject-subtitle').textContent = '';
+        }
+        document.getElementById('back-link').href = 'grade.html?grade=' + grade;
+
+        // --- Unit name mapping ---
+        var unitNames = {
+            'functions': 'Functions & Inverses', 'euclidean': 'Euclidean Geometry',
+            'circles': 'Circle Geometry', 'dna': 'DNA', 'rna': 'RNA & Protein Synthesis',
+            'meiosis': 'Meiosis', 'hormones': 'Plant Hormones',
+            'mlc': 'Mid-Latitude Cyclones', 'tc': 'Tropical Cyclones',
+            'begrip': 'Begrip & Opsomming', 'gedigte': 'Gedigte', 'skryfwerk': 'Skryfwerk',
+            'comp': 'Computers & ICT', 'hw': 'Hardware Devices'
+        };
+
+        // --- Unique units from flashcard data ---
+        var units = [];
+        if (typeof flashcards !== 'undefined') {
+            var seen = {};
+            flashcards.forEach(function(c) {
+                if (!seen[c.unit]) { seen[c.unit] = true; units.push(c.unit); }
+            });
+        }
+
+        // --- Notes from curriculum ---
+        var currData = CAPS_CURRICULUM.get(subjectId, grade, 'all');
+        var notesEl = document.getElementById('notes-content');
+
+        if (currData) {
+            var navHtml = '<div class="notes-nav">';
+            var bodyHtml = '';
+            var termKeys = Object.keys(currData).sort();
+            var isFirstTerm = true;
+
+            termKeys.forEach(function(term) {
+                var topics = currData[term];
+                if (!topics || !topics.length) return;
+                var termId = 'term' + term;
+                var activeClass = isFirstTerm ? ' active' : '';
+
+                navHtml += '<button class="unit-btn' + activeClass + '" data-unit="' + termId + '">Term ' + term + '</button>';
+
+                bodyHtml += '<div class="unit-content' + activeClass + '" id="unit-' + termId + '">';
+                bodyHtml += '<div class="unit-header"><h2>Term ' + term + '</h2></div>';
+
+                // Section jumps
+                bodyHtml += '<div class="section-jumps">';
+                topics.forEach(function(t, i) {
+                    var secId = 'sec-t' + term + '-' + i;
+                    var secActive = (i === 0) ? ' active' : '';
+                    bodyHtml += '<button class="section-jump' + secActive + '" data-section="' + secId + '">' + t.topic + '</button>';
+                });
+                bodyHtml += '</div>';
+
+                // Content sections
+                topics.forEach(function(t, i) {
+                    var secId = 'sec-t' + term + '-' + i;
+                    var secActive = (i === 0) ? ' active' : '';
+                    bodyHtml += '<div class="content-section' + secActive + '" id="' + secId + '">';
+                    bodyHtml += '<h3>' + t.topic + '</h3>';
+                    bodyHtml += '<div class="key-concept">';
+                    bodyHtml += '<h4>CAPS Curriculum Overview</h4>';
+                    bodyHtml += '<p>' + t.content + '</p>';
+                    bodyHtml += '<p style="margin-top:0.75rem"><strong>Duration:</strong> ' + t.weeks + ' weeks</p>';
+                    bodyHtml += '</div>';
+                    bodyHtml += '</div>';
+                });
+
+                bodyHtml += '</div>';
+                isFirstTerm = false;
+            });
+
+            navHtml += '</div>';
+            notesEl.innerHTML = navHtml + bodyHtml;
+        } else {
+            notesEl.innerHTML = '<div class="empty-state"><span class="empty-icon">&#128218;</span><p>Notes for this subject are coming soon.</p></div>';
+        }
+
+        // --- Flashcard filters ---
+        var hasFlashcards = typeof flashcards !== 'undefined' && flashcards.length > 0;
+        if (hasFlashcards) {
+            document.getElementById('fc-empty').classList.add('hidden');
+            document.getElementById('fc-content').classList.remove('hidden');
+
+            var fcHtml = '<button class="filter-btn active" data-filter="all">All</button>';
+            fcHtml += '<button class="filter-btn" data-filter="unseen">Unseen</button>';
+            units.forEach(function(u) {
+                fcHtml += '<button class="filter-btn" data-filter="' + u + '">' + (unitNames[u] || u) + '</button>';
+            });
+            document.getElementById('fc-filters').innerHTML = fcHtml;
+        }
+
+        // --- Quiz filters ---
+        var hasQuiz = typeof quizQuestions !== 'undefined' && quizQuestions.length > 0;
+        if (hasQuiz) {
+            document.getElementById('quiz-empty').classList.add('hidden');
+            document.getElementById('quiz-content').classList.remove('hidden');
+
+            var qzHtml = '<button class="filter-btn active" data-quizfilter="all">All</button>';
+            units.forEach(function(u) {
+                qzHtml += '<button class="filter-btn" data-quizfilter="' + u + '">' + (unitNames[u] || u) + '</button>';
+            });
+            document.getElementById('quiz-filters').innerHTML = qzHtml;
+        }
+
+        // --- Feynman empty state ---
+        var hasFeynman = typeof feynmanTopics !== 'undefined' && feynmanTopics.length > 0;
+        if (hasFeynman) {
+            document.getElementById('feynman-empty').classList.add('hidden');
+        }
+    });
+    </script>
+    <script src="js/study-tools.js"></script>
+</body>
+</html>
